@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>tlseparation.utility.cloud_analysis &mdash; TLSeparation rc1 documentation</title>
+  <title>tlseparation.classification.classes_reference &mdash; TLSeparation rc1 documentation</title>
   
 
   
@@ -139,7 +139,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>tlseparation.utility.cloud_analysis</li>
+      <li>tlseparation.classification.classes_reference</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,7 +156,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for tlseparation.utility.cloud_analysis</h1><div class="highlight"><pre>
+  <h1>Source code for tlseparation.classification.classes_reference</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright (c) 2017, Matheus Boni Vicari, TLSeparation Project</span>
 <span class="c1"># All rights reserved.</span>
 <span class="c1">#</span>
@@ -184,69 +184,24 @@
 <span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;matheus.boni.vicari@gmail.com&quot;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
 
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">knnsearch</span> <span class="k">import</span> <span class="p">(</span><span class="n">set_nbrs_knn</span><span class="p">,</span> <span class="n">set_nbrs_rad</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span>
 
 
-<div class="viewcode-block" id="detect_rad_nn"><a class="viewcode-back" href="../../../tlseparation.utility.html#tlseparation.utility.cloud_analysis.detect_rad_nn">[docs]</a><span class="k">def</span> <span class="nf">detect_rad_nn</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">rad</span><span class="p">):</span>
+<div class="viewcode-block" id="DefaultClass"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.classes_reference.DefaultClass">[docs]</a><span class="k">class</span> <span class="nc">DefaultClass</span><span class="p">:</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculates an average of number of neighbors based on a fixed radius</span>
-<span class="sd">    around each point in a point cloud.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    arr : array</span>
-<span class="sd">        Three-dimensional (m x n) array of a point cloud, where the</span>
-<span class="sd">        coordinates are represented in the columns (n) and the points are</span>
-<span class="sd">        represented in the rows (m).</span>
-<span class="sd">    rad : float</span>
-<span class="sd">        Radius distance to select neighboring points.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    mean_knn : int</span>
-<span class="sd">        Average number of points inside a radius &#39;rad&#39; around each point in</span>
-<span class="sd">        &#39;arr&#39;.</span>
+<span class="sd">    Defines a defaul reference class to be used in classification of</span>
+<span class="sd">    tree point clouds.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># Performin Nearest Neighbors search for the whole point cloud.</span>
-    <span class="n">indices</span> <span class="o">=</span> <span class="n">set_nbrs_rad</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="p">,</span> <span class="n">rad</span><span class="p">,</span> <span class="n">return_dist</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="c1"># Counting number of points around each point in &#39;arr&#39;.</span>
-    <span class="n">indices_len</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span>
-
-    <span class="c1"># Calculates a mean of all neighboring point counts.</span>
-    <span class="n">mean_knn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">indices_len</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">mean_knn</span></div>
-
-
-<div class="viewcode-block" id="detect_nn_dist"><a class="viewcode-back" href="../../../tlseparation.utility.html#tlseparation.utility.cloud_analysis.detect_nn_dist">[docs]</a><span class="k">def</span> <span class="nf">detect_nn_dist</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">knn</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calcuates the optimum distance among neighboring points.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    arr : array</span>
-<span class="sd">        N-dimensional array (m x n) containing a set of parameters (n) over</span>
-<span class="sd">        a set of observations (m).</span>
-<span class="sd">    knn : int</span>
-<span class="sd">        Number of nearest neighbors to search to constitue the local subset</span>
-<span class="sd">        of points around each point in &#39;arr&#39;.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    dist : float</span>
-<span class="sd">        Optimal distance among neighboring points.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">dist</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">set_nbrs_knn</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="p">,</span> <span class="n">knn</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dist</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span> <span class="o">+</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">dist</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="n">sigma</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref_table</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s1">&#39;leaf&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                                             <span class="p">[</span><span class="s1">&#39;twig&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                                             <span class="p">[</span><span class="s1">&#39;trunk&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]),</span>
+                                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span></div>
 </pre></div>
 
            </div>

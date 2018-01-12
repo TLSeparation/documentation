@@ -2,7 +2,7 @@
 
 |
 
-.. image:: tlseparation_logo_1.png
+.. image:: images/tlseparation_logo_1.png
    :align: center
 
 |
@@ -20,7 +20,7 @@ Some features included in this package are:
 * Separation functions based on topology and geometric arrangement of points.
 * Filtering module to improve classification results.
 
-This is still a work in progress, so it will keep developing over time. Altough it's status is still in development,
+This is still a work in progress, so it will keep developing over time. Although it's status is still in development,
 all core functions are testes and operational.
 
 
@@ -46,12 +46,12 @@ Please post a question on the `github issue queue <https://github.com/mattbv/tls
 	
 .. toctree::
    :maxdepth: 2
-   :numbered:
    :caption: Table of Contents:
    
-   source/tlseparation
+   tlseparation
 
    changelog
+      
    
 Indices and tables
 ==================

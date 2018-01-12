@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tlseparation.classification.path_detection &mdash; TLSeparation rc1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="TLSeparation rc1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TLSeparation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tlseparation.html">TLSeparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">CHANGELOG</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">TLSeparation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tlseparation.classification.path_detection</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tlseparation.classification.path_detection</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2017, Matheus Boni Vicari, TLSeparation Project</span>
+<span class="c1"># All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#    This program is free software: you can redistribute it and/or modify</span>
+<span class="c1">#    it under the terms of the GNU General Public License as published by</span>
+<span class="c1">#    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#    (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#    This program is distributed in the hope that it will be useful,</span>
+<span class="c1">#    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#    GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#    You should have received a copy of the GNU General Public License</span>
+<span class="c1">#    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2017, TLSeparation Project&quot;</span>
+<span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Matheus Boni Vicari&quot;</span><span class="p">]</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL3&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.1.4&quot;</span>
+<span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;matheus.boni.vicari@gmail.com&quot;</span>
+<span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">NearestNeighbors</span>
+<span class="kn">from</span> <span class="nn">..utility.shortpath</span> <span class="k">import</span> <span class="p">(</span><span class="n">array_to_graph</span><span class="p">,</span> <span class="n">extract_path_info</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="detect_main_pathways"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.path_detection.detect_main_pathways">[docs]</a><span class="k">def</span> <span class="nf">detect_main_pathways</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">k_retrace</span><span class="p">,</span> <span class="n">knn</span><span class="p">,</span> <span class="n">nbrs_threshold</span><span class="p">,</span>
+                         <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detects the main pathways of an unordered 3D point cloud. Set as true</span>
+<span class="sd">    all points detected as part of all detected pathways that down to the</span>
+<span class="sd">    base of the graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    point_cloud : array</span>
+<span class="sd">        Three-dimensional point cloud of a single tree to perform the</span>
+<span class="sd">        wood-leaf separation. This should be a n-dimensional array (m x n)</span>
+<span class="sd">        containing a set of coordinates (n) over a set of points (m).</span>
+<span class="sd">    k_retrace : int</span>
+<span class="sd">        Number of steps in the graph to retrace back to graph&#39;s base. Every</span>
+<span class="sd">        node in graph will be moved  k_retrace steps from the extremities</span>
+<span class="sd">        towards to base.</span>
+<span class="sd">    knn : int</span>
+<span class="sd">        Number of neighbors to fill gaps in detected paths. The larger the</span>
+<span class="sd">        better. A large knn will increase memory usage. Recommended value</span>
+<span class="sd">        between 50 and 150.</span>
+<span class="sd">    nbrs_threshold : float</span>
+<span class="sd">        Maximum distance to valid neighboring points used to fill gaps in</span>
+<span class="sd">        detected paths.</span>
+<span class="sd">    verbose: bool</span>
+<span class="sd">        Option to set verbose on/off.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path_mask : array</span>
+<span class="sd">        Boolean mask where &#39;True&#39; represents points detected as part of the</span>
+<span class="sd">        main pathways and &#39;False&#39; represents points not part of the pathways.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    AssertionError:</span>
+<span class="sd">        point_cloud has the wrong shape or number of dimensions.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Making sure input point cloud has the right shape and number of</span>
+    <span class="c1"># dimensions.</span>
+    <span class="k">assert</span> <span class="n">point_cloud</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;point_cloud must be an array with 2</span><span class="se">\</span>
+<span class="s2"> dimensions, n_points x 3 (x, y, z).&quot;</span>
+    <span class="k">assert</span> <span class="n">point_cloud</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;point_cloud must be a 3D point cloud.</span><span class="se">\</span>
+<span class="s2"> Make sure it has the shape n_points x 3 (x, y, z).&quot;</span>
+
+    <span class="c1"># Getting root index (base_id) from point cloud.</span>
+    <span class="n">base_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+
+    <span class="c1"># Generating graph from point cloud and extracting shortest path</span>
+    <span class="c1"># information.</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | &gt;&gt;&gt; generating graph from </span><span class="se">\</span>
+<span class="s1">point cloud and extracting shortest path information&#39;</span><span class="p">)</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">array_to_graph</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">base_id</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+    <span class="n">nodes_ids</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">path_list</span> <span class="o">=</span> <span class="n">extract_path_info</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">base_id</span><span class="p">,</span>
+                                                <span class="n">return_path</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Obtaining nodes coordinates from shortest path information.</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">point_cloud</span><span class="p">[</span><span class="n">nodes_ids</span><span class="p">]</span>
+    <span class="c1"># Converting list of shortest path distances to array.</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+
+    <span class="c1"># Retracing path for nodes in G. This step aims to detect only major</span>
+    <span class="c1"># pathways in G. For a tree, these paths are expected to represent</span>
+    <span class="c1"># branches and trunk.</span>
+    <span class="n">new_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">path_list</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">k_retrace</span><span class="p">:</span>
+            <span class="n">new_id</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">-</span> <span class="n">k_retrace</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_id</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Getting unique indices after retracing path_list.</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">new_id</span><span class="p">)</span>
+
+    <span class="c1"># Generating array of all indices from &#39;arr&#39; and all indices to process</span>
+    <span class="c1"># &#39;idx&#39;.</span>
+    <span class="n">idx_base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">point_cloud</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">point_cloud</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Initializing NearestNeighbors search and searching for all &#39;knn&#39;</span>
+    <span class="c1"># neighboring points arround each point in &#39;arr&#39;.</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | &gt;&gt;&gt; initializing </span><span class="se">\</span>
+<span class="s1">NearestNeighbors search and searching for all knn neighboring points </span><span class="se">\</span>
+<span class="s1">arround each point in arr&#39;</span><span class="p">)</span>
+    <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">knn</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span>
+                            <span class="n">leaf_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">)</span>
+    <span class="n">distances</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">)</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Initializing variables for current ids being processed (current_idx)</span>
+    <span class="c1"># and all ids already processed (processed_idx).</span>
+    <span class="n">current_idx</span> <span class="o">=</span> <span class="n">ids</span>
+    <span class="n">processed_idx</span> <span class="o">=</span> <span class="n">ids</span>
+
+    <span class="c1"># Looping while there are still indices in current_idx to process.</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | &gt;&gt;&gt; looping while there </span><span class="se">\</span>
+<span class="s1">are still indices in current_idx to process&#39;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">current_idx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+        <span class="c1"># Selecting NearestNeighbors indices and distances for current</span>
+        <span class="c1"># indices being processed.</span>
+        <span class="n">nn</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">current_idx</span><span class="p">]</span>
+        <span class="n">dd</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[</span><span class="n">current_idx</span><span class="p">]</span>
+
+        <span class="c1"># Masking out indices already contained in processed_idx.</span>
+        <span class="n">mask1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span> <span class="n">processed_idx</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="c1"># Masking neighboring points that are withing threshold distance.</span>
+        <span class="n">mask2</span> <span class="o">=</span> <span class="n">dd</span> <span class="o">&lt;</span> <span class="n">nbrs_threshold</span>
+        <span class="c1"># mask1 AND mask2. This will mask only indices that are part of</span>
+        <span class="c1"># the graph and within threshold distance.</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">mask1</span><span class="p">,</span> <span class="n">mask2</span><span class="p">)</span>
+
+        <span class="c1"># Initializing temporary list of nearest neighbors. This list</span>
+        <span class="c1"># is latter used to accumulate points that will be added to</span>
+        <span class="c1"># processed points list.</span>
+        <span class="n">nntemp</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Looping over current indices&#39;s set of nn points and selecting</span>
+        <span class="c1"># knn points that hasn&#39;t been added/processed yet (mask1).</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span> <span class="n">dd</span><span class="p">)):</span>
+            <span class="n">nn_idx</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">mask</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">1</span><span class="p">:]</span>
+
+            <span class="c1"># Checking if current neighbor has an accumulated distance</span>
+            <span class="c1"># shorter than central node (n[0]) minus some distance based</span>
+            <span class="c1"># on nbrs_threshold. This penalisation aims to restrict potential</span>
+            <span class="c1"># neighbors to those more likely to be along an actual path. This</span>
+            <span class="c1"># would remove points placed along the sides of a path.</span>
+            <span class="k">for</span> <span class="n">ni</span> <span class="ow">in</span> <span class="n">nn_idx</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">D</span><span class="p">[</span><span class="n">ni</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">D</span><span class="p">[</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">-</span> <span class="p">(</span><span class="n">nbrs_threshold</span> <span class="o">/</span> <span class="mi">3</span><span class="p">):</span>
+                    <span class="n">nntemp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ni</span><span class="p">)</span>
+
+        <span class="c1"># Obtaining an unique array of points currently being processed.</span>
+        <span class="n">current_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">nntemp</span><span class="p">)</span>
+        <span class="c1"># Updating array of processed indices with indices processed within</span>
+        <span class="c1"># current iteration (current_idx).</span>
+        <span class="n">processed_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">processed_idx</span><span class="p">,</span> <span class="n">current_idx</span><span class="p">)</span>
+        <span class="n">processed_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">processed_idx</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+        <span class="c1"># Generating list of remaining proints to process.</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">idx_base</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">idx_base</span><span class="p">,</span> <span class="n">processed_idx</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+
+    <span class="c1"># Just in case of not having detected all points in the desired paths, run</span>
+    <span class="c1"># another last iteration.</span>
+
+    <span class="c1"># Getting NearestNeighbors indices and distance for all indices</span>
+    <span class="c1"># that remain to be processed.</span>
+    <span class="n">idx2</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">dist2</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+    <span class="c1"># Masking indices in idx2 that have already been processed. The</span>
+    <span class="c1"># idea is to connect remaining points to existing graph nodes.</span>
+    <span class="n">mask1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">idx2</span><span class="p">,</span> <span class="n">processed_idx</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">idx2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="c1"># Masking neighboring points that are withing threshold distance.</span>
+    <span class="n">mask2</span> <span class="o">=</span> <span class="n">dist2</span> <span class="o">&lt;</span> <span class="n">nbrs_threshold</span>
+    <span class="c1"># mask1 AND mask2. This will mask only indices that are part of</span>
+    <span class="c1"># the graph and within threshold distance.</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">mask1</span><span class="p">,</span> <span class="n">mask2</span><span class="p">)</span>
+
+    <span class="c1"># Getting unique array of indices that match the criteria from</span>
+    <span class="c1"># mask1 and mask2.</span>
+    <span class="n">temp_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># Assigns remaining indices (idx) matched in temp_idx to</span>
+    <span class="c1"># current_idx.</span>
+    <span class="n">n_idx</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="n">temp_idx</span><span class="p">]</span>
+
+    <span class="c1"># Selecting NearestNeighbors indices and distances for current</span>
+    <span class="c1"># indices being processed.</span>
+    <span class="n">nn</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">n_idx</span><span class="p">]</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[</span><span class="n">n_idx</span><span class="p">]</span>
+
+    <span class="c1"># Masking points in nn that have already been processed.</span>
+    <span class="c1"># This is the oposite approach as above, where points that are</span>
+    <span class="c1"># still not in the graph are desired. Now, to make sure the</span>
+    <span class="c1"># continuity of the graph is kept, join current remaining indices</span>
+    <span class="c1"># to indices already in G.</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">nn</span><span class="p">,</span> <span class="n">processed_idx</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="c1"># Initializing temporary list of nearest neighbors. This list</span>
+    <span class="c1"># is latter used to accumulate points that will be added to</span>
+    <span class="c1"># processed points list.</span>
+    <span class="n">nntemp</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Looping over current indices&#39;s set of nn points and selecting</span>
+    <span class="c1"># knn points that have alreay been added/processed (mask).</span>
+    <span class="c1"># Also, to ensure continuity over next iteration, select another</span>
+    <span class="c1"># kpairs points from indices that haven&#39;t been processed (~mask).</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | &gt;&gt;&gt; looping over current </span><span class="se">\</span>
+<span class="s1">indicess set of nn points and selecting knn points that have alreay been </span><span class="se">\</span>
+<span class="s1">added/processed (mask)&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nn</span><span class="p">):</span>
+        <span class="n">nn_idx</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">mask</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">1</span><span class="p">:]</span>
+
+        <span class="c1"># Checking if current neighbor has an accumulated distance</span>
+        <span class="c1"># shorter than central node (n[0]).</span>
+        <span class="k">for</span> <span class="n">ni</span> <span class="ow">in</span> <span class="n">nn_idx</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">D</span><span class="p">[</span><span class="n">ni</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">D</span><span class="p">[</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">-</span> <span class="p">(</span><span class="n">nbrs_threshold</span> <span class="o">/</span> <span class="mi">3</span><span class="p">):</span>
+                <span class="n">nntemp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ni</span><span class="p">)</span>
+
+        <span class="n">nn_idx</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">1</span><span class="p">:]</span>
+
+        <span class="c1"># Checking if current neighbor has an accumulated distance</span>
+        <span class="c1"># shorter than central node (n[0]).</span>
+        <span class="k">for</span> <span class="n">ni</span> <span class="ow">in</span> <span class="n">nn_idx</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">D</span><span class="p">[</span><span class="n">ni</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">D</span><span class="p">[</span><span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">-</span> <span class="p">(</span><span class="n">nbrs_threshold</span> <span class="o">/</span> <span class="mi">3</span><span class="p">):</span>
+                <span class="n">nntemp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ni</span><span class="p">)</span>
+
+    <span class="n">current_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">nntemp</span><span class="p">)</span>
+
+    <span class="c1"># Appending current_idx to processed_idx.</span>
+    <span class="n">processed_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">processed_idx</span><span class="p">,</span> <span class="n">current_idx</span><span class="p">)</span>
+    <span class="n">processed_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">processed_idx</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Generating list of remaining proints to process.</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">idx_base</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">idx_base</span><span class="p">,</span> <span class="n">processed_idx</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+
+    <span class="c1"># Generating final path mask and setting processed indices as True.</span>
+    <span class="n">path_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">point_cloud</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="n">path_mask</span><span class="p">[</span><span class="n">processed_idx</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">path_mask</span></div>
+
+
+<div class="viewcode-block" id="get_base"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.path_detection.get_base">[docs]</a><span class="k">def</span> <span class="nf">get_base</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">base_height</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the base of a point cloud based on a certain height from the bottom.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    point_cloud : array</span>
+<span class="sd">        Three-dimensional point cloud of a single tree to perform the</span>
+<span class="sd">        wood-leaf separation. This should be a n-dimensional array (m x n)</span>
+<span class="sd">        containing a set of coordinates (n) over a set of points (m).</span>
+<span class="sd">    base_height : float</span>
+<span class="sd">        Height of the base slice to mask.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    mask : array</span>
+<span class="sd">        Base slice masked as True.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">point_cloud</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">base_height</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Matheus Boni Vicari.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'rc1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

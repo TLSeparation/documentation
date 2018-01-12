@@ -4,6 +4,14 @@ tlseparation\.classification package
 Submodules
 ----------
 
+tlseparation\.classification\.classes\_reference module
+-------------------------------------------------------
+
+.. automodule:: tlseparation.classification.classes_reference
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 tlseparation\.classification\.gmm module
 ----------------------------------------
 

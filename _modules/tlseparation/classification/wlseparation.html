@@ -1,0 +1,562 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tlseparation.classification.wlseparation &mdash; TLSeparation rc1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="TLSeparation rc1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> TLSeparation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tlseparation.html">TLSeparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">CHANGELOG</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">TLSeparation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tlseparation.classification.wlseparation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tlseparation.classification.wlseparation</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2017, Matheus Boni Vicari, TLSeparation Project</span>
+<span class="c1"># All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#    This program is free software: you can redistribute it and/or modify</span>
+<span class="c1">#    it under the terms of the GNU General Public License as published by</span>
+<span class="c1">#    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#    (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#    This program is distributed in the hope that it will be useful,</span>
+<span class="c1">#    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#    GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#    You should have received a copy of the GNU General Public License</span>
+<span class="c1">#    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2017, TLSeparation Project&quot;</span>
+<span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Matheus Boni Vicari&quot;</span><span class="p">]</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL3&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.1.4&quot;</span>
+<span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;matheus.boni.vicari@gmail.com&quot;</span>
+<span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">NearestNeighbors</span>
+<span class="kn">from</span> <span class="nn">..utility.knnsearch</span> <span class="k">import</span> <span class="n">set_nbrs_knn</span><span class="p">,</span> <span class="n">subset_nbrs</span>
+<span class="kn">from</span> <span class="nn">..classification.point_features</span> <span class="k">import</span> <span class="n">knn_features</span>
+<span class="kn">from</span> <span class="nn">..classification.gmm</span> <span class="k">import</span> <span class="p">(</span><span class="n">classify</span><span class="p">,</span> <span class="n">class_select_abs</span><span class="p">,</span>
+                                  <span class="n">class_select_ref</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="fill_class"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.wlseparation.fill_class">[docs]</a><span class="k">def</span> <span class="nf">fill_class</span><span class="p">(</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">,</span> <span class="n">noclass</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Assigns noclass entries to either arr1 or arr2, depending on</span>
+<span class="sd">    neighborhood majority analisys.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr1 : array</span>
+<span class="sd">        Point coordinates for entries of the first class.</span>
+<span class="sd">    arr2 : array</span>
+<span class="sd">        Point coordinates for entries of the second class.</span>
+<span class="sd">    noclass : array</span>
+<span class="sd">        Point coordinates for noclass entries.</span>
+<span class="sd">    k : int</span>
+<span class="sd">        Number of neighbors to use in the neighborhood majority analysis.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    arr1 : array</span>
+<span class="sd">        Point coordinates for entries of the first class.</span>
+<span class="sd">    arr2 : array</span>
+<span class="sd">        Point coordinates for entries of the second class.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Stacking arr1 and arr2. This will be fitted in the NearestNeighbors</span>
+    <span class="c1"># search in order to define local majority and assign classes to</span>
+    <span class="c1"># noclass.</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span><span class="p">))</span>
+
+    <span class="c1"># Generating classes labels with the same shapes as arr1, arr2 and,</span>
+    <span class="c1"># after stacking, arr.</span>
+    <span class="n">class_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">arr1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+    <span class="n">class_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">arr2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">class_1</span><span class="p">,</span> <span class="n">class_2</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="c1"># Performin NearestNeighbors search to detect local sets of points.</span>
+    <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">leaf_size</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">noclass</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Allocating output variable.</span>
+    <span class="n">new_class</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">noclass</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Selecting subset of classes based on the neighborhood expressed by</span>
+    <span class="c1"># indices.</span>
+    <span class="n">class_</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+
+    <span class="c1"># Looping over all points in indices.</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)):</span>
+
+        <span class="c1"># Counting the number of occurrences of each value in the ith instance</span>
+        <span class="c1"># of class_.</span>
+        <span class="n">unique</span><span class="p">,</span> <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">class_</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># Appending the majority class into the output variable.</span>
+        <span class="n">new_class</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">unique</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">count</span><span class="p">)]</span>
+
+    <span class="c1"># Stacking new points to arr1 and arr2.</span>
+    <span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">arr1</span><span class="p">,</span> <span class="n">noclass</span><span class="p">[</span><span class="n">new_class</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]))</span>
+    <span class="n">arr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">arr2</span><span class="p">,</span> <span class="n">noclass</span><span class="p">[</span><span class="n">new_class</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]))</span>
+
+    <span class="c1"># Making sure all points were processed and assigned a class.</span>
+    <span class="k">assert</span> <span class="p">((</span><span class="n">arr1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span>
+            <span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">noclass</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">arr1</span><span class="p">,</span> <span class="n">arr2</span></div>
+
+
+<div class="viewcode-block" id="wlseparate_ref_voting"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.wlseparation.wlseparate_ref_voting">[docs]</a><span class="k">def</span> <span class="nf">wlseparate_ref_voting</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">knn_lst</span><span class="p">,</span> <span class="n">class_file</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classifies a point cloud (arr) into two main classes, wood and leaf.</span>
+<span class="sd">    Altough this function does not output a noclass category, it still</span>
+<span class="sd">    filters out results based on classification confidence interval in the</span>
+<span class="sd">    voting process (if lower than prob_threshold, then voting is not used</span>
+<span class="sd">    for current point and knn value).</span>
+
+<span class="sd">    The final class selection is based a voting scheme applied to a similar</span>
+<span class="sd">    approach of wlseparate_ref. In this case, the function iterates over a</span>
+<span class="sd">    series of knn values and apply the reference distance criteria to select</span>
+<span class="sd">    wood and leaf classes.</span>
+
+<span class="sd">    Each knn class result is accumulated in a list and in the end a voting</span>
+<span class="sd">    is applied. For each point, if the number of times it was classified as</span>
+<span class="sd">    wood is larger than threhsold, the final class is set to wood. Otherwise</span>
+<span class="sd">    it is set as leaf.</span>
+
+<span class="sd">    Class selection will mask points according to their class mean distance</span>
+<span class="sd">    to reference classes. The closes reference class gets assignes to each</span>
+<span class="sd">    intermediate class.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr : array</span>
+<span class="sd">        Three-dimensional point cloud of a single tree to perform the</span>
+<span class="sd">        wood-leaf separation. This should be a n-dimensional array (m x n)</span>
+<span class="sd">        containing a set of coordinates (n) over a set of points (m).</span>
+<span class="sd">    knn_lst : list</span>
+<span class="sd">        List of knn values to use in the search to constitue local subsets of</span>
+<span class="sd">        points around each point in &#39;arr&#39;. It can be a single knn value, as</span>
+<span class="sd">        long as it has list data type.</span>
+<span class="sd">    class_file : pandas dataframe or str</span>
+<span class="sd">        Dataframe or path to reference classes file.</span>
+<span class="sd">    n_classes : int</span>
+<span class="sd">        Number of classes to use in the Gaussian Mixture Classification.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    class_dict : dict</span>
+<span class="sd">        Dictionary containing indices for all classes in class_ref. Classes</span>
+<span class="sd">        are labeled according to classes names in class_file.</span>
+<span class="sd">    count_dict : dict</span>
+<span class="sd">        Dictionary containin votes count for all classes in class_ref. Classes</span>
+<span class="sd">        are labeled according to classes names in class_file.</span>
+<span class="sd">    prob_dict : dict</span>
+<span class="sd">        Dictionary containing probabilities for all classes in class_ref.</span>
+<span class="sd">        Classes are labeled according to classes names in class_file.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Making sure &#39;knn_lst&#39; is of list type.</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">knn_lst</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="n">knn_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">knn_lst</span><span class="p">]</span>
+
+    <span class="c1"># Initializing voting accumulator and class probability arrays.</span>
+    <span class="n">vt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">knn_lst</span><span class="p">)],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">knn_lst</span><span class="p">)],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c1"># Generating a base set of indices and distances around each point.</span>
+    <span class="c1"># This step uses the largest value in knn_lst to make further searches,</span>
+    <span class="c1"># with smaller values of knn, more efficient.</span>
+    <span class="n">d_base</span><span class="p">,</span> <span class="n">idx_base</span> <span class="o">=</span> <span class="n">set_nbrs_knn</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">knn_lst</span><span class="p">),</span>
+                                    <span class="n">return_dist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Reading in class reference values from file.</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">class_file</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">class_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">class_file</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="n">class_table</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">class_file</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">class_table</span> <span class="o">=</span> <span class="n">class_file</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;class file should be a pandas dataframe or file path&#39;</span><span class="p">)</span>
+    <span class="n">class_ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">class_table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c1"># Looping over values of knn in knn_lst.</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">knn_lst</span><span class="p">):</span>
+        <span class="c1"># Subseting indices and distances based on initial knn search and</span>
+        <span class="c1"># current knn value (k).</span>
+        <span class="n">dx_1</span><span class="p">,</span> <span class="n">idx_1</span> <span class="o">=</span> <span class="n">subset_nbrs</span><span class="p">(</span><span class="n">d_base</span><span class="p">,</span> <span class="n">idx_base</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+
+        <span class="c1"># Calculating the geometric descriptors.</span>
+        <span class="n">gd_1</span> <span class="o">=</span> <span class="n">knn_features</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">idx_1</span><span class="p">)</span>
+
+        <span class="c1"># Classifying the points based on the geometric descriptors.</span>
+        <span class="n">classes_1</span><span class="p">,</span> <span class="n">cm_1</span><span class="p">,</span> <span class="n">proba_1</span> <span class="o">=</span> <span class="n">classify</span><span class="p">(</span><span class="n">gd_1</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">)</span>
+        <span class="n">cm_1</span> <span class="o">=</span> <span class="p">((</span><span class="n">cm_1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">cm_1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span>
+                <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cm_1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">cm_1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
+
+        <span class="c1"># Selecting which classes represent classes from classes reference</span>
+        <span class="c1"># file.</span>
+        <span class="n">new_classes</span> <span class="o">=</span> <span class="n">class_select_ref</span><span class="p">(</span><span class="n">classes_1</span><span class="p">,</span> <span class="n">cm_1</span><span class="p">,</span> <span class="n">class_ref</span><span class="p">)</span>
+
+        <span class="c1"># Appending results to vt temporary list.</span>
+        <span class="n">vt</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_classes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">prob</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">proba_1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Performing the voting scheme (majority selection) for each point.</span>
+    <span class="c1"># Initializing final_* variables to store class number, vote counts and</span>
+    <span class="c1"># class provability.</span>
+    <span class="n">final_class</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">final_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">final_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">([</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="c1"># Iterating over class votes (vt) and their probabilities (prob).</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">vt</span><span class="p">,</span> <span class="n">prob</span><span class="p">)):</span>
+        <span class="c1"># Counting votes of each class.</span>
+        <span class="n">unique</span><span class="p">,</span> <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># Appending to final_* arrays the most voted class, the total number</span>
+        <span class="c1"># of votes this class received and it&#39;s classficiation probability.</span>
+        <span class="n">final_class</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">unique</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">count</span><span class="p">)]</span>
+        <span class="n">final_count</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">count</span><span class="p">)]</span>
+        <span class="c1"># Masking entries that received a vote for the most voted class.</span>
+        <span class="n">final_class_mask</span> <span class="o">=</span> <span class="n">v</span> <span class="o">==</span> <span class="n">final_class</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># Averaging over all classification probabilities for all votes of</span>
+        <span class="c1"># the most voted class.</span>
+        <span class="n">final_prob</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">final_class_mask</span><span class="p">])</span>
+
+    <span class="c1"># Selecting classes labels from entries in class_ref.</span>
+    <span class="c1"># Generating indices array to help in future indexing.</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="c1"># Initializing dictionaires for output variables.</span>
+    <span class="n">class_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">count_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">prob_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># Looping over each unique class in final_class.</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">final_class</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">):</span>
+        <span class="c1"># Selecting all indices for points that were classfied as</span>
+        <span class="c1"># belonging to current class.</span>
+        <span class="n">class_idx</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="n">final_class</span> <span class="o">==</span> <span class="n">c</span><span class="p">]</span>
+        <span class="c1"># Selecting all vote counts for points that were classfied as</span>
+        <span class="c1"># belonging to current class. Only gets votes of most voted class for</span>
+        <span class="c1"># each point.</span>
+        <span class="n">class_count</span> <span class="o">=</span> <span class="n">final_count</span><span class="p">[</span><span class="n">final_class</span> <span class="o">==</span> <span class="n">c</span><span class="p">]</span>
+        <span class="c1"># Selecting all classification probabilities for points that were</span>
+        <span class="c1"># classfied as belonging to current class. Only gets probability of</span>
+        <span class="c1"># most voted class for each point.</span>
+        <span class="n">class_prob</span> <span class="o">=</span> <span class="n">final_prob</span><span class="p">[</span><span class="n">final_class</span> <span class="o">==</span> <span class="n">c</span><span class="p">]</span>
+        <span class="c1"># Assigining current class indices, votes and probability to</span>
+        <span class="c1"># output dictionaries. Current key name is set as selected class name</span>
+        <span class="c1"># from class_ref.</span>
+        <span class="n">class_dict</span><span class="p">[</span><span class="n">class_table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="p">:][</span><span class="s1">&#39;class&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">class_idx</span>
+        <span class="n">count_dict</span><span class="p">[</span><span class="n">class_table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="p">:][</span><span class="s1">&#39;class&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">class_count</span>
+        <span class="n">prob_dict</span><span class="p">[</span><span class="n">class_table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="p">:][</span><span class="s1">&#39;class&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">class_prob</span>
+
+    <span class="k">return</span> <span class="n">class_dict</span><span class="p">,</span> <span class="n">count_dict</span><span class="p">,</span> <span class="n">prob_dict</span></div>
+
+
+<div class="viewcode-block" id="wlseparate_abs"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.wlseparation.wlseparate_abs">[docs]</a><span class="k">def</span> <span class="nf">wlseparate_abs</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">knn</span><span class="p">,</span> <span class="n">knn_downsample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Classifies a point cloud (arr) into three main classes, wood, leaf and</span>
+<span class="sd">    noclass.</span>
+
+<span class="sd">    The final class selection is based on the absolute value of the last</span>
+<span class="sd">    geometric feature (see point_features module).</span>
+<span class="sd">    Points will be only classified as wood or leaf if their classification</span>
+<span class="sd">    probability is higher than prob_threshold. Otherwise, points are</span>
+<span class="sd">    assigned to noclass.</span>
+
+<span class="sd">    Class selection will mask points with feature value larger than a given</span>
+<span class="sd">    threshold as wood and the remaining points as leaf.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr : array</span>
+<span class="sd">        Three-dimensional point cloud of a single tree to perform the</span>
+<span class="sd">        wood-leaf separation. This should be a n-dimensional array (m x n)</span>
+<span class="sd">        containing a set of coordinates (n) over a set of points (m).</span>
+<span class="sd">    knn : int</span>
+<span class="sd">        Number of nearest neighbors to search to constitue the local subset of</span>
+<span class="sd">        points around each point in &#39;arr&#39;.</span>
+<span class="sd">    knn_downsample : float</span>
+<span class="sd">        Downsample factor (0, 1) for the knn parameter. If less than 1, a</span>
+<span class="sd">        sample of size (knn * knn_downsample) will be selected from the</span>
+<span class="sd">        nearest neighbors indices. This option aims to maintain the spatial</span>
+<span class="sd">        representation of the local subsets of points, but reducing overhead</span>
+<span class="sd">        in memory and processing time.</span>
+<span class="sd">    n_classes : int</span>
+<span class="sd">        Number of classes to use in the Gaussian Mixture Classification.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    class_indices : dict</span>
+<span class="sd">        Dictionary containing indices for wood and leaf classes.</span>
+<span class="sd">    class_probability : dict</span>
+<span class="sd">        Dictionary containing probabilities for wood and leaf classes.</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Generating the indices array of the &#39;k&#39; nearest neighbors (knn) for all</span>
+    <span class="c1"># points in arr.</span>
+    <span class="n">idx_1</span> <span class="o">=</span> <span class="n">set_nbrs_knn</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="p">,</span> <span class="n">knn</span><span class="p">,</span> <span class="n">return_dist</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># If downsample fraction value is set to lower than 1. Apply downsampling</span>
+    <span class="c1"># on knn indices.</span>
+    <span class="k">if</span> <span class="n">knn_downsample</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">idx_1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">knn_downsample</span><span class="p">)</span>
+        <span class="n">idx_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">idx_1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_samples</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">idx_f</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx_1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">idx_f</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">idx_f</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">idx_1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">n_samples</span><span class="p">,</span>
+                                            <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">idx_1</span> <span class="o">=</span> <span class="n">idx_f</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Calculating geometric descriptors.</span>
+    <span class="n">gd_1</span> <span class="o">=</span> <span class="n">knn_features</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">idx_1</span><span class="p">)</span>
+
+    <span class="c1"># Classifying the points based on the geometric descriptors.</span>
+    <span class="n">classes_1</span><span class="p">,</span> <span class="n">cm_1</span><span class="p">,</span> <span class="n">proba_1</span> <span class="o">=</span> <span class="n">classify</span><span class="p">(</span><span class="n">gd_1</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">)</span>
+
+    <span class="c1"># Selecting which classes represent wood and leaf. Wood classes are masked</span>
+    <span class="c1"># as True and leaf classes as False.</span>
+    <span class="n">mask_1</span> <span class="o">=</span> <span class="n">class_select_abs</span><span class="p">(</span><span class="n">classes_1</span><span class="p">,</span> <span class="n">cm_1</span><span class="p">,</span> <span class="n">idx_1</span><span class="p">)</span>
+
+    <span class="c1"># Generating set of indices of entries in arr. This will be part of the</span>
+    <span class="c1"># output.</span>
+    <span class="n">arr_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Creating output class indices dictionary.</span>
+    <span class="c1"># mask represent wood points, (~) not mask represent leaf points.</span>
+    <span class="n">class_indices</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">class_indices</span><span class="p">[</span><span class="s1">&#39;wood&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr_ids</span><span class="p">[</span><span class="n">mask_1</span><span class="p">]</span>
+    <span class="n">class_indices</span><span class="p">[</span><span class="s1">&#39;leaf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr_ids</span><span class="p">[</span><span class="o">~</span><span class="n">mask_1</span><span class="p">]</span>
+
+    <span class="c1"># Creating output class probabilities dictionary.</span>
+    <span class="c1"># mask represent wood points, (~) not mask represent leaf points.</span>
+    <span class="n">class_probability</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">class_probability</span><span class="p">[</span><span class="s1">&#39;wood&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">proba_1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="n">mask_1</span><span class="p">]</span>
+    <span class="n">class_probability</span><span class="p">[</span><span class="s1">&#39;leaf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">proba_1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="o">~</span><span class="n">mask_1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">class_indices</span><span class="p">,</span> <span class="n">class_probability</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Matheus Boni Vicari.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'rc1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

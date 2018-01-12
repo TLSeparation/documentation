@@ -1,0 +1,1176 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tlseparation.utility package &mdash; TLSeparation rc1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="TLSeparation rc1 documentation" href="index.html"/>
+        <link rel="up" title="TLSeparation" href="tlseparation.html"/>
+        <link rel="next" title="CHANGELOG" href="changelog.html"/>
+        <link rel="prev" title="tlseparation.scripts package" href="tlseparation.scripts.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> TLSeparation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="tlseparation.html">TLSeparation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tlseparation.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tlseparation.classification.html">tlseparation.classification package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tlseparation.scripts.html">tlseparation.scripts package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">tlseparation.utility package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.cloud_analysis">tlseparation.utility.cloud_analysis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.continuous_clustering">tlseparation.utility.continuous_clustering module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.data_utils">tlseparation.utility.data_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.filtering">tlseparation.utility.filtering module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.knnsearch">tlseparation.utility.knnsearch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.shortpath">tlseparation.utility.shortpath module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tlseparation.html#module-tlseparation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">CHANGELOG</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TLSeparation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="tlseparation.html">TLSeparation</a> &raquo;</li>
+        
+      <li>tlseparation.utility package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tlseparation.utility.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tlseparation-utility-package">
+<h1>tlseparation.utility package<a class="headerlink" href="#tlseparation-utility-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-tlseparation.utility.cloud_analysis">
+<span id="tlseparation-utility-cloud-analysis-module"></span><h2>tlseparation.utility.cloud_analysis module<a class="headerlink" href="#module-tlseparation.utility.cloud_analysis" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.utility.cloud_analysis.detect_nn_dist">
+<code class="descclassname">tlseparation.utility.cloud_analysis.</code><code class="descname">detect_nn_dist</code><span class="sig-paren">(</span><em>arr</em>, <em>knn</em>, <em>sigma=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/cloud_analysis.html#detect_nn_dist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.cloud_analysis.detect_nn_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calcuates the optimum distance among neighboring points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (m x n) containing a set of parameters (n) over
+a set of observations (m).</p>
+</div></blockquote>
+<p><strong>knn</strong> : int</p>
+<blockquote>
+<div><p>Number of nearest neighbors to search to constitue the local subset
+of points around each point in ‘arr’.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dist</strong> : float</p>
+<blockquote class="last">
+<div><p>Optimal distance among neighboring points.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.cloud_analysis.detect_rad_nn">
+<code class="descclassname">tlseparation.utility.cloud_analysis.</code><code class="descname">detect_rad_nn</code><span class="sig-paren">(</span><em>arr</em>, <em>rad</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/cloud_analysis.html#detect_rad_nn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.cloud_analysis.detect_rad_nn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates an average of number of neighbors based on a fixed radius
+around each point in a point cloud.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional (m x n) array of a point cloud, where the
+coordinates are represented in the columns (n) and the points are
+represented in the rows (m).</p>
+</div></blockquote>
+<p><strong>rad</strong> : float</p>
+<blockquote>
+<div><p>Radius distance to select neighboring points.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mean_knn</strong> : int</p>
+<blockquote class="last">
+<div><p>Average number of points inside a radius ‘rad’ around each point in
+‘arr’.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.utility.continuous_clustering">
+<span id="tlseparation-utility-continuous-clustering-module"></span><h2>tlseparation.utility.continuous_clustering module<a class="headerlink" href="#module-tlseparation.utility.continuous_clustering" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.utility.continuous_clustering.central_coord">
+<code class="descclassname">tlseparation.utility.continuous_clustering.</code><code class="descname">central_coord</code><span class="sig-paren">(</span><em>arr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/continuous_clustering.html#central_coord"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.continuous_clustering.central_coord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the central coordinates and mean diameter of an array of
+points in 3D space.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (m x n) containing a set of parameters (n) over a
+set of observations (m). In this case, the set of parameters are the
+point cloud coordinates, where each row represents a point.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>coord</strong> : array</p>
+<blockquote>
+<div><p>Central coordinates of the points in the input array.</p>
+</div></blockquote>
+<p><strong>diameter</strong> : float</p>
+<blockquote class="last">
+<div><p>Mean diameter of the points in the input array.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.continuous_clustering.data_clustering">
+<code class="descclassname">tlseparation.utility.continuous_clustering.</code><code class="descname">data_clustering</code><span class="sig-paren">(</span><em>point_arr</em>, <em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/continuous_clustering.html#data_clustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.continuous_clustering.data_clustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clusters point_arr using hierarchical clustering.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_arr</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (m x n) containing a set of parameters (n) over
+a set of observations (m). In this case, the set of parameters are
+the point cloud coordinates, where each row represents a point.</p>
+</div></blockquote>
+<p><strong>threshold</strong> : float</p>
+<blockquote>
+<div><p>Distance threshold to be used as constraint in the slice clustering
+step.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>clusters.labels_</strong> : array</p>
+<blockquote class="last">
+<div><p>Set of cluster labels for the classified array.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.continuous_clustering.path_clustering">
+<code class="descclassname">tlseparation.utility.continuous_clustering.</code><code class="descname">path_clustering</code><span class="sig-paren">(</span><em>arr</em>, <em>knn</em>, <em>slice_length</em>, <em>cluster_threshold</em>, <em>growth_radius</em>, <em>freq_threshold=0.6</em>, <em>max_diam=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/continuous_clustering.html#path_clustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.continuous_clustering.path_clustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the path clustering of a point cloud with a defined
+root point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (m x n) containing a set of parameters (n) over
+a set of observations (m). In this case, the set of parameters are
+the point cloud coordinates, where each row represents a point.</p>
+</div></blockquote>
+<p><strong>knn</strong> : int</p>
+<blockquote>
+<div><p>Number of nearest neighbors to use in the reconstruction of point
+cloud around the generated path nodes. A high value may lead to
+unnecessary duplication of steps. A low value may lead to gaps
+in the reconstructed point cloud.</p>
+</div></blockquote>
+<p><strong>slice_length</strong> : float</p>
+<blockquote>
+<div><p>Length of the slices of the data in ‘arr’.</p>
+</div></blockquote>
+<p><strong>cluster_threshold</strong> : float</p>
+<blockquote>
+<div><p>Distance threshold to be used as constraint in the slice clustering
+step.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wood</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (w x n) containing the (w) points classified as
+wood from the path reconstruction. The columns (n) represents the 3D
+coordinates of each point.</p>
+</div></blockquote>
+<p><strong>leaf</strong> : array</p>
+<blockquote class="last">
+<div><p>N-dimensional array (l x n) containing the (l) points not classified
+as wood and, therefore, classified as leaf. The columns (n) represents
+the 3D coordinates of each point.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.continuous_clustering.slice_nodes">
+<code class="descclassname">tlseparation.utility.continuous_clustering.</code><code class="descname">slice_nodes</code><span class="sig-paren">(</span><em>arr</em>, <em>slice_length</em>, <em>cluster_threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/continuous_clustering.html#slice_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.continuous_clustering.slice_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the skeleton points of a 3D point cloud by slicing it
+based on the shortest path distance of every point from the base.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (m x n) containing a set of parameters (n) over a
+set of observations (m). In this case, the set of parameters are the
+point cloud coordinates, where each row represents a point.</p>
+</div></blockquote>
+<p><strong>slice_length</strong> : float</p>
+<blockquote>
+<div><p>Length for the slices of data in ‘arr’.</p>
+</div></blockquote>
+<p><strong>cluster_threshold</strong> : float</p>
+<blockquote>
+<div><p>Distance threshold to be used as constraint in the slice clustering
+step.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cluster_data</strong> : dict</p>
+<blockquote>
+<div><p>Dictionary containing the skeleton nodes coordinates (keys) and the
+substet of points from ‘arr’ that generated the respective skeleton
+nodes.</p>
+</div></blockquote>
+<p><strong>cluster_diameter</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary containing the skeleton nodes coordinates (keys) and the
+mean diameter of the cluster that generated the respective skeleton
+nodes.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.utility.data_utils">
+<span id="tlseparation-utility-data-utils-module"></span><h2>tlseparation.utility.data_utils module<a class="headerlink" href="#module-tlseparation.utility.data_utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.utility.data_utils.apply_nn_value">
+<code class="descclassname">tlseparation.utility.data_utils.</code><code class="descname">apply_nn_value</code><span class="sig-paren">(</span><em>base</em>, <em>arr</em>, <em>attr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/data_utils.html#apply_nn_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.data_utils.apply_nn_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upscales a set of attributes from a base array to another denser array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>base</strong> : array</p>
+<blockquote>
+<div><p>Base array to which the attributes to upscale were originaly matched.</p>
+</div></blockquote>
+<p><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Target array to which the attributes will be upscaled.</p>
+</div></blockquote>
+<p><strong>attr</strong> : array</p>
+<blockquote>
+<div><p>Attributes to upscale.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>new_attr</strong> : array</p>
+<blockquote>
+<div><p>Upscales attributes.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AssertionError:</strong></p>
+<blockquote class="last">
+<div><p>length (number of samples) of “base” and “attr” must be equal.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.data_utils.entries_to_remove">
+<code class="descclassname">tlseparation.utility.data_utils.</code><code class="descname">entries_to_remove</code><span class="sig-paren">(</span><em>entries</em>, <em>d</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/data_utils.html#entries_to_remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.data_utils.entries_to_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to remove selected entries (key and respective values) from
+a given dict.
+Based on a reply from the user mattbornski <a class="footnote-reference" href="#id2" id="id1">[1]</a> at stackoverflow.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>entries</strong> : array</p>
+<blockquote>
+<div><p>Set of entried to be removed.</p>
+</div></blockquote>
+<p><strong>d</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary to apply the entried removal.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>mattbornski, 2012. <a class="reference external" href="http://stackoverflow.com/questions/8995611/removing-multiple-keys-from-a-dictionary-safely">http://stackoverflow.com/questions/8995611/removing-multiple-keys-from-a-dictionary-safely</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.data_utils.get_diff">
+<code class="descclassname">tlseparation.utility.data_utils.</code><code class="descname">get_diff</code><span class="sig-paren">(</span><em>arr1</em>, <em>arr2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/data_utils.html#get_diff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.data_utils.get_diff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the intersection of two arrays, returning the entries not
+intersected between arr1 and arr2.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr1</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array of points to intersect.</p>
+</div></blockquote>
+<p><strong>arr2</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array of points to intersect.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote class="last">
+<div><p>Difference array between ‘arr1’ and ‘arr2’.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.data_utils.remove_duplicates">
+<code class="descclassname">tlseparation.utility.data_utils.</code><code class="descname">remove_duplicates</code><span class="sig-paren">(</span><em>arr</em>, <em>return_ids=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/data_utils.html#remove_duplicates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.data_utils.remove_duplicates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes duplicated rows from an array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (m x n) containing a set of parameters (n) over
+a set of observations (m).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>unique</strong> : array</p>
+<blockquote class="last">
+<div><p>N-dimensional array (m* x n) containing a set of unique parameters (n)
+over a set of unique observations (m*).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.utility.filtering">
+<span id="tlseparation-utility-filtering-module"></span><h2>tlseparation.utility.filtering module<a class="headerlink" href="#module-tlseparation.utility.filtering" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.utility.filtering.array_majority">
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">array_majority</code><span class="sig-paren">(</span><em>arr_1</em>, <em>arr_2</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#array_majority"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.array_majority" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies majority filter on two arrays.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr_1</strong> : array</p>
+<blockquote>
+<div><p>n-dimensional array of points to filter.</p>
+</div></blockquote>
+<p><strong>arr_2</strong> : array</p>
+<blockquote>
+<div><p>n-dimensional array of points to filter.</p>
+</div></blockquote>
+<p><strong>**knn</strong> : int or float</p>
+<blockquote>
+<div><p>Number neighbors to select around each point in arr in order to apply
+the majority criteria.</p>
+</div></blockquote>
+<p><strong>**rad</strong> : int or float</p>
+<blockquote>
+<div><p>Search radius arount each point in arr to select neighbors in order
+to apply the majority criteria.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c_maj_1</strong> : array</p>
+<blockquote>
+<div><p>Boolean mask of filtered entries of same class as input ‘arr_1’.</p>
+</div></blockquote>
+<p><strong>c_maj_2</strong> : array</p>
+<blockquote>
+<div><p>Boolean mask of filtered entries of same class as input ‘arr_2’.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AssertionError:</strong></p>
+<blockquote class="last">
+<div><p>Raised if neither ‘knn’ or ‘rad’ arguments are passed with valid
+values (int or float).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.filtering.class_filter">
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">class_filter</code><span class="sig-paren">(</span><em>arr_1</em>, <em>arr_2</em>, <em>target</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#class_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.class_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to apply class filter on an array based on the combination of
+classed from both arrays (arr_1 and arr_2). Which array gets filtered
+is defined by ‘’target’‘.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr_1</strong> : array</p>
+<blockquote>
+<div><p>n-dimensional array of points to filter.</p>
+</div></blockquote>
+<p><strong>arr_2</strong> : array</p>
+<blockquote>
+<div><p>n-dimensional array of points to filter.</p>
+</div></blockquote>
+<p><strong>target</strong> : int or float</p>
+<blockquote>
+<div><p>Number of the input array to filter. Valid values are 0 or 1.</p>
+</div></blockquote>
+<p><strong>**knn</strong> : int or float</p>
+<blockquote>
+<div><p>Number neighbors to select around each point in arr in order to apply
+the majority criteria.</p>
+</div></blockquote>
+<p><strong>**rad</strong> : int or float</p>
+<blockquote>
+<div><p>Search radius arount each point in arr to select neighbors in order
+to apply the majority criteria.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c_maj_1</strong> : array</p>
+<blockquote>
+<div><p>Boolean mask of filtered entries of same class as input ‘arr_1’.</p>
+</div></blockquote>
+<p><strong>c_maj_2</strong> : array</p>
+<blockquote>
+<div><p>Boolean mask of filtered entries of same class as input ‘arr_2’.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AssertionError:</strong></p>
+<blockquote>
+<div><p>Raised if neither ‘knn’ or ‘rad’ arguments are passed with valid
+values (int or float).</p>
+</div></blockquote>
+<p><strong>AssertionError:</strong></p>
+<blockquote class="last">
+<div><p>Raised if ‘target’ variable is not an int or float with value 0 or 1.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.filtering.cluster_filter">
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">cluster_filter</code><span class="sig-paren">(</span><em>arr</em>, <em>max_dist</em>, <em>min_points</em>, <em>eval_threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#cluster_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.cluster_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a cluster filter to a point cloud ‘arr’. This filter aims to
+remove small, isolated, clusters of points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Point cloud of shape n points x m dimensions to be filtered.</p>
+</div></blockquote>
+<p><strong>max_dist</strong> : float</p>
+<blockquote>
+<div><p>Maximum distance between pairs of points for them to be considered as
+part of the same cluster. Also related to minimum distance between
+clusters.</p>
+</div></blockquote>
+<p><strong>min_points</strong> : int</p>
+<blockquote>
+<div><p>Minimum number of points in a cluster. Points that are part of
+clusters with less than min_points are filtered out.</p>
+</div></blockquote>
+<p><strong>eval_threshold</strong> : float</p>
+<blockquote>
+<div><p>Minimum value for largest eigenvalue for a valid cluster. This value
+is an indication of cluster shape, in which the higher the eigenvalue,
+more elongated is the cluster. Points from clusters that have
+eigenvalue smaller then eval_threshold are filtered out.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : array</p>
+<blockquote class="last">
+<div><p>Boolean mask of filtered points. Entries are set as True if belonging
+to a valid cluster and False otherwise.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.filtering.continuity_filter">
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">continuity_filter</code><span class="sig-paren">(</span><em>wood</em>, <em>leaf</em>, <em>rad=0.05</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#continuity_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.continuity_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to apply a continuity filter to a point cloud that contains gaps
+defined as points from a second point cloud.
+This function works assuming that the continuous variable is the
+wood portion of a tree point cloud and the gaps in it are empty space
+or missclassified leaf data. In this sense, this function tries to correct
+gaps where leaf points are present.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>wood</strong> : array</p>
+<blockquote>
+<div><p>Wood point cloud to be filtered.</p>
+</div></blockquote>
+<p><strong>leaf</strong> : array</p>
+<blockquote>
+<div><p>Leaf point cloud, with points that may be causing discontinuities in
+the wood point cloud.</p>
+</div></blockquote>
+<p><strong>rad</strong> : float</p>
+<blockquote>
+<div><p>Radius to search for neighboring points in the iterative process.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wood</strong> : array</p>
+<blockquote>
+<div><p>Filtered wood point cloud.</p>
+</div></blockquote>
+<p><strong>not_wood</strong> : array</p>
+<blockquote class="last">
+<div><p>Remaining point clouds after the filtering.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.filtering.dist_majority">
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">dist_majority</code><span class="sig-paren">(</span><em>arr_1</em>, <em>arr_2</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#dist_majority"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.dist_majority" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies majority filter on two arrays.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr_1</strong> : array</p>
+<blockquote>
+<div><p>n-dimensional array of points to filter.</p>
+</div></blockquote>
+<p><strong>arr_2</strong> : array</p>
+<blockquote>
+<div><p>n-dimensional array of points to filter.</p>
+</div></blockquote>
+<p><strong>**knn</strong> : int or float</p>
+<blockquote>
+<div><p>Number neighbors to select around each point in arr in order to apply
+the majority criteria.</p>
+</div></blockquote>
+<p><strong>**rad</strong> : int or float</p>
+<blockquote>
+<div><p>Search radius arount each point in arr to select neighbors in order to
+apply the majority criteria.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c_maj_1</strong> : array</p>
+<blockquote>
+<div><p>Boolean mask of filtered entries of same class as input ‘arr_1’.</p>
+</div></blockquote>
+<p><strong>c_maj_2</strong> : array</p>
+<blockquote>
+<div><p>Boolean mask of filtered entries of same class as input ‘arr_2’.</p>
+</div></blockquote>
+<p>Raises:</p>
+<p>AssertionError:</p>
+<blockquote class="last">
+<div><p>Raised if neither ‘knn’ or ‘rad’ arguments are passed with valid
+values (int or float).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.filtering.radius_filter">
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">radius_filter</code><span class="sig-paren">(</span><em>arr</em>, <em>radius</em>, <em>min_points</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#radius_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.radius_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a radius search filter, which remove isolated points/clusters of
+points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Point cloud of shape n points x m dimensions to be filtered.</p>
+</div></blockquote>
+<p><strong>radius</strong> : float</p>
+<blockquote>
+<div><p>Search radius around each point to form a neighborhood.</p>
+</div></blockquote>
+<p><strong>min_point</strong> : int</p>
+<blockquote>
+<div><p>Minimum number of points in a neighborhood for it to be considered
+valid, i.e not filtered out.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : array</p>
+<blockquote class="last">
+<div><p>Array of bools masking valid points as True and “noise” points as
+False.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.utility.knnsearch">
+<span id="tlseparation-utility-knnsearch-module"></span><h2>tlseparation.utility.knnsearch module<a class="headerlink" href="#module-tlseparation.utility.knnsearch" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.utility.knnsearch.set_nbrs_knn">
+<code class="descclassname">tlseparation.utility.knnsearch.</code><code class="descname">set_nbrs_knn</code><span class="sig-paren">(</span><em>arr</em>, <em>pts</em>, <em>knn</em>, <em>return_dist=True</em>, <em>block_size=100000</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/knnsearch.html#set_nbrs_knn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.knnsearch.set_nbrs_knn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to create a set of nearest neighbors indices and their respective
+distances for a set of points. This function uses a knn search and sets a
+limit size for a block of points to query. This makes it less efficient in
+terms of processing time, but avoids running out of memory in cases of
+very dense/large arrays/queries.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array to perform the knn search on.</p>
+</div></blockquote>
+<p><strong>pts</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array to search for on the knn search.</p>
+</div></blockquote>
+<p><strong>knn</strong> : int</p>
+<blockquote>
+<div><p>Number of nearest neighbors to search for.</p>
+</div></blockquote>
+<p><strong>return_dist</strong> : boolean</p>
+<blockquote>
+<div><p>Option to return or not the distances of each neighbor.</p>
+</div></blockquote>
+<p><strong>block_size</strong> : int</p>
+<blockquote>
+<div><p>Limit of points to query. The variable ‘pts’ will be subdivided in n
+blocks of size block_size to perform query.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>indices</strong> : array</p>
+<blockquote>
+<div><p>Set of neighbors indices from ‘arr’ for each entry in ‘pts’.</p>
+</div></blockquote>
+<p><strong>distance</strong> : array</p>
+<blockquote class="last">
+<div><p>Distances from each neighbor to each central point in ‘pts’.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.knnsearch.set_nbrs_rad">
+<code class="descclassname">tlseparation.utility.knnsearch.</code><code class="descname">set_nbrs_rad</code><span class="sig-paren">(</span><em>arr</em>, <em>pts</em>, <em>rad</em>, <em>return_dist=True</em>, <em>block_size=100000</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/knnsearch.html#set_nbrs_rad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.knnsearch.set_nbrs_rad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to create a set of nearest neighbors indices and their respective
+distances for a set of points. This function uses a radius search and sets
+a limit size for a block of points to query. This makes it less efficient
+in terms of processing time, but avoids running out of memory in cases of
+very dense/large arrays/queries.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array to perform the radius search on.</p>
+</div></blockquote>
+<p><strong>pts</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array to search for on the knn search.</p>
+</div></blockquote>
+<p><strong>rad</strong> : float</p>
+<blockquote>
+<div><p>Radius of the NearestNeighbors search.</p>
+</div></blockquote>
+<p><strong>return_dist</strong> : boolean</p>
+<blockquote>
+<div><p>Option to return or not the distances of each neighbor.</p>
+</div></blockquote>
+<p><strong>block_size</strong> : int</p>
+<blockquote>
+<div><p>Limit of points to query. The variable ‘pts’ will be subdivided in n
+blocks of size block_size to perform query.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>indices</strong> : array</p>
+<blockquote>
+<div><p>Set of neighbors indices from ‘arr’ for each entry in ‘pts’.</p>
+</div></blockquote>
+<p><strong>distance</strong> : array</p>
+<blockquote class="last">
+<div><p>Distances from each neighbor to each central point in ‘pts’.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.knnsearch.subset_nbrs">
+<code class="descclassname">tlseparation.utility.knnsearch.</code><code class="descname">subset_nbrs</code><span class="sig-paren">(</span><em>distance</em>, <em>indices</em>, <em>new_knn</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/knnsearch.html#subset_nbrs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.knnsearch.subset_nbrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a subseting of points from the results of a nearest neighbors
+search.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>distance</strong> : array</p>
+<blockquote>
+<div><p>Distances from each neighbor to each central point in ‘pts’.</p>
+</div></blockquote>
+<p><strong>indices</strong> : array</p>
+<blockquote>
+<div><p>Set of neighbors indices from ‘arr’ for each entry in ‘pts’.</p>
+</div></blockquote>
+<p><strong>new_knn</strong> : array</p>
+<blockquote>
+<div><p>Number of neighbors to select from the initial number of neighbors.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : array</p>
+<blockquote>
+<div><p>Subset of distances from each neighbor ‘indices’.</p>
+</div></blockquote>
+<p><strong>indices</strong> : array</p>
+<blockquote class="last">
+<div><p>Subset of neighbors indices from ‘indices’.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.utility.shortpath">
+<span id="tlseparation-utility-shortpath-module"></span><h2>tlseparation.utility.shortpath module<a class="headerlink" href="#module-tlseparation.utility.shortpath" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.utility.shortpath.add_nodes">
+<code class="descclassname">tlseparation.utility.shortpath.</code><code class="descname">add_nodes</code><span class="sig-paren">(</span><em>G</em>, <em>base_node</em>, <em>indices</em>, <em>distance</em>, <em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/shortpath.html#add_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.shortpath.add_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a set of nodes and weighted edges based on pairs of indices
+between base_node and all entries in indices. Each node pair shares an
+edge with weight equal to the distance between both nodes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : networkx graph</p>
+<blockquote>
+<div><p>NetworkX graph object to which all nodes/edges will be added.</p>
+</div></blockquote>
+<p><strong>base_node</strong> : int</p>
+<blockquote>
+<div><p>Base node’s id to be added. All other nodes will be paired with
+base_node to form different edges.</p>
+</div></blockquote>
+<p><strong>indices</strong> : list or array</p>
+<blockquote>
+<div><p>Set of nodes indices to be paired with base_node.</p>
+</div></blockquote>
+<p><strong>distance</strong> : list or array</p>
+<blockquote>
+<div><p>Set of distances between all nodes in ‘indices’ and base_node.</p>
+</div></blockquote>
+<p><strong>threshold</strong> : float</p>
+<blockquote class="last">
+<div><p>Edge distance threshold. All edges with distance larger than
+‘threshold’ will not be added to G.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.shortpath.array_to_graph">
+<code class="descclassname">tlseparation.utility.shortpath.</code><code class="descname">array_to_graph</code><span class="sig-paren">(</span><em>arr</em>, <em>base_id</em>, <em>kpairs</em>, <em>knn</em>, <em>nbrs_threshold</em>, <em>nbrs_threshold_step</em>, <em>graph_threshold=inf</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/shortpath.html#array_to_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.shortpath.array_to_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a numpy.array of points coordinates into a Weighted BiDirectional
+NetworkX Graph.
+This funcions uses a NearestNeighbor search to determine points adajency.
+The NNsearch results are used to select pairs of points (or nodes) that
+have a common edge.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>n-dimensional array of points.</p>
+</div></blockquote>
+<p><strong>base_id</strong> : int</p>
+<blockquote>
+<div><p>Index of base id (root) in the graph.</p>
+</div></blockquote>
+<p><strong>kpairs</strong> : int</p>
+<blockquote>
+<div><p>Number of points around each point in arr to select in order to
+build edges.</p>
+</div></blockquote>
+<p><strong>knn</strong> : int</p>
+<blockquote>
+<div><p>Number of neighbors to search around each point in the neighborhood
+phase. The higher the better (careful, it’s  memory intensive).</p>
+</div></blockquote>
+<p><strong>nbrs_threshold</strong> : float</p>
+<blockquote>
+<div><p>Maximum valid distance between neighbors points.</p>
+</div></blockquote>
+<p><strong>nbrs_threshold_step</strong> : float</p>
+<blockquote>
+<div><p>Distance increment used in the final phase of edges generation. It’s
+used to make sure that in the end, every point in arr will be
+translated to nodes in the graph.</p>
+</div></blockquote>
+<p><strong>graph_threshold</strong> : float</p>
+<blockquote>
+<div><p>Maximum distance between pairs of nodes (edge distance) accepted in
+the graph generation.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : networkx graph</p>
+<blockquote class="last">
+<div><p>Graph containing all points in ‘arr’ as nodes.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.shortpath.extract_path_info">
+<code class="descclassname">tlseparation.utility.shortpath.</code><code class="descname">extract_path_info</code><span class="sig-paren">(</span><em>G</em>, <em>base_id</em>, <em>return_path=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/shortpath.html#extract_path_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.shortpath.extract_path_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts shortest path information from a NetworkX graph.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : networkx graph</p>
+<blockquote>
+<div><p>NetworkX graph object from which to extract the information.</p>
+</div></blockquote>
+<p><strong>base_id</strong> : int</p>
+<blockquote>
+<div><p>Base (root) node id to calculate the shortest path for all other
+nodes.</p>
+</div></blockquote>
+<p><strong>return_path</strong> : boolean</p>
+<blockquote>
+<div><p>Option to select if function should output path list for every node
+in G to base_id.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes_ids</strong> : list</p>
+<blockquote>
+<div><p>Indices of all nodes in graph G.</p>
+</div></blockquote>
+<p><strong>distance</strong> : list</p>
+<blockquote>
+<div><p>Shortest path distance (accumulated) from all nodes in G to base_id
+node.</p>
+</div></blockquote>
+<p><strong>path_list</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary of nodes that comprises the path of every node in G to
+base_id node.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.utility">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tlseparation.utility" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="changelog.html" class="btn btn-neutral float-right" title="CHANGELOG" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tlseparation.scripts.html" class="btn btn-neutral" title="tlseparation.scripts package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Matheus Boni Vicari.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'rc1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

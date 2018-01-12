@@ -1,5 +1,5 @@
-tlseparation package
-====================
+TLSeparation
+============
 
 Subpackages
 -----------
@@ -15,4 +15,5 @@ Module contents
 
 .. automodule:: tlseparation
     :members:
-
+    :undoc-members:
+    :show-inheritance:

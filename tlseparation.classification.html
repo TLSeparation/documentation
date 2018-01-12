@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tlseparation.classification package &mdash; TLSeparation rc1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="TLSeparation rc1 documentation" href="index.html"/>
+        <link rel="up" title="TLSeparation" href="tlseparation.html"/>
+        <link rel="next" title="tlseparation.scripts package" href="tlseparation.scripts.html"/>
+        <link rel="prev" title="TLSeparation" href="tlseparation.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> TLSeparation
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.2.1.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="tlseparation.html">TLSeparation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tlseparation.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">tlseparation.classification package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification.classes_reference">tlseparation.classification.classes_reference module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification.gmm">tlseparation.classification.gmm module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification.path_detection">tlseparation.classification.path_detection module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification.point_features">tlseparation.classification.point_features module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification.wlseparation">tlseparation.classification.wlseparation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tlseparation.scripts.html">tlseparation.scripts package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tlseparation.utility.html">tlseparation.utility package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tlseparation.html#module-tlseparation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">CHANGELOG</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TLSeparation</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="tlseparation.html">TLSeparation</a> &raquo;</li>
+        
+      <li>tlseparation.classification package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tlseparation.classification.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tlseparation-classification-package">
+<h1>tlseparation.classification package<a class="headerlink" href="#tlseparation-classification-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-tlseparation.classification.classes_reference">
+<span id="tlseparation-classification-classes-reference-module"></span><h2>tlseparation.classification.classes_reference module<a class="headerlink" href="#module-tlseparation.classification.classes_reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tlseparation.classification.classes_reference.DefaultClass">
+<em class="property">class </em><code class="descclassname">tlseparation.classification.classes_reference.</code><code class="descname">DefaultClass</code><a class="reference internal" href="_modules/tlseparation/classification/classes_reference.html#DefaultClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.classes_reference.DefaultClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines a defaul reference class to be used in classification of
+tree point clouds.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.classification.gmm">
+<span id="tlseparation-classification-gmm-module"></span><h2>tlseparation.classification.gmm module<a class="headerlink" href="#module-tlseparation.classification.gmm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.classification.gmm.class_select_abs">
+<code class="descclassname">tlseparation.classification.gmm.</code><code class="descname">class_select_abs</code><span class="sig-paren">(</span><em>classes</em>, <em>cm</em>, <em>nbrs_idx</em>, <em>feature=5</em>, <em>threshold=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/gmm.html#class_select_abs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.gmm.class_select_abs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select from GMM classification results which classes are wood and which
+are leaf based on a absolute value threshold from a single feature in
+the parameter space.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>classes</strong> : list or array</p>
+<blockquote>
+<div><p>Classes labels for each observation from the input variables.</p>
+</div></blockquote>
+<p><strong>cm</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (c x n) of each class (c) parameter space mean
+valuess (n).</p>
+</div></blockquote>
+<p><strong>nbrs_idx</strong> : array</p>
+<blockquote>
+<div><p>Nearest Neighbors indices relative to every point of the array that
+originated the classes labels.</p>
+</div></blockquote>
+<p><strong>feature</strong> : int</p>
+<blockquote>
+<div><p>Column index of the feature to use as constraint.</p>
+</div></blockquote>
+<p><strong>threshold</strong> : float</p>
+<blockquote>
+<div><p>Threshold value to mask classes. All classes with means &gt;= threshold
+are masked as true.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : list</p>
+<blockquote class="last">
+<div><p>List of booleans where True represents wood points and False
+represents leaf points.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.gmm.class_select_ref">
+<code class="descclassname">tlseparation.classification.gmm.</code><code class="descname">class_select_ref</code><span class="sig-paren">(</span><em>classes</em>, <em>cm</em>, <em>classes_ref</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/gmm.html#class_select_ref"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.gmm.class_select_ref" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects from the classification results which classes are wood and which
+are leaf.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>classes</strong> : list</p>
+<blockquote>
+<div><p>List of classes labels for each observation from the input variables.</p>
+</div></blockquote>
+<p><strong>cm</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (c x n) of each class (c) parameter space mean
+valuess (n).</p>
+</div></blockquote>
+<p><strong>classes_ref</strong> : array</p>
+<blockquote>
+<div><p>Reference classes values.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : array</p>
+<blockquote class="last">
+<div><p>List of booleans where True represents wood points and False
+represents leaf points.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.gmm.classify">
+<code class="descclassname">tlseparation.classification.gmm.</code><code class="descname">classify</code><span class="sig-paren">(</span><em>variables</em>, <em>n_classes</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/gmm.html#classify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.gmm.classify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to perform the classification of a dataset using sklearn’s
+Gaussian Mixture Models with Expectation Maximization.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>variables</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (m x n) containing a set of parameters (n)
+over a set of observations (m).</p>
+</div></blockquote>
+<p><strong>n_classes</strong> : int</p>
+<blockquote>
+<div><p>Number of classes to assign the input variables.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>classes</strong> : list</p>
+<blockquote>
+<div><p>List of classes labels for each observation from the input variables.</p>
+</div></blockquote>
+<p><strong>means</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (c x n) of each class (c) parameter space means
+(n).</p>
+</div></blockquote>
+<p><strong>probability</strong> : array</p>
+<blockquote class="last">
+<div><p>Probability of samples belonging to every class in the classification.
+Sum of sample-wise probability should be 1.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.classification.path_detection">
+<span id="tlseparation-classification-path-detection-module"></span><h2>tlseparation.classification.path_detection module<a class="headerlink" href="#module-tlseparation.classification.path_detection" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.classification.path_detection.detect_main_pathways">
+<code class="descclassname">tlseparation.classification.path_detection.</code><code class="descname">detect_main_pathways</code><span class="sig-paren">(</span><em>point_cloud</em>, <em>k_retrace</em>, <em>knn</em>, <em>nbrs_threshold</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/path_detection.html#detect_main_pathways"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.path_detection.detect_main_pathways" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detects the main pathways of an unordered 3D point cloud. Set as true
+all points detected as part of all detected pathways that down to the
+base of the graph.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional point cloud of a single tree to perform the
+wood-leaf separation. This should be a n-dimensional array (m x n)
+containing a set of coordinates (n) over a set of points (m).</p>
+</div></blockquote>
+<p><strong>k_retrace</strong> : int</p>
+<blockquote>
+<div><p>Number of steps in the graph to retrace back to graph’s base. Every
+node in graph will be moved  k_retrace steps from the extremities
+towards to base.</p>
+</div></blockquote>
+<p><strong>knn</strong> : int</p>
+<blockquote>
+<div><p>Number of neighbors to fill gaps in detected paths. The larger the
+better. A large knn will increase memory usage. Recommended value
+between 50 and 150.</p>
+</div></blockquote>
+<p><strong>nbrs_threshold</strong> : float</p>
+<blockquote>
+<div><p>Maximum distance to valid neighboring points used to fill gaps in
+detected paths.</p>
+</div></blockquote>
+<p><strong>verbose: bool</strong></p>
+<blockquote>
+<div><p>Option to set verbose on/off.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>path_mask</strong> : array</p>
+<blockquote>
+<div><p>Boolean mask where ‘True’ represents points detected as part of the
+main pathways and ‘False’ represents points not part of the pathways.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AssertionError:</strong></p>
+<blockquote class="last">
+<div><p>point_cloud has the wrong shape or number of dimensions.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.path_detection.get_base">
+<code class="descclassname">tlseparation.classification.path_detection.</code><code class="descname">get_base</code><span class="sig-paren">(</span><em>point_cloud</em>, <em>base_height</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/path_detection.html#get_base"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.path_detection.get_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the base of a point cloud based on a certain height from the bottom.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional point cloud of a single tree to perform the
+wood-leaf separation. This should be a n-dimensional array (m x n)
+containing a set of coordinates (n) over a set of points (m).</p>
+</div></blockquote>
+<p><strong>base_height</strong> : float</p>
+<blockquote>
+<div><p>Height of the base slice to mask.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : array</p>
+<blockquote class="last">
+<div><p>Base slice masked as True.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.classification.point_features">
+<span id="tlseparation-classification-point-features-module"></span><h2>tlseparation.classification.point_features module<a class="headerlink" href="#module-tlseparation.classification.point_features" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.classification.point_features.calc_features">
+<code class="descclassname">tlseparation.classification.point_features.</code><code class="descname">calc_features</code><span class="sig-paren">(</span><em>e</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/point_features.html#calc_features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.point_features.calc_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the geometric features using a set of eigenvalues, based on Ma
+et al. <a class="footnote-reference" href="#id3" id="id1">[1]</a> and Wang et al. <a class="footnote-reference" href="#id4" id="id2">[2]</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>e</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (m x 3) containing sets of 3 eigenvalues per
+row (m).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>features</strong> : array</p>
+<blockquote class="last">
+<div><p>N-dimensional array (m x 6) containing the calculated geometric
+features from ‘e’.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Ma et al., 2015. Improved Salient Feature-Based Approach for
+Automatically Separating Photosynthetic and Nonphotosynthetic
+Components Within Terrestrial Lidar Point Cloud Data of Forest
+Canopies.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Wang et al., 2015. A Multiscale and Hierarchical Feature Extraction
+Method for Terrestrial Laser Scanning Point Cloud Classification.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.point_features.knn_evals">
+<code class="descclassname">tlseparation.classification.point_features.</code><code class="descname">knn_evals</code><span class="sig-paren">(</span><em>arr_stack</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/point_features.html#knn_evals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.point_features.knn_evals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates eigenvalues of a stack of arrays.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr_stack</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (l x m x n) containing a stack of data, where the
+rows (m) represents the points coordinates, the columns (n) represents
+the axis coordinates and the layer (l) represents the stacks of points.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>evals</strong> : array</p>
+<blockquote class="last">
+<div><p>N-dimensional array (l x n) of eigenvalues calculated from
+‘arr_stack’. The rows (l) represents the stack layers of points in
+‘arr_stack’ and the columns (n) represent the parameters in
+‘arr_stack’.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.point_features.knn_features">
+<code class="descclassname">tlseparation.classification.point_features.</code><code class="descname">knn_features</code><span class="sig-paren">(</span><em>arr</em>, <em>nbr_idx</em>, <em>block_size=200000</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/point_features.html#knn_features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.point_features.knn_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates geometric descriptors: salient features and tensor features
+from an array and an indexing with fixed numbers of neighbors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional (m x n) array of a point cloud, where the
+coordinates are represented in the columns (n) and the points are
+represented in the rows (m).</p>
+</div></blockquote>
+<p><strong>nbr_idx</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array of indices from a nearest neighbors search of the
+point cloud in ‘arr’, where the rows (m) represents the points in
+‘arr’ and the columns represents the indices of the nearest neighbors
+from ‘arr’.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>features</strong> : array</p>
+<blockquote class="last">
+<div><p>N-dimensional array (m x 6) of the calculated geometric descriptors.
+Where the rows (m) represent the points from ‘arr’ and the columns
+represents the features.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.point_features.svd_evals">
+<code class="descclassname">tlseparation.classification.point_features.</code><code class="descname">svd_evals</code><span class="sig-paren">(</span><em>arr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/point_features.html#svd_evals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.point_features.svd_evals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates eigenvalues of an array using SVD.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>nxm numpy.ndarray where n is the number of samples and m is the number
+of dimensions.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>evals</strong> : array</p>
+<blockquote class="last">
+<div><p>1xm numpy.ndarray containing the calculated eigenvalues in decrescent
+order.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.point_features.vectorized_app">
+<code class="descclassname">tlseparation.classification.point_features.</code><code class="descname">vectorized_app</code><span class="sig-paren">(</span><em>arr_stack</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/point_features.html#vectorized_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.point_features.vectorized_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to calculate the covariance of a stack of arrays. This function
+uses einstein summation to make the covariance calculation more efficient.
+Based on a reply from the user Divakar <a class="footnote-reference" href="#id6" id="id5">[3]</a> at stackoverflow.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr_stack</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array (l x m x n) containing a stack of data, where the
+rows (m) represents the points coordinates, the columns (n) represents
+the axis coordinates and the layer (l) represents the stacks of
+points.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cov</strong> : array</p>
+<blockquote class="last">
+<div><p>N-dimensional array (l x n x n) of covariance values calculated from
+‘arr_stack’. Each layer (l) contains a (n x n) covariance matrix
+calculated from the layers (l) in ‘arr_stack’.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td>Divakar, 2016. <a class="reference external" href="http://stackoverflow.com/questions/35756952/quickly-compute-eigenvectors-for-each-element-of-an-array-in-python">http://stackoverflow.com/questions/35756952/quickly-compute-eigenvectors-for-each-element-of-an-array-in-python</a>.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.classification.wlseparation">
+<span id="tlseparation-classification-wlseparation-module"></span><h2>tlseparation.classification.wlseparation module<a class="headerlink" href="#module-tlseparation.classification.wlseparation" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.classification.wlseparation.fill_class">
+<code class="descclassname">tlseparation.classification.wlseparation.</code><code class="descname">fill_class</code><span class="sig-paren">(</span><em>arr1</em>, <em>arr2</em>, <em>noclass</em>, <em>k</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/wlseparation.html#fill_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.wlseparation.fill_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns noclass entries to either arr1 or arr2, depending on
+neighborhood majority analisys.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr1</strong> : array</p>
+<blockquote>
+<div><p>Point coordinates for entries of the first class.</p>
+</div></blockquote>
+<p><strong>arr2</strong> : array</p>
+<blockquote>
+<div><p>Point coordinates for entries of the second class.</p>
+</div></blockquote>
+<p><strong>noclass</strong> : array</p>
+<blockquote>
+<div><p>Point coordinates for noclass entries.</p>
+</div></blockquote>
+<p><strong>k</strong> : int</p>
+<blockquote>
+<div><p>Number of neighbors to use in the neighborhood majority analysis.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>arr1</strong> : array</p>
+<blockquote>
+<div><p>Point coordinates for entries of the first class.</p>
+</div></blockquote>
+<p><strong>arr2</strong> : array</p>
+<blockquote class="last">
+<div><p>Point coordinates for entries of the second class.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.wlseparation.wlseparate_abs">
+<code class="descclassname">tlseparation.classification.wlseparation.</code><code class="descname">wlseparate_abs</code><span class="sig-paren">(</span><em>arr</em>, <em>knn</em>, <em>knn_downsample=1</em>, <em>n_classes=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/wlseparation.html#wlseparate_abs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.wlseparation.wlseparate_abs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifies a point cloud (arr) into three main classes, wood, leaf and
+noclass.</p>
+<p>The final class selection is based on the absolute value of the last
+geometric feature (see point_features module).
+Points will be only classified as wood or leaf if their classification
+probability is higher than prob_threshold. Otherwise, points are
+assigned to noclass.</p>
+<p>Class selection will mask points with feature value larger than a given
+threshold as wood and the remaining points as leaf.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional point cloud of a single tree to perform the
+wood-leaf separation. This should be a n-dimensional array (m x n)
+containing a set of coordinates (n) over a set of points (m).</p>
+</div></blockquote>
+<p><strong>knn</strong> : int</p>
+<blockquote>
+<div><p>Number of nearest neighbors to search to constitue the local subset of
+points around each point in ‘arr’.</p>
+</div></blockquote>
+<p><strong>knn_downsample</strong> : float</p>
+<blockquote>
+<div><p>Downsample factor (0, 1) for the knn parameter. If less than 1, a
+sample of size (knn * knn_downsample) will be selected from the
+nearest neighbors indices. This option aims to maintain the spatial
+representation of the local subsets of points, but reducing overhead
+in memory and processing time.</p>
+</div></blockquote>
+<p><strong>n_classes</strong> : int</p>
+<blockquote>
+<div><p>Number of classes to use in the Gaussian Mixture Classification.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>class_indices</strong> : dict</p>
+<blockquote>
+<div><p>Dictionary containing indices for wood and leaf classes.</p>
+</div></blockquote>
+<p><strong>class_probability</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary containing probabilities for wood and leaf classes.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.wlseparation.wlseparate_ref_voting">
+<code class="descclassname">tlseparation.classification.wlseparation.</code><code class="descname">wlseparate_ref_voting</code><span class="sig-paren">(</span><em>arr</em>, <em>knn_lst</em>, <em>class_file</em>, <em>n_classes=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/wlseparation.html#wlseparate_ref_voting"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.wlseparation.wlseparate_ref_voting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifies a point cloud (arr) into two main classes, wood and leaf.
+Altough this function does not output a noclass category, it still
+filters out results based on classification confidence interval in the
+voting process (if lower than prob_threshold, then voting is not used
+for current point and knn value).</p>
+<p>The final class selection is based a voting scheme applied to a similar
+approach of wlseparate_ref. In this case, the function iterates over a
+series of knn values and apply the reference distance criteria to select
+wood and leaf classes.</p>
+<p>Each knn class result is accumulated in a list and in the end a voting
+is applied. For each point, if the number of times it was classified as
+wood is larger than threhsold, the final class is set to wood. Otherwise
+it is set as leaf.</p>
+<p>Class selection will mask points according to their class mean distance
+to reference classes. The closes reference class gets assignes to each
+intermediate class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional point cloud of a single tree to perform the
+wood-leaf separation. This should be a n-dimensional array (m x n)
+containing a set of coordinates (n) over a set of points (m).</p>
+</div></blockquote>
+<p><strong>knn_lst</strong> : list</p>
+<blockquote>
+<div><p>List of knn values to use in the search to constitue local subsets of
+points around each point in ‘arr’. It can be a single knn value, as
+long as it has list data type.</p>
+</div></blockquote>
+<p><strong>class_file</strong> : pandas dataframe or str</p>
+<blockquote>
+<div><p>Dataframe or path to reference classes file.</p>
+</div></blockquote>
+<p><strong>n_classes</strong> : int</p>
+<blockquote>
+<div><p>Number of classes to use in the Gaussian Mixture Classification.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>class_dict</strong> : dict</p>
+<blockquote>
+<div><p>Dictionary containing indices for all classes in class_ref. Classes
+are labeled according to classes names in class_file.</p>
+</div></blockquote>
+<p><strong>count_dict</strong> : dict</p>
+<blockquote>
+<div><p>Dictionary containin votes count for all classes in class_ref. Classes
+are labeled according to classes names in class_file.</p>
+</div></blockquote>
+<p><strong>prob_dict</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dictionary containing probabilities for all classes in class_ref.
+Classes are labeled according to classes names in class_file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.classification">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tlseparation.classification" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tlseparation.scripts.html" class="btn btn-neutral float-right" title="tlseparation.scripts package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tlseparation.html" class="btn btn-neutral" title="TLSeparation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Matheus Boni Vicari.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'rc1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. CHANGELOG &mdash; TLSeparation b documentation</title>
+  <title>CHANGELOG &mdash; TLSeparation rc1 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="TLSeparation b documentation" href="index.html"/>
-        <link rel="prev" title="1.1.3. tlseparation.utility package" href="source/tlseparation.utility.html"/> 
+    <link rel="top" title="TLSeparation rc1 documentation" href="index.html"/>
+        <link rel="prev" title="tlseparation.utility package" href="tlseparation.utility.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.2.1.1
+                1.2.1.4
               </div>
             
           
@@ -91,12 +91,15 @@
             
               <p class="caption"><span class="caption-text">Table of Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="source/tlseparation.html">1. tlseparation package</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. CHANGELOG</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#v1-2-1-2">2.1. v1.2.1.2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#v1-2-1-1">2.2. v1.2.1.1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#v1-1-4">2.3. v1.1.4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#v1-1-3">2.4. v1.1.3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tlseparation.html">TLSeparation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CHANGELOG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v1-2-1-5">v1.2.1.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-2-1-4">v1.2.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-2-1-3">v1.2.1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-2-1-2">v1.2.1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-2-1-1">v1.2.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-4">v1.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-1-3">v1.1.3</a></li>
 </ul>
 </li>
 </ul>
@@ -143,7 +146,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>2. CHANGELOG</li>
+      <li>CHANGELOG</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,16 +166,40 @@
            <div itemprop="articleBody">
             
   <div class="section" id="changelog">
-<h1>2. CHANGELOG<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<h1>CHANGELOG<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v1-2-1-5">
+<h2>v1.2.1.5<a class="headerlink" href="#v1-2-1-5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added verbose option to some modules.</li>
+<li>Changed docstrings style to numpydoc.</li>
+<li><dl class="first docutils">
+<dt>Added default class_ref DataFrame as a built-in object. User now has the option to use this new default or continue to load a</dt>
+<dd>.csv file.</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="v1-2-1-4">
+<h2>v1.2.1.4<a class="headerlink" href="#v1-2-1-4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Fixed imports. Now, to access any low level function, one has to go through the proper module hierarchy.</li>
+</ul>
+</div>
+<div class="section" id="v1-2-1-3">
+<h2>v1.2.1.3<a class="headerlink" href="#v1-2-1-3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Changed approach of relative import. Removed all sys.path.append statements and adopted double dots (..) for parent folder imports.</li>
+</ul>
+</div>
 <div class="section" id="v1-2-1-2">
-<h2>2.1. v1.2.1.2<a class="headerlink" href="#v1-2-1-2" title="Permalink to this headline">¶</a></h2>
+<h2>v1.2.1.2<a class="headerlink" href="#v1-2-1-2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Fixed bug in classification.__init__.py failing to import <em>wlseparate_ref</em> as this function no longer exists;</li>
 <li>Updated documentation strings for Sphinx;</li>
 </ul>
 </div>
 <div class="section" id="v1-2-1-1">
-<h2>2.2. v1.2.1.1<a class="headerlink" href="#v1-2-1-1" title="Permalink to this headline">¶</a></h2>
+<h2>v1.2.1.1<a class="headerlink" href="#v1-2-1-1" title="Permalink to this headline">¶</a></h2>
 <p>This versions has enough important modifications to get a new subversion number, starting the 1.2 phase.</p>
 <p>Some of the changes included in this version are:</p>
 <ul class="simple">
@@ -190,11 +217,11 @@
 </ul>
 </div>
 <div class="section" id="v1-1-4">
-<h2>2.3. v1.1.4<a class="headerlink" href="#v1-1-4" title="Permalink to this headline">¶</a></h2>
+<h2>v1.1.4<a class="headerlink" href="#v1-1-4" title="Permalink to this headline">¶</a></h2>
 <p>Corrected list of required packages.</p>
 </div>
 <div class="section" id="v1-1-3">
-<h2>2.4. v1.1.3<a class="headerlink" href="#v1-1-3" title="Permalink to this headline">¶</a></h2>
+<h2>v1.1.3<a class="headerlink" href="#v1-1-3" title="Permalink to this headline">¶</a></h2>
 <p>Added new option for automated separation (auto_separation_2).
 Renamed old separation.py to auto_separation_1.py.
 Added classificaition probability output to gmm.py.
@@ -214,7 +241,7 @@ Added new wlseparate method to auto_separation_2, based on a voting scheme.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="source/tlseparation.utility.html" class="btn btn-neutral" title="1.1.3. tlseparation.utility package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tlseparation.utility.html" class="btn btn-neutral" title="tlseparation.utility package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -245,7 +272,7 @@ Added new wlseparate method to auto_separation_2, based on a voting scheme.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'b',
+            VERSION:'rc1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
