@@ -1,5 +1,5 @@
-TLSeparation
-============
+tlseparation package
+====================
 
 Subpackages
 -----------

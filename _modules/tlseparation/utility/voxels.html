@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>tlseparation.classification.classes_reference &mdash; TLSeparation rc1 documentation</title>
+  <title>tlseparation.utility.voxels &mdash; TLSeparation rc1 documentation</title>
   
 
   
@@ -139,7 +139,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>tlseparation.classification.classes_reference</li>
+      <li>tlseparation.utility.voxels</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,7 +156,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for tlseparation.classification.classes_reference</h1><div class="highlight"><pre>
+  <h1>Source code for tlseparation.utility.voxels</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright (c) 2017, Matheus Boni Vicari, TLSeparation Project</span>
 <span class="c1"># All rights reserved.</span>
 <span class="c1">#</span>
@@ -185,23 +185,37 @@
 <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
 
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
 
 
-<div class="viewcode-block" id="DefaultClass"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.classes_reference.DefaultClass">[docs]</a><span class="k">class</span> <span class="nc">DefaultClass</span><span class="p">:</span>
+<div class="viewcode-block" id="voxelize_cloud"><a class="viewcode-back" href="../../../tlseparation.utility.html#tlseparation.utility.voxels.voxelize_cloud">[docs]</a><span class="k">def</span> <span class="nf">voxelize_cloud</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">voxel_size</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Defines a defaul reference class to be used in classification of</span>
-<span class="sd">    tree point clouds.</span>
+<span class="sd">    Generates a dictionary of voxels containing their central coordinates</span>
+<span class="sd">    and indices of points belonging to each voxel.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr: array</span>
+<span class="sd">        Array of points/entries to voxelize.</span>
+<span class="sd">    voxel_size: float</span>
+<span class="sd">        Length of all voxels sides/edges.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    vox: defaultdict</span>
+<span class="sd">        Dictionary containing voxels. Keys are voxels&#39; central coordinates and</span>
+<span class="sd">        values are indices of points in arr inside each voxel.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ref_table</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s1">&#39;leaf&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-                                             <span class="p">[</span><span class="s1">&#39;twig&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-                                             <span class="p">[</span><span class="s1">&#39;trunk&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]),</span>
-                                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span></div>
+    <span class="n">voxels_ids</span> <span class="o">=</span> <span class="p">(</span><span class="n">arr</span> <span class="o">/</span> <span class="n">voxel_size</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span> <span class="n">voxel_size</span>
+    <span class="n">vox</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">voxels_ids</span><span class="p">):</span>
+        <span class="n">vox</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">vox</span></div>
 </pre></div>
 
            </div>

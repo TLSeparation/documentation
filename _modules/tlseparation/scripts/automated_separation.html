@@ -91,7 +91,7 @@
             
               <p class="caption"><span class="caption-text">Table of Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tlseparation.html">TLSeparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tlseparation.html">tlseparation package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">CHANGELOG</a></li>
 </ul>
 
@@ -177,9 +177,9 @@
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2017, TLSeparation Project&quot;</span>
-<span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Matheus Boni Vicari&quot;</span><span class="p">]</span>
+<span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Matheus Boni Vicari&quot;</span><span class="p">,</span> <span class="s2">&quot;Phil Wilkes&quot;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL3&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.1.4&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.1.5&quot;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;matheus.boni.vicari@gmail.com&quot;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
@@ -190,12 +190,10 @@
                               <span class="n">detect_main_pathways</span><span class="p">,</span> <span class="n">get_base</span><span class="p">,</span> <span class="n">DefaultClass</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..utility</span> <span class="k">import</span> <span class="p">(</span><span class="n">get_diff</span><span class="p">,</span> <span class="n">remove_duplicates</span><span class="p">,</span> <span class="n">radius_filter</span><span class="p">,</span>
                        <span class="n">class_filter</span><span class="p">,</span> <span class="n">cluster_filter</span><span class="p">,</span> <span class="n">continuity_filter</span><span class="p">,</span>
-                       <span class="n">detect_nn_dist</span><span class="p">)</span>
-
-<span class="nb">print</span> <span class="s2">&quot;Using short version. </span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="n">detect_nn_dist</span><span class="p">,</span> <span class="n">voxelize_cloud</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="large_tree_1"><a class="viewcode-back" href="../../../tlseparation.scripts.html#tlseparation.scripts.automated_separation.large_tree_1">[docs]</a><span class="k">def</span> <span class="nf">large_tree_1</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">class_file</span><span class="p">,</span> <span class="n">cont_filt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<div class="viewcode-block" id="large_tree_1"><a class="viewcode-back" href="../../../tlseparation.scripts.html#tlseparation.scripts.automated_separation.large_tree_1">[docs]</a><span class="k">def</span> <span class="nf">large_tree_1</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">class_file</span><span class="o">=</span><span class="p">[],</span> <span class="n">cont_filt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">class_prob_threshold</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
@@ -243,7 +241,7 @@
 <span class="s1">distance between neighboring points&#39;</span><span class="p">)</span>
     <span class="n">nndist</span> <span class="o">=</span> <span class="n">detect_nn_dist</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | nndist: &#39;</span> <span class="o">+</span> <span class="n">nndist</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | nndist: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">nndist</span><span class="p">)</span>
 
     <span class="c1">###########################################################################</span>
     <span class="c1"># Obtaining mask of points from a slice of points located at the base of</span>
@@ -264,9 +262,25 @@
         <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | masking points most likely </span><span class="se">\</span>
 <span class="s1">to be part of the trunk and larger branches&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">trunk_mask</span> <span class="o">=</span> <span class="n">detect_main_pathways</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">nndist</span><span class="p">,</span>
-                                          <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="n">trunk_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">trunk_mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># Voxelizing cloud:</span>
+        <span class="n">vox</span> <span class="o">=</span> <span class="n">voxelize_cloud</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">voxel_size</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">vox_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vox</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+        <span class="c1"># Using detect_main_pathways on voxels coordinates.</span>
+        <span class="n">trunk_mask_voxel</span> <span class="o">=</span> <span class="n">detect_main_pathways</span><span class="p">(</span><span class="n">vox_coords</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">.</span><span class="mi">15</span><span class="p">,</span>
+                                                <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="c1"># Obtaining indices of point in arr that are inside voxels masked as</span>
+        <span class="c1"># trunk (True) in trunk_mask_voxel.</span>
+        <span class="n">trunk_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">([</span><span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vox_coords</span><span class="p">[</span><span class="n">trunk_mask_voxel</span><span class="p">]</span> <span class="k">for</span>
+                               <span class="n">j</span> <span class="ow">in</span> <span class="n">vox</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">i</span><span class="p">)]])</span>
+
+        <span class="c1"># Setting up trunk mask, as its opposite represents points not</span>
+        <span class="c1"># detected as trunk.</span>
+        <span class="n">trunk_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="n">trunk_mask</span><span class="p">[</span><span class="n">trunk_ids</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Obtaining indices of points that were not detected as part of the</span>
+        <span class="c1"># trunk.</span>
         <span class="n">not_trunk_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">trunk_mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="n">trunk_ids</span> <span class="o">=</span> <span class="p">[]</span>
@@ -374,7 +388,7 @@
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | applying </span><span class="se">\</span>
 <span class="s1">radius_filter on filtered twig point cloud&#39;</span><span class="p">)</span>
-            <span class="n">twig_2_1_mask</span> <span class="o">=</span> <span class="n">radius_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">twig_2</span><span class="p">],</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+            <span class="n">twig_2_1_mask</span> <span class="o">=</span> <span class="n">radius_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">twig_2</span><span class="p">],</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
             <span class="n">twig_2_1</span> <span class="o">=</span> <span class="n">twig_2</span><span class="p">[</span><span class="n">twig_2_1_mask</span><span class="p">]</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="n">twig_2_1</span> <span class="o">=</span> <span class="n">twig_2</span>
@@ -385,7 +399,7 @@
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | applying </span><span class="se">\</span>
 <span class="s1">cluster_filter to remove isolated clusters of points in twig_2_mask&#39;</span><span class="p">)</span>
-            <span class="n">twig_2_2_mask</span> <span class="o">=</span> <span class="n">cluster_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">twig_2_1</span><span class="p">],</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="n">twig_2_2_mask</span> <span class="o">=</span> <span class="n">cluster_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">twig_2_1</span><span class="p">],</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
             <span class="n">twig_2_2</span> <span class="o">=</span> <span class="n">twig_2_1</span><span class="p">[</span><span class="n">twig_2_2_mask</span><span class="p">]</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="n">twig_2_2</span> <span class="o">=</span> <span class="n">twig_2_1</span>
@@ -395,7 +409,7 @@
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | applying </span><span class="se">\</span>
 <span class="s1">radius_filter to trunk_2 point cloud&#39;</span><span class="p">)</span>
-            <span class="n">trunk_2_1_mask</span> <span class="o">=</span> <span class="n">radius_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">trunk_2</span><span class="p">],</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+            <span class="n">trunk_2_1_mask</span> <span class="o">=</span> <span class="n">radius_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">trunk_2</span><span class="p">],</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
             <span class="n">trunk_2_1</span> <span class="o">=</span> <span class="n">trunk_2</span><span class="p">[</span><span class="n">trunk_2_1_mask</span><span class="p">]</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="n">trunk_2_1</span> <span class="o">=</span> <span class="n">trunk_2</span>
@@ -406,7 +420,7 @@
             <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | applying </span><span class="se">\</span>
 <span class="s1">cluster_filter to remove isolated clusters of points in twig_2_mask&#39;</span><span class="p">)</span>
-            <span class="n">trunk_2_2_mask</span> <span class="o">=</span> <span class="n">cluster_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">trunk_2_1</span><span class="p">],</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="n">trunk_2_2_mask</span> <span class="o">=</span> <span class="n">cluster_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">trunk_2_1</span><span class="p">],</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
             <span class="n">trunk_2_2</span> <span class="o">=</span> <span class="n">trunk_2_1</span><span class="p">[</span><span class="n">trunk_2_2_mask</span><span class="p">]</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="n">trunk_2_2</span> <span class="o">=</span> <span class="n">trunk_2_1</span>
@@ -446,7 +460,8 @@
             <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | applying continuity </span><span class="se">\</span>
 <span class="s1">filter in an attempt to close gaps in the wood point cloud&#39;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">wood_final</span><span class="p">,</span> <span class="n">leaf_final</span> <span class="o">=</span> <span class="n">continuity_filter</span><span class="p">(</span><span class="n">wood</span><span class="p">,</span> <span class="n">leaf</span><span class="p">,</span> <span class="n">rad</span><span class="o">=</span><span class="n">nndist</span><span class="p">)</span>
+            <span class="n">wood_final</span><span class="p">,</span> <span class="n">leaf_final</span> <span class="o">=</span> <span class="n">continuity_filter</span><span class="p">(</span><span class="n">wood</span><span class="p">,</span> <span class="n">leaf</span><span class="p">,</span>
+                                                       <span class="n">rad</span><span class="o">=</span><span class="n">nndist</span><span class="o">*</span><span class="mf">1.2</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="n">wood_final</span> <span class="o">=</span> <span class="n">wood</span>
             <span class="n">leaf_final</span> <span class="o">=</span> <span class="n">leaf</span>

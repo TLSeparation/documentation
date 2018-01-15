@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="TLSeparation rc1 documentation" href="index.html"/>
-        <link rel="up" title="TLSeparation" href="tlseparation.html"/>
+        <link rel="up" title="tlseparation package" href="tlseparation.html"/>
         <link rel="next" title="CHANGELOG" href="changelog.html"/>
         <link rel="prev" title="tlseparation.scripts package" href="tlseparation.scripts.html"/> 
 
@@ -93,7 +93,7 @@
             
               <p class="caption"><span class="caption-text">Table of Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="tlseparation.html">TLSeparation</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="tlseparation.html">tlseparation package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="tlseparation.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="tlseparation.classification.html">tlseparation.classification package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tlseparation.scripts.html">tlseparation.scripts package</a></li>
@@ -105,6 +105,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.filtering">tlseparation.utility.filtering module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.knnsearch">tlseparation.utility.knnsearch module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.shortpath">tlseparation.utility.shortpath module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.voxels">tlseparation.utility.voxels module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility">Module contents</a></li>
 </ul>
 </li>
@@ -158,7 +159,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="tlseparation.html">TLSeparation</a> &raquo;</li>
+          <li><a href="tlseparation.html">tlseparation package</a> &raquo;</li>
         
       <li>tlseparation.utility package</li>
     
@@ -1088,6 +1089,39 @@ node.</p>
 <blockquote class="last">
 <div><p>Dictionary of nodes that comprises the path of every node in G to
 base_id node.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.utility.voxels">
+<span id="tlseparation-utility-voxels-module"></span><h2>tlseparation.utility.voxels module<a class="headerlink" href="#module-tlseparation.utility.voxels" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.utility.voxels.voxelize_cloud">
+<code class="descclassname">tlseparation.utility.voxels.</code><code class="descname">voxelize_cloud</code><span class="sig-paren">(</span><em>arr</em>, <em>voxel_size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/voxels.html#voxelize_cloud"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.voxels.voxelize_cloud" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a dictionary of voxels containing their central coordinates
+and indices of points belonging to each voxel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr: array</strong></p>
+<blockquote>
+<div><p>Array of points/entries to voxelize.</p>
+</div></blockquote>
+<p><strong>voxel_size: float</strong></p>
+<blockquote>
+<div><p>Length of all voxels sides/edges.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">vox: defaultdict</p>
+<blockquote class="last">
+<div><p>Dictionary containing voxels. Keys are voxels’ central coordinates and
+values are indices of points in arr inside each voxel.</p>
 </div></blockquote>
 </td>
 </tr>

@@ -52,6 +52,14 @@ tlseparation\.utility\.shortpath module
     :undoc-members:
     :show-inheritance:
 
+tlseparation\.utility\.voxels module
+------------------------------------
+
+.. automodule:: tlseparation.utility.voxels
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
