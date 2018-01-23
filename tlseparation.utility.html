@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                1.2.1.4
+                1.2.1.7
               </div>
             
           
@@ -104,6 +104,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.data_utils">tlseparation.utility.data_utils module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.filtering">tlseparation.utility.filtering module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.knnsearch">tlseparation.utility.knnsearch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.peakdetect">tlseparation.utility.peakdetect module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.shortpath">tlseparation.utility.shortpath module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.voxels">tlseparation.utility.voxels module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility">Module contents</a></li>
@@ -210,6 +211,40 @@ of points around each point in ‘arr’.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dist</strong> : float</p>
 <blockquote class="last">
 <div><p>Optimal distance among neighboring points.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.cloud_analysis.detect_optimal_knn">
+<code class="descclassname">tlseparation.utility.cloud_analysis.</code><code class="descname">detect_optimal_knn</code><span class="sig-paren">(</span><em>arr, rad_lst=[0.1, 0.2, 0.3], sample_size=10000</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/cloud_analysis.html#detect_optimal_knn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.cloud_analysis.detect_optimal_knn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detects optimal values for knn in order to facilitate material separation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr: array</strong></p>
+<blockquote>
+<div><p>Set of 3D points.</p>
+</div></blockquote>
+<p><strong>rad_lst: list</strong></p>
+<blockquote>
+<div><p>Set of radius values to generate samples of neighborhoods. This is
+used to select points to calculate a number of neighboring points
+distribution from the point cloud.</p>
+</div></blockquote>
+<p><strong>sample_size: int</strong></p>
+<blockquote>
+<div><p>Number of points in arr to process in order to genrate a distribution.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">knn_lst: list</p>
+<blockquote class="last">
+<div><p>Set of k-nearest neighbors values.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -649,7 +684,7 @@ values (int or float).</p>
 
 <dl class="function">
 <dt id="tlseparation.utility.filtering.cluster_filter">
-<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">cluster_filter</code><span class="sig-paren">(</span><em>arr</em>, <em>max_dist</em>, <em>min_points</em>, <em>eval_threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#cluster_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.cluster_filter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">cluster_filter</code><span class="sig-paren">(</span><em>arr</em>, <em>min_points</em>, <em>eval_threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#cluster_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.cluster_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies a cluster filter to a point cloud ‘arr’. This filter aims to
 remove small, isolated, clusters of points.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -659,12 +694,6 @@ remove small, isolated, clusters of points.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
 <blockquote>
 <div><p>Point cloud of shape n points x m dimensions to be filtered.</p>
-</div></blockquote>
-<p><strong>max_dist</strong> : float</p>
-<blockquote>
-<div><p>Maximum distance between pairs of points for them to be considered as
-part of the same cluster. Also related to minimum distance between
-clusters.</p>
 </div></blockquote>
 <p><strong>min_points</strong> : int</p>
 <blockquote>
@@ -919,9 +948,11 @@ blocks of size block_size to perform query.</p>
 
 <dl class="function">
 <dt id="tlseparation.utility.knnsearch.subset_nbrs">
-<code class="descclassname">tlseparation.utility.knnsearch.</code><code class="descname">subset_nbrs</code><span class="sig-paren">(</span><em>distance</em>, <em>indices</em>, <em>new_knn</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/knnsearch.html#subset_nbrs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.knnsearch.subset_nbrs" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">tlseparation.utility.knnsearch.</code><code class="descname">subset_nbrs</code><span class="sig-paren">(</span><em>distance</em>, <em>indices</em>, <em>new_knn</em>, <em>block_size=100000</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/knnsearch.html#subset_nbrs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.knnsearch.subset_nbrs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs a subseting of points from the results of a nearest neighbors
-search.</p>
+search.
+This function assumes that the first index/distance in each row represents
+the center point of the neighborhood represented by said rows.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -938,6 +969,11 @@ search.</p>
 <blockquote>
 <div><p>Number of neighbors to select from the initial number of neighbors.</p>
 </div></blockquote>
+<p><strong>block_size</strong> : int</p>
+<blockquote>
+<div><p>Limit of points to query. The variables ‘distance’ and ‘indices’ will
+be subdivided in n blocks of size block_size to perform query.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : array</p>
@@ -952,6 +988,55 @@ search.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.utility.peakdetect">
+<span id="tlseparation-utility-peakdetect-module"></span><h2>tlseparation.utility.peakdetect module<a class="headerlink" href="#module-tlseparation.utility.peakdetect" title="Permalink to this headline">¶</a></h2>
+<p>% Eli Billauer, 3.4.05 (Explicitly not copyrighted).
+% This function is released to the public domain; Any use is allowed.</p>
+<p>Modifications in docstrings were performed by TLSepartion project
+to improve autodocumentation using Sphinx. All credits are still to
+Eli Billauer.</p>
+<dl class="function">
+<dt id="tlseparation.utility.peakdetect.peakdet">
+<code class="descclassname">tlseparation.utility.peakdetect.</code><code class="descname">peakdet</code><span class="sig-paren">(</span><em>v</em>, <em>delta</em>, <em>x=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/peakdetect.html#peakdet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.peakdetect.peakdet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converted from MATLAB script at <a class="reference external" href="http://billauer.co.il/peakdet.html">http://billauer.co.il/peakdet.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>v: array</strong></p>
+<blockquote>
+<div><p>Input vector (1D array) of values.</p>
+</div></blockquote>
+<p><strong>delta: float</strong></p>
+<blockquote>
+<div><p>Value change that characterizes a peak. A point is considered a
+maximum peak if it has the maximal value, and was preceded
+(to the left) by a value lower by delta.</p>
+</div></blockquote>
+<p><strong>x: array</strong></p>
+<blockquote>
+<div><p>Set of x values to replace indices in maxtab/mintab.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">maxtab: array</p>
+<blockquote>
+<div><p>2D array containing maxima peaks indices and values.</p>
+</div></blockquote>
+<p>mintab: array</p>
+<blockquote class="last">
+<div><p>2D array containing minima peaks indices and values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Eli Billauer, 3.4.05 (Explicitly not copyrighted).
+This function is released to the public domain; Any use is allowed.</p>
 </dd></dl>
 
 </div>

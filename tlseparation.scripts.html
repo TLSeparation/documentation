@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                1.2.1.4
+                1.2.1.7
               </div>
             
           
@@ -199,6 +199,64 @@ containing a set of coordinates (n) over a set of points (m).</p>
 <blockquote>
 <div><p>Path to classes reference values file. This file will be loaded and
 its reference values are used to select wood and leaf classes.</p>
+</div></blockquote>
+<p><strong>cont_filt</strong> : boolean</p>
+<blockquote>
+<div><p>Option to select if continuity_filter should be applied to wood and
+leaf point clouds. Default is True.</p>
+</div></blockquote>
+<p><strong>class_prob_threshold</strong> : float</p>
+<blockquote>
+<div><p>Classification probability threshold to filter classes. This aims to
+avoid selecting points that are not confidently enough assigned to
+any given class. Default is 0.95.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wood_final</strong> : array</p>
+<blockquote>
+<div><p>Wood point cloud.</p>
+</div></blockquote>
+<p><strong>leaf_final</strong> : array</p>
+<blockquote class="last">
+<div><p>Leaf point cloud.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.scripts.automated_separation.large_tree_2">
+<code class="descclassname">tlseparation.scripts.automated_separation.</code><code class="descname">large_tree_2</code><span class="sig-paren">(</span><em>arr, class_file=[], knn_lst=[20, 40, 60, 80], cont_filt=True, class_prob_threshold=0.95, verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/scripts/automated_separation.html#large_tree_2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.scripts.automated_separation.large_tree_2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run an automated separation of a single tree point cloud.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional point cloud of a single tree to perform the
+wood-leaf separation. This should be a n-dimensional array (m x n)
+containing a set of coordinates (n) over a set of points (m).</p>
+</div></blockquote>
+<p><strong>class_file</strong> : str</p>
+<blockquote>
+<div><p>Path to classes reference values file. This file will be loaded and
+its reference values are used to select wood and leaf classes.</p>
+</div></blockquote>
+<p><strong>knn_lst: list</strong></p>
+<blockquote>
+<div><p>Set of knn values to use in the neighborhood search in classification
+steps. This variable will be directly used in a step containing
+the function wlseparate_ref_voting  and its minimum value will be used
+in another step containing wlseparate_abs (both from
+classification.wlseparate). These values are directly dependent of
+point density and were defined based on a medium point density
+scenario (mean distance between points aroun 0.05m). Therefore, for
+higher density point clouds it’s recommended the use of larger knn
+values for optimal results.</p>
 </div></blockquote>
 <p><strong>cont_filt</strong> : boolean</p>
 <blockquote>

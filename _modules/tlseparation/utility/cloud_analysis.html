@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.2.1.4
+                1.2.1.7
               </div>
             
           
@@ -179,13 +179,71 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2017, TLSeparation Project&quot;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Matheus Boni Vicari&quot;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL3&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.1.5&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.1.7&quot;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;matheus.boni.vicari@gmail.com&quot;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">knnsearch</span> <span class="k">import</span> <span class="p">(</span><span class="n">set_nbrs_knn</span><span class="p">,</span> <span class="n">set_nbrs_rad</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">peakdetect</span> <span class="k">import</span> <span class="n">peakdet</span>
+
+
+<div class="viewcode-block" id="detect_optimal_knn"><a class="viewcode-back" href="../../../tlseparation.utility.html#tlseparation.utility.cloud_analysis.detect_optimal_knn">[docs]</a><span class="k">def</span> <span class="nf">detect_optimal_knn</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">rad_lst</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detects optimal values for knn in order to facilitate material separation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr: array</span>
+<span class="sd">        Set of 3D points.</span>
+<span class="sd">    rad_lst: list</span>
+<span class="sd">        Set of radius values to generate samples of neighborhoods. This is</span>
+<span class="sd">        used to select points to calculate a number of neighboring points</span>
+<span class="sd">        distribution from the point cloud.</span>
+<span class="sd">    sample_size: int</span>
+<span class="sd">        Number of points in arr to process in order to genrate a distribution.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    knn_lst: list</span>
+<span class="sd">        Set of k-nearest neighbors values.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Generating sample indices.</span>
+    <span class="n">sids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">sample_size</span><span class="p">,</span>
+                            <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Obtaining nearest neighbors&#39; indices and distance for sampled points.</span>
+    <span class="c1"># This process is done just once, with the largest value of radius in</span>
+    <span class="c1"># rad_lst. Later on, it is possible to subsample indices by limiting</span>
+    <span class="c1"># their distances for a smaller radius.</span>
+    <span class="n">dist</span><span class="p">,</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">set_nbrs_rad</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">sids</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">rad_lst</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Initializing empty list to store knn values.</span>
+    <span class="n">knn_lst</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Looping over each radius value.</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rad_lst</span><span class="p">:</span>
+        <span class="c1"># Counting number of points inside radius r.</span>
+        <span class="n">n_pts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">d</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">dist</span><span class="p">)]</span>
+
+        <span class="c1"># Binning n_pts into a histogram.</span>
+        <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">n_pts</span><span class="p">)</span>
+
+        <span class="c1"># Detecting peaks of accumulated points from n_pts.</span>
+        <span class="n">maxtab</span><span class="p">,</span> <span class="n">mintab</span> <span class="o">=</span> <span class="n">peakdet</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">maxtab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">maxtab</span><span class="p">)</span>
+
+        <span class="c1"># Appending knn values relative to peaks detected in n_pts.</span>
+        <span class="n">knn_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">maxtab</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]])</span>
+
+    <span class="c1"># Flattening nested lists into a final list of knn values.</span>
+    <span class="n">knn_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">knn_lst</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">j</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">knn_lst</span></div>
 
 
 <div class="viewcode-block" id="detect_rad_nn"><a class="viewcode-back" href="../../../tlseparation.utility.html#tlseparation.utility.cloud_analysis.detect_rad_nn">[docs]</a><span class="k">def</span> <span class="nf">detect_rad_nn</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">rad</span><span class="p">):</span>

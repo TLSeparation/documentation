@@ -44,6 +44,14 @@ tlseparation\.utility\.knnsearch module
     :undoc-members:
     :show-inheritance:
 
+tlseparation\.utility\.peakdetect module
+----------------------------------------
+
+.. automodule:: tlseparation.utility.peakdetect
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 tlseparation\.utility\.shortpath module
 ---------------------------------------
 
