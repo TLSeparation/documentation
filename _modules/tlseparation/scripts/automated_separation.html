@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.2.1.7
+                1.2.2.2
               </div>
             
           
@@ -179,7 +179,7 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2017, TLSeparation Project&quot;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Matheus Boni Vicari&quot;</span><span class="p">,</span> <span class="s2">&quot;Phil Wilkes&quot;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL3&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.1.7&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.2.2&quot;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;matheus.boni.vicari@gmail.com&quot;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
@@ -187,7 +187,8 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">from</span> <span class="nn">..classification</span> <span class="k">import</span> <span class="p">(</span><span class="n">wlseparate_abs</span><span class="p">,</span> <span class="n">wlseparate_ref_voting</span><span class="p">,</span>
-                              <span class="n">detect_main_pathways</span><span class="p">,</span> <span class="n">get_base</span><span class="p">,</span> <span class="n">DefaultClass</span><span class="p">)</span>
+                              <span class="n">detect_main_pathways</span><span class="p">,</span> <span class="n">voxel_path_detection</span><span class="p">,</span>
+                              <span class="n">get_base</span><span class="p">,</span> <span class="n">DefaultClass</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..utility</span> <span class="k">import</span> <span class="p">(</span><span class="n">get_diff</span><span class="p">,</span> <span class="n">remove_duplicates</span><span class="p">,</span> <span class="n">radius_filter</span><span class="p">,</span>
                        <span class="n">class_filter</span><span class="p">,</span> <span class="n">cluster_filter</span><span class="p">,</span> <span class="n">continuity_filter</span><span class="p">,</span>
                        <span class="n">detect_nn_dist</span><span class="p">,</span> <span class="n">voxelize_cloud</span><span class="p">,</span> <span class="n">detect_optimal_knn</span><span class="p">)</span>
@@ -241,6 +242,11 @@
         <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | calculating recommended </span><span class="se">\</span>
 <span class="s1">distance between neighboring points&#39;</span><span class="p">)</span>
     <span class="n">nndist</span> <span class="o">=</span> <span class="n">detect_nn_dist</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1"># Checking if no input was given to cf_rad and if so, calculate it from</span>
+    <span class="c1"># nndist.</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cf_rad</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cf_rad</span> <span class="o">=</span> <span class="n">nndist</span> <span class="o">*</span> <span class="mf">0.66</span>
+
     <span class="n">knn_lst</span> <span class="o">=</span> <span class="n">detect_optimal_knn</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
     <span class="n">knn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">knn_lst</span><span class="p">)</span>
     <span class="n">knn_lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">]</span>
@@ -742,6 +748,292 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">wood_final</span> <span class="o">=</span> <span class="n">wood</span>
         <span class="n">leaf_final</span> <span class="o">=</span> <span class="n">leaf</span>
+
+    <span class="c1">###########################################################################</span>
+
+    <span class="k">return</span> <span class="n">wood_final</span><span class="p">,</span> <span class="n">leaf_final</span></div>
+
+
+<div class="viewcode-block" id="large_tree_3"><a class="viewcode-back" href="../../../tlseparation.scripts.html#tlseparation.scripts.automated_separation.large_tree_3">[docs]</a><span class="k">def</span> <span class="nf">large_tree_3</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">class_file</span><span class="o">=</span><span class="p">[],</span> <span class="n">knn_lst</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">],</span> <span class="n">cont_filt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">class_prob_threshold</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">cf_rad</span><span class="o">=</span><span class="p">[],</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run an automated separation of a single tree point cloud.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr : array</span>
+<span class="sd">        Three-dimensional point cloud of a single tree to perform the</span>
+<span class="sd">        wood-leaf separation. This should be a n-dimensional array (m x n)</span>
+<span class="sd">        containing a set of coordinates (n) over a set of points (m).</span>
+<span class="sd">    class_file : str</span>
+<span class="sd">        Path to classes reference values file. This file will be loaded and</span>
+<span class="sd">        its reference values are used to select wood and leaf classes.</span>
+<span class="sd">    knn_lst: list</span>
+<span class="sd">        Set of knn values to use in the neighborhood search in classification</span>
+<span class="sd">        steps. This variable will be directly used in a step containing</span>
+<span class="sd">        the function wlseparate_ref_voting  and its minimum value will be used</span>
+<span class="sd">        in another step containing wlseparate_abs (both from</span>
+<span class="sd">        classification.wlseparate). These values are directly dependent of</span>
+<span class="sd">        point density and were defined based on a medium point density</span>
+<span class="sd">        scenario (mean distance between points aroun 0.05m). Therefore, for</span>
+<span class="sd">        higher density point clouds it&#39;s recommended the use of larger knn</span>
+<span class="sd">        values for optimal results.</span>
+<span class="sd">    cont_filt : boolean</span>
+<span class="sd">        Option to select if continuity_filter should be applied to wood and</span>
+<span class="sd">        leaf point clouds. Default is True.</span>
+<span class="sd">    class_prob_threshold : float</span>
+<span class="sd">        Classification probability threshold to filter classes. This aims to</span>
+<span class="sd">        avoid selecting points that are not confidently enough assigned to</span>
+<span class="sd">        any given class. Default is 0.95.</span>
+<span class="sd">    cf_rad : float</span>
+<span class="sd">        Continuity filter search radius.</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        Option to set (or not) verbose output.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    wood_final : array</span>
+<span class="sd">        Wood point cloud.</span>
+<span class="sd">    leaf_final : array</span>
+<span class="sd">        Leaf point cloud.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Checking input class_file, if it&#39;s an empty list, use default values.</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_file</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">class_file</span> <span class="o">=</span> <span class="n">DefaultClass</span><span class="p">()</span><span class="o">.</span><span class="n">ref_table</span>
+
+    <span class="c1">###########################################################################</span>
+    <span class="c1"># Making sure input array has only 3 dimensions and no duplicated points.</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | removing duplicates&#39;</span><span class="p">)</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">remove_duplicates</span><span class="p">(</span><span class="n">arr</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+
+    <span class="c1"># Calculating recommended distance between neighboring points.</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | calculating recommended </span><span class="se">\</span>
+<span class="s1">distance between neighboring points&#39;</span><span class="p">)</span>
+    <span class="n">nndist</span> <span class="o">=</span> <span class="n">detect_nn_dist</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1"># Checking if no input was given to cf_rad and if so, calculate it from</span>
+    <span class="c1"># nndist.</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cf_rad</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cf_rad</span> <span class="o">=</span> <span class="n">nndist</span> <span class="o">*</span> <span class="mf">0.66</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | nndist: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">nndist</span><span class="p">)</span>
+
+    <span class="c1"># Setting up knn value based on the minimum value from knn_lst.</span>
+    <span class="n">knn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">knn_lst</span><span class="p">)</span>
+
+    <span class="c1">###########################################################################</span>
+    <span class="c1"># Obtaining mask of points from a slice of points located at the base of</span>
+    <span class="c1"># the tree.</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | obtaining mask of points </span><span class="se">\</span>
+<span class="s1">from a slice of points located at the base of the tree&#39;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">base_mask</span> <span class="o">=</span> <span class="n">get_base</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">base_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">base_mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">base_ids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to obtain base_mask.&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Masking points most likely to be part of the trunk and larger branches.</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | masking points most likely </span><span class="se">\</span>
+<span class="s1">to be part of the trunk and larger branches&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">trunk_mask</span> <span class="o">=</span> <span class="n">voxel_path_detection</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># Obtaining indices of points that are part of the trunk (trunk_ids)</span>
+        <span class="c1"># and not part of the trunk (not_trunk_ids).</span>
+        <span class="c1"># trunk.</span>
+        <span class="n">trunk_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">trunk_mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">not_trunk_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">trunk_mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">trunk_ids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to obtain trunk_mask.&#39;</span><span class="p">)</span>
+
+    <span class="c1">###########################################################################</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | performing absolute </span><span class="se">\</span>
+<span class="s1">threshold separation on points not detected as trunk (not_trunk_ids)&#39;</span><span class="p">)</span>
+        <span class="c1"># Performing absolute threshold separation on points not detected</span>
+        <span class="c1"># as trunk (not_trunk_ids).</span>
+        <span class="n">ids_1</span><span class="p">,</span> <span class="n">prob_1</span> <span class="o">=</span> <span class="n">wlseparate_abs</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">not_trunk_ids</span><span class="p">],</span> <span class="n">knn</span><span class="p">,</span>
+                                       <span class="n">n_classes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+        <span class="c1"># Obtaining wood_1 ids and classification probability.</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | obtaining wood_1 ids </span><span class="se">\</span>
+<span class="s1">and classification probability&#39;</span><span class="p">)</span>
+        <span class="n">wood_1_mask</span> <span class="o">=</span> <span class="n">not_trunk_ids</span><span class="p">[</span><span class="n">ids_1</span><span class="p">[</span><span class="s1">&#39;wood&#39;</span><span class="p">]]</span>
+        <span class="n">wood_1_prob</span> <span class="o">=</span> <span class="n">prob_1</span><span class="p">[</span><span class="s1">&#39;wood&#39;</span><span class="p">]</span>
+        <span class="c1"># Filtering out points that were classified with a probability lower</span>
+        <span class="c1"># than class_prob_threshold.</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | filtering out points </span><span class="se">\</span>
+<span class="s1">that were classified with a probability lower than class_prob_threshold&#39;</span><span class="p">)</span>
+        <span class="n">wood_1</span> <span class="o">=</span> <span class="n">wood_1_mask</span><span class="p">[</span><span class="n">wood_1_prob</span> <span class="o">&gt;=</span> <span class="n">class_prob_threshold</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Applying class_filter to remove wood_1 points that are more</span>
+            <span class="c1"># likely to be part of a leaf point cloud (not_wood_1).</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | </span><span class="se">\</span>
+<span class="s1">applying class_filter to remove wood_1 points that are more likely to be </span><span class="se">\</span>
+<span class="s1">part of a leaf point cloud (not_wood_1)&#39;</span><span class="p">)</span>
+            <span class="c1"># Setting up a boolean mask of wood_1 and not_wood_1 points.</span>
+            <span class="n">wood_1_bool</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="n">wood_1_bool</span><span class="p">[</span><span class="n">wood_1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="c1"># Obtaining wood_1 filtered point indices.</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | obtaining wood_1 </span><span class="se">\</span>
+<span class="s1">filtered point indices&#39;</span><span class="p">)</span>
+            <span class="n">wood_1_1_mask</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">class_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">wood_1_bool</span><span class="p">],</span>
+                                            <span class="n">arr</span><span class="p">[</span><span class="o">~</span><span class="n">wood_1_bool</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">knn</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+            <span class="n">wood_1_1_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">wood_1_1_mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">wood_1_1</span> <span class="o">=</span> <span class="n">wood_1</span><span class="p">[</span><span class="n">wood_1_1_mask</span><span class="p">]</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">wood_1_1</span> <span class="o">=</span> <span class="n">wood_1</span>
+
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># In case absolute threshold separation fails, set wood_1_1 as an</span>
+        <span class="c1"># empty list.</span>
+        <span class="n">wood_1_1</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | absolute threshold </span><span class="se">\</span>
+<span class="s1">separation failed, setting wood_1_1 as an empty list&#39;</span><span class="p">)</span>
+    <span class="c1">###########################################################################</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Performing reference class voting separation on the whole input point</span>
+        <span class="c1"># cloud.</span>
+        <span class="c1"># Running reference class voting separation.</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | running reference class </span><span class="se">\</span>
+<span class="s1">voting separation&#39;</span><span class="p">)</span>
+        <span class="n">ids_2</span><span class="p">,</span> <span class="n">count_2</span><span class="p">,</span> <span class="n">prob_2</span> <span class="o">=</span> <span class="n">wlseparate_ref_voting</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">not_trunk_ids</span><span class="p">],</span>
+                                                       <span class="n">knn_lst</span><span class="p">,</span> <span class="n">class_file</span><span class="p">,</span>
+                                                       <span class="n">n_classes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+        <span class="c1"># Obtaining indices and classification probabilities for classes</span>
+        <span class="c1"># twig and trunk (both components of wood points).</span>
+        <span class="n">twig_2_mask</span> <span class="o">=</span> <span class="n">not_trunk_ids</span><span class="p">[</span><span class="n">ids_2</span><span class="p">[</span><span class="s1">&#39;twig&#39;</span><span class="p">]]</span>
+        <span class="n">twig_2_prob</span> <span class="o">=</span> <span class="n">prob_2</span><span class="p">[</span><span class="s1">&#39;twig&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Masking twig and trunk classes by classification probability</span>
+        <span class="c1"># threshold.</span>
+        <span class="n">twig_2_prob_mask</span> <span class="o">=</span> <span class="n">twig_2_prob</span> <span class="o">&gt;=</span> <span class="n">class_prob_threshold</span>
+
+        <span class="c1"># Obtaining twig_2 and trunk_2 vote counts, which are the number of</span>
+        <span class="c1"># votes that each point in twig_2 and trunk_2 received to be</span>
+        <span class="c1"># classified as such.</span>
+        <span class="n">twig_2_count</span> <span class="o">=</span> <span class="n">count_2</span><span class="p">[</span><span class="s1">&#39;twig&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Filtering twig_2 and trunk_2 by a minimun number of votes. Point</span>
+        <span class="c1"># indices with number of votes smaller than the defined threshold</span>
+        <span class="c1"># are left out.</span>
+        <span class="n">twig_2</span> <span class="o">=</span> <span class="n">twig_2_mask</span><span class="p">[</span><span class="n">twig_2_count</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">][</span><span class="n">twig_2_prob_mask</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Applying class_filter on filtered twig point cloud.</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | applying </span><span class="se">\</span>
+<span class="s1">class_filter on filtered twig point cloud&#39;</span><span class="p">)</span>
+            <span class="c1"># Setting up a boolean mask of twig_2 and not_twig_2 points.</span>
+            <span class="n">twig_2_bool</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="n">twig_2_bool</span><span class="p">[</span><span class="n">twig_2</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">twig_2_1_mask</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">class_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">twig_2_bool</span><span class="p">],</span>
+                                            <span class="n">arr</span><span class="p">[</span><span class="o">~</span><span class="n">twig_2_bool</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">knn</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+            <span class="n">twig_2_1_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">twig_2_1_mask</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">twig_2_1</span> <span class="o">=</span> <span class="n">twig_2</span><span class="p">[</span><span class="n">twig_2_1_mask</span><span class="p">]</span>
+
+            <span class="c1"># Applying radius_filter on filtered twig point cloud.</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | applying </span><span class="se">\</span>
+<span class="s1">radius_filter on filtered twig point cloud&#39;</span><span class="p">)</span>
+            <span class="n">twig_2_2_mask</span> <span class="o">=</span> <span class="n">radius_filter</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">twig_2_1</span><span class="p">],</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">twig_2_2</span> <span class="o">=</span> <span class="n">twig_2_1</span><span class="p">[</span><span class="n">twig_2_2_mask</span><span class="p">]</span>
+
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">twig_2_2</span> <span class="o">=</span> <span class="n">twig_2</span>
+
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># In case voting separation fails, set twig_2_2 as an empty list.</span>
+        <span class="n">twig_2_2</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | reference class </span><span class="se">\</span>
+<span class="s1">separation failed, setting twig_2_2 as an empty list&#39;</span><span class="p">)</span>
+    <span class="c1">###########################################################################</span>
+    <span class="c1"># Stacking all clouds part of the wood portion.</span>
+    <span class="n">wood_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">base_ids</span><span class="p">,</span> <span class="n">trunk_ids</span><span class="p">,</span> <span class="n">twig_2_2</span><span class="p">,</span> <span class="n">wood_1_1</span><span class="p">))</span>
+    <span class="n">wood_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">wood_ids</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># Selecting initial set of wood and leaf points.</span>
+    <span class="n">wood</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">wood_ids</span><span class="p">]</span>
+
+    <span class="c1">###########################################################################</span>
+
+    <span class="c1"># Applying path filter to remove small clusters of leaves at the tips of</span>
+    <span class="c1"># the branches.</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+         <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | running path filtering </span><span class="se">\</span>
+<span class="s1">on wood points&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">path_filter_mask</span> <span class="o">=</span> <span class="n">voxel_path_detection</span><span class="p">(</span><span class="n">wood</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
+                                                <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">wood_filt_1</span> <span class="o">=</span> <span class="n">wood</span><span class="p">[</span><span class="n">path_filter_mask</span><span class="p">]</span>
+        <span class="n">leaf_filt_1</span> <span class="o">=</span> <span class="n">get_diff</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">wood_filt_1</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+             <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | failed running path </span><span class="se">\</span>
+<span class="s1">filtering&#39;</span><span class="p">)</span>
+        <span class="n">wood_filt_1</span> <span class="o">=</span> <span class="n">wood</span>
+        <span class="n">leaf_filt_1</span> <span class="o">=</span> <span class="n">get_diff</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">wood_filt_1</span><span class="p">)</span>
+    <span class="c1">###########################################################################</span>
+    <span class="k">if</span> <span class="n">cont_filt</span><span class="p">:</span>
+        <span class="c1"># Applying continuity filter in an attempt to close gaps in the wood</span>
+        <span class="c1"># point cloud (i.e. misclassified leaf points in between portions of</span>
+        <span class="c1"># wood points).</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | applying continuity </span><span class="se">\</span>
+<span class="s1">filter in an attempt to close gaps in the wood point cloud&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">wood_filt_2</span><span class="p">,</span> <span class="n">leaf_filt_2</span> <span class="o">=</span> <span class="n">continuity_filter</span><span class="p">(</span><span class="n">wood_filt_1</span><span class="p">,</span>
+                                                         <span class="n">leaf_filt_1</span><span class="p">,</span>
+                                                         <span class="n">rad</span><span class="o">=</span><span class="n">cf_rad</span><span class="p">)</span>
+
+            <span class="c1"># Applying path filter agin to clean up data after continuity filter.</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                 <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | running path </span><span class="se">\</span>
+<span class="s1">filtering on wood points&#39;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">path_filter_mask_2</span> <span class="o">=</span> <span class="n">voxel_path_detection</span><span class="p">(</span><span class="n">wood_filt_2</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span>
+                                                          <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
+                                                          <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">wood_filt_2</span> <span class="o">=</span> <span class="n">wood_filt_2</span><span class="p">[</span><span class="n">path_filter_mask_2</span><span class="p">]</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                     <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | failed running </span><span class="se">\</span>
+<span class="s1">path filtering&#39;</span><span class="p">)</span>
+                <span class="n">wood_filt_2</span> <span class="o">=</span> <span class="n">wood_filt_2</span>
+
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">wood_filt_2</span> <span class="o">=</span> <span class="n">wood_filt_1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">wood_filt_2</span> <span class="o">=</span> <span class="n">wood_filt_1</span>
+
+    <span class="c1">###########################################################################</span>
+    <span class="c1"># After filtering wood points, add back smaller branches to fill in</span>
+    <span class="c1"># the tips lost by path filtering.</span>
+    <span class="n">wood_final</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">wood_filt_2</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">wood_1_1</span><span class="p">]))</span>
+    <span class="n">wood_final</span> <span class="o">=</span> <span class="n">remove_duplicates</span><span class="p">(</span><span class="n">wood_final</span><span class="p">)</span>
+    <span class="c1"># Obtaining leaf point cloud from the difference between input cloud &#39;arr&#39;</span>
+    <span class="c1"># and wood points.</span>
+    <span class="n">leaf_final</span> <span class="o">=</span> <span class="n">get_diff</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">wood_final</span><span class="p">)</span>
 
     <span class="c1">###########################################################################</span>
 

@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.2.1.7
+                1.2.2.2
               </div>
             
           
@@ -179,7 +179,7 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2017, TLSeparation Project&quot;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Matheus Boni Vicari&quot;</span><span class="p">,</span> <span class="s2">&quot;Phil Wilkes&quot;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL3&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.1.7&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.2.2&quot;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;matheus.boni.vicari@gmail.com&quot;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
@@ -189,6 +189,78 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">NearestNeighbors</span>
 <span class="kn">from</span> <span class="nn">..utility.shortpath</span> <span class="k">import</span> <span class="p">(</span><span class="n">array_to_graph</span><span class="p">,</span> <span class="n">extract_path_info</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..utility.voxels</span> <span class="k">import</span> <span class="n">voxelize_cloud</span>
+
+
+<div class="viewcode-block" id="voxel_path_detection"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.path_detection.voxel_path_detection">[docs]</a><span class="k">def</span> <span class="nf">voxel_path_detection</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">voxel_size</span><span class="p">,</span> <span class="n">k_retrace</span><span class="p">,</span> <span class="n">knn</span><span class="p">,</span>
+                         <span class="n">nbrs_threshold</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Applies detect_main_pathways but with a voxelization option to speed up</span>
+<span class="sd">    processing.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    point_cloud : array</span>
+<span class="sd">        Three-dimensional point cloud of a single tree to perform the</span>
+<span class="sd">        wood-leaf separation. This should be a n-dimensional array (m x n)</span>
+<span class="sd">        containing a set of coordinates (n) over a set of points (m).</span>
+<span class="sd">    voxel_size: float</span>
+<span class="sd">        Voxel dimensions&#39; size.</span>
+<span class="sd">    k_retrace : int</span>
+<span class="sd">        Number of steps in the graph to retrace back to graph&#39;s base. Every</span>
+<span class="sd">        node in graph will be moved  k_retrace steps from the extremities</span>
+<span class="sd">        towards to base.</span>
+<span class="sd">    knn : int</span>
+<span class="sd">        Number of neighbors to fill gaps in detected paths. The larger the</span>
+<span class="sd">        better. A large knn will increase memory usage. Recommended value</span>
+<span class="sd">        between 50 and 150.</span>
+<span class="sd">    nbrs_threshold : float</span>
+<span class="sd">        Maximum distance to valid neighboring points used to fill gaps in</span>
+<span class="sd">        detected paths.</span>
+<span class="sd">    verbose: bool</span>
+<span class="sd">        Option to set verbose on/off.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path_mask : array</span>
+<span class="sd">        Boolean mask where &#39;True&#39; represents points detected as part of the</span>
+<span class="sd">        main pathways and &#39;False&#39; represents points not part of the pathways.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    AssertionError:</span>
+<span class="sd">        point_cloud has the wrong shape or number of dimensions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Making sure input point cloud has the right shape and number of</span>
+    <span class="c1"># dimensions.</span>
+    <span class="k">assert</span> <span class="n">point_cloud</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;point_cloud must be an array with 2</span><span class="se">\</span>
+<span class="s2"> dimensions, n_points x 3 (x, y, z).&quot;</span>
+    <span class="k">assert</span> <span class="n">point_cloud</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;point_cloud must be a 3D point cloud.</span><span class="se">\</span>
+<span class="s2"> Make sure it has the shape n_points x 3 (x, y, z).&quot;</span>
+
+    <span class="c1"># Voxelizing point cloud.</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | &gt;&gt;&gt; voxelizing point cloud, </span><span class="se">\</span>
+<span class="s1">with a voxel size of </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">voxel_size</span><span class="p">)</span>
+    <span class="n">vox</span> <span class="o">=</span> <span class="n">voxelize_cloud</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">voxel_size</span><span class="o">=</span><span class="n">voxel_size</span><span class="p">)</span>
+    <span class="n">vox_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vox</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="c1"># Running detect_main_pathways over voxels&#39; coordinates.</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | &gt;&gt;&gt; running </span><span class="se">\</span>
+<span class="s1">detect_main_pathways with </span><span class="si">%s</span><span class="s1"> number of steps retraced&#39;</span> <span class="o">%</span> <span class="n">k_retrace</span><span class="p">)</span>
+    <span class="n">path_mask_voxel</span> <span class="o">=</span> <span class="n">detect_main_pathways</span><span class="p">(</span><span class="n">vox_coords</span><span class="p">,</span> <span class="n">k_retrace</span><span class="p">,</span> <span class="n">knn</span><span class="p">,</span>
+                                           <span class="n">nbrs_threshold</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+    <span class="c1"># Re-indexing point_cloud indices from voxels coordinates detected as</span>
+    <span class="c1"># part of the path.</span>
+    <span class="n">path_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">([</span><span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vox_coords</span><span class="p">[</span><span class="n">path_mask_voxel</span><span class="p">]</span> <span class="k">for</span>
+                          <span class="n">j</span> <span class="ow">in</span> <span class="n">vox</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">i</span><span class="p">)]])</span>
+    <span class="n">path_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">point_cloud</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="n">path_mask</span><span class="p">[</span><span class="n">path_ids</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">path_mask</span></div>
 
 
 <div class="viewcode-block" id="detect_main_pathways"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.path_detection.detect_main_pathways">[docs]</a><span class="k">def</span> <span class="nf">detect_main_pathways</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">k_retrace</span><span class="p">,</span> <span class="n">knn</span><span class="p">,</span> <span class="n">nbrs_threshold</span><span class="p">,</span>

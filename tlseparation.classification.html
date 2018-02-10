@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                1.2.1.7
+                1.2.2.2
               </div>
             
           
@@ -398,6 +398,65 @@ containing a set of coordinates (n) over a set of points (m).</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : array</p>
 <blockquote class="last">
 <div><p>Base slice masked as True.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.path_detection.voxel_path_detection">
+<code class="descclassname">tlseparation.classification.path_detection.</code><code class="descname">voxel_path_detection</code><span class="sig-paren">(</span><em>point_cloud</em>, <em>voxel_size</em>, <em>k_retrace</em>, <em>knn</em>, <em>nbrs_threshold</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/path_detection.html#voxel_path_detection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.path_detection.voxel_path_detection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies detect_main_pathways but with a voxelization option to speed up
+processing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional point cloud of a single tree to perform the
+wood-leaf separation. This should be a n-dimensional array (m x n)
+containing a set of coordinates (n) over a set of points (m).</p>
+</div></blockquote>
+<p><strong>voxel_size: float</strong></p>
+<blockquote>
+<div><p>Voxel dimensions’ size.</p>
+</div></blockquote>
+<p><strong>k_retrace</strong> : int</p>
+<blockquote>
+<div><p>Number of steps in the graph to retrace back to graph’s base. Every
+node in graph will be moved  k_retrace steps from the extremities
+towards to base.</p>
+</div></blockquote>
+<p><strong>knn</strong> : int</p>
+<blockquote>
+<div><p>Number of neighbors to fill gaps in detected paths. The larger the
+better. A large knn will increase memory usage. Recommended value
+between 50 and 150.</p>
+</div></blockquote>
+<p><strong>nbrs_threshold</strong> : float</p>
+<blockquote>
+<div><p>Maximum distance to valid neighboring points used to fill gaps in
+detected paths.</p>
+</div></blockquote>
+<p><strong>verbose: bool</strong></p>
+<blockquote>
+<div><p>Option to set verbose on/off.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>path_mask</strong> : array</p>
+<blockquote>
+<div><p>Boolean mask where ‘True’ represents points detected as part of the
+main pathways and ‘False’ represents points not part of the pathways.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AssertionError:</strong></p>
+<blockquote class="last">
+<div><p>point_cloud has the wrong shape or number of dimensions.</p>
 </div></blockquote>
 </td>
 </tr>
