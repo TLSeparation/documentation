@@ -65,7 +65,7 @@
             
             
               <div class="version">
-                1.2.2.2
+                1.2.2.3
               </div>
             
           
@@ -179,7 +179,7 @@
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2017, TLSeparation Project&quot;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Matheus Boni Vicari&quot;</span><span class="p">,</span> <span class="s2">&quot;Phil Wilkes&quot;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL3&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.2.2&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.2.3&quot;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;matheus.boni.vicari@gmail.com&quot;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
@@ -264,7 +264,7 @@
 
 
 <div class="viewcode-block" id="detect_main_pathways"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.path_detection.detect_main_pathways">[docs]</a><span class="k">def</span> <span class="nf">detect_main_pathways</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">k_retrace</span><span class="p">,</span> <span class="n">knn</span><span class="p">,</span> <span class="n">nbrs_threshold</span><span class="p">,</span>
-                         <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                         <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Detects the main pathways of an unordered 3D point cloud. Set as true</span>
@@ -365,7 +365,8 @@
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39; | &gt;&gt;&gt; looping while there </span><span class="se">\</span>
 <span class="s1">are still indices in current_idx to process&#39;</span><span class="p">)</span>
-    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">current_idx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">current_idx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">iteration</span> <span class="o">&lt;=</span> <span class="n">max_iter</span><span class="p">):</span>
 
         <span class="c1"># Selecting NearestNeighbors indices and distances for current</span>
         <span class="c1"># indices being processed.</span>
@@ -408,6 +409,9 @@
 
         <span class="c1"># Generating list of remaining proints to process.</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">idx_base</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">idx_base</span><span class="p">,</span> <span class="n">processed_idx</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+
+        <span class="c1"># Increasing one iteration step.</span>
+        <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="c1"># Just in case of not having detected all points in the desired paths, run</span>
     <span class="c1"># another last iteration.</span>
