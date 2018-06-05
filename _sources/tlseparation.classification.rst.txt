@@ -12,6 +12,14 @@ tlseparation\.classification\.classes\_reference module
     :undoc-members:
     :show-inheritance:
 
+tlseparation\.classification\.classify\_wood module
+---------------------------------------------------
+
+.. automodule:: tlseparation.classification.classify_wood
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 tlseparation\.classification\.gmm module
 ----------------------------------------
 

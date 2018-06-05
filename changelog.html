@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CHANGELOG &mdash; TLSeparation rc1 documentation</title>
+  <title>CHANGELOG &mdash; TLSeparation  documentation</title>
   
 
   
@@ -25,25 +25,18 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="TLSeparation rc1 documentation" href="index.html"/>
-        <link rel="prev" title="tlseparation.utility package" href="tlseparation.utility.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="tlseparation.utility package" href="tlseparation.utility.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -65,7 +58,7 @@
             
             
               <div class="version">
-                1.2.2.3
+                1.2.2.6
               </div>
             
           
@@ -93,6 +86,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tlseparation.html">tlseparation package</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">CHANGELOG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v1-2-2-6">v1.2.2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-2-2-5">v1.2.2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-2-2-4">v1.2.2.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-2-2-3">v1.2.2.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-2-2-2">v1.2.2.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-2-2-1">v1.2.2.1</a></li>
@@ -118,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">TLSeparation</a>
@@ -126,9 +122,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -172,6 +169,34 @@
             
   <div class="section" id="changelog">
 <h1>CHANGELOG<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v1-2-2-6">
+<h2>v1.2.2.6<a class="headerlink" href="#v1-2-2-6" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Removed ‘future_code’ from the package. These codes will be kept aside until they are ready to be added back into the package.</li>
+<li>Completely removed all references for <em>HDBSCAN</em> which caused import errors.</li>
+<li>Renamed <em>automated_separation.large_tree_5</em> to <em>automated_separation.generic_tree</em>.</li>
+</ul>
+</div>
+<div class="section" id="v1-2-2-5">
+<h2>v1.2.2.5<a class="headerlink" href="#v1-2-2-5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Changed <em>remove_duplicates</em> function to allow indices output.</li>
+<li>Temporarily removed <em>continuous_clustering</em> module until further improvements.</li>
+<li>Replaced HDBSCAN for DBSCAN in the entire package. This aims to make installation simpler and avoid incompatibilities.</li>
+<li>Set full_matrices to False in <em>svd_evals</em> to improve processing efficiency (reduced processing time and memory usage).</li>
+<li>Added new autometed separation script <em>large_tree_5</em>.</li>
+<li>Removed old automated separation scripts: <em>large_tree_1</em> and <em>large_tree_2</em>.</li>
+<li>Added new filters: <em>plane_filter</em>, <em>cluster_filter</em> and <em>feature_filter</em>.</li>
+<li>Added new path detection script, <em>path_detect_frequency</em>.</li>
+</ul>
+</div>
+<div class="section" id="v1-2-2-4">
+<h2>v1.2.2.4<a class="headerlink" href="#v1-2-2-4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Corrected automated calculation of parameter cf_rad in <em>large_tree_3</em>.</li>
+<li>Added new gmm_nclasses parameter to <em>large_tree_3</em>.</li>
+</ul>
+</div>
 <div class="section" id="v1-2-2-3">
 <h2>v1.2.2.3<a class="headerlink" href="#v1-2-2-3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -276,9 +301,7 @@ Added new wlseparate method to auto_separation_2, based on a voting scheme.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -298,7 +321,7 @@ Added new wlseparate method to auto_separation_2, based on a voting scheme.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -316,7 +339,8 @@ Added new wlseparate method to auto_separation_2, based on a voting scheme.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'rc1',
+            VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -334,14 +358,11 @@ Added new wlseparate method to auto_separation_2, based on a voting scheme.</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>tlseparation.classification.path_detection &mdash; TLSeparation rc1 documentation</title>
+  <title>tlseparation.classification.path_detection &mdash; TLSeparation  documentation</title>
   
 
   
@@ -25,25 +25,17 @@
   
 
   
-  
     <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="TLSeparation rc1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -65,7 +57,7 @@
             
             
               <div class="version">
-                1.2.2.3
+                1.2.2.6
               </div>
             
           
@@ -104,7 +96,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">TLSeparation</a>
@@ -112,9 +104,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -143,8 +136,6 @@
     
     
       <li class="wy-breadcrumbs-aside">
-        
-            
         
       </li>
     
@@ -176,10 +167,10 @@
 
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2017, TLSeparation Project&quot;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2017-2018, TLSeparation Project&quot;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Matheus Boni Vicari&quot;</span><span class="p">,</span> <span class="s2">&quot;Phil Wilkes&quot;</span><span class="p">]</span>
 <span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GPL3&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.2.3&quot;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.2.6&quot;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Matheus Boni Vicari&quot;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;matheus.boni.vicari@gmail.com&quot;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Development&quot;</span>
@@ -190,6 +181,85 @@
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">NearestNeighbors</span>
 <span class="kn">from</span> <span class="nn">..utility.shortpath</span> <span class="k">import</span> <span class="p">(</span><span class="n">array_to_graph</span><span class="p">,</span> <span class="n">extract_path_info</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..utility.voxels</span> <span class="k">import</span> <span class="n">voxelize_cloud</span>
+<span class="kn">from</span> <span class="nn">..utility.downsampling</span> <span class="k">import</span> <span class="p">(</span><span class="n">downsample_cloud</span><span class="p">,</span> <span class="n">upsample_cloud</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..utility.filtering</span> <span class="k">import</span> <span class="n">radius_filter</span>
+<span class="kn">from</span> <span class="nn">..utility.knnsearch</span> <span class="k">import</span> <span class="n">set_nbrs_rad</span>
+
+
+<div class="viewcode-block" id="path_detect_frequency"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.path_detection.path_detect_frequency">[docs]</a><span class="k">def</span> <span class="nf">path_detect_frequency</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">downsample_size</span><span class="p">,</span>
+                          <span class="n">frequency_threshold</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detects points from major paths in a graph generated from a point cloud.</span>
+<span class="sd">    The detection is performed by comparing the frequency of all paths that</span>
+<span class="sd">    each node is present. Nodes with frequency larger than threshold are</span>
+<span class="sd">    selected as detected. In order to fill pathways regions with low nodes</span>
+<span class="sd">    density, neighboring points within downsampling_size * 1.5 distance are</span>
+<span class="sd">    also set as detected.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    point_cloud : numpy.ndarray</span>
+<span class="sd">        2D (n x 3) array containing n points in 3D space (x, y, z).</span>
+<span class="sd">    downsample_size : float</span>
+<span class="sd">        Distance threshold used to group (downsample) the input point cloud.</span>
+<span class="sd">        Simplificaton of the cloud by downsampling, improves the results and</span>
+<span class="sd">        processing times.</span>
+<span class="sd">    frequency_threshold : float</span>
+<span class="sd">        Minimum path frequency for a node to be selected as part of major</span>
+<span class="sd">        pathways.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path_points: numpy.ndarray</span>
+<span class="sd">        2D (np x 3) array containing n points in 3D space (x, y, z) that</span>
+<span class="sd">        belongs to major pathways in the point cloud.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Downsampling point cloud. The function returns downsampled indices</span>
+    <span class="c1"># (down_ids) and a set of original neighboring indices around each</span>
+    <span class="c1"># downsampled points (up_ids) that can be later used to revert the</span>
+    <span class="c1"># downsampling.</span>
+    <span class="n">down_ids</span><span class="p">,</span> <span class="n">up_ids</span> <span class="o">=</span> <span class="n">downsample_cloud</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">downsample_size</span><span class="p">,</span>
+                                        <span class="n">return_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                        <span class="n">return_neighbors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Obtaining downsampled cloud base index (lowest point in the cloud).</span>
+    <span class="n">base_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">[</span><span class="n">down_ids</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="c1"># Generating networkx graph from point cloud.</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">array_to_graph</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">[</span><span class="n">down_ids</span><span class="p">],</span> <span class="n">base_id</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>
+                       <span class="n">downsample_size</span> <span class="o">*</span> <span class="mf">1.77</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+    <span class="c1"># Extracting shortest path information from graph: nodes indices</span>
+    <span class="c1"># (nodes_ids), shortest path distance (D) and list of nodes in each</span>
+    <span class="c1"># nodes&#39; paths (path_dict).</span>
+    <span class="n">nodes_ids</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">path_dict</span> <span class="o">=</span> <span class="n">extract_path_info</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">base_id</span><span class="p">,</span>
+                                                <span class="n">return_path</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Selecting nodes coordinates</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">point_cloud</span><span class="p">[</span><span class="n">down_ids</span><span class="p">][</span><span class="n">nodes_ids</span><span class="p">]</span>
+    <span class="c1"># Unpacking all indices in path_dict and appending them to path_ids_list.</span>
+    <span class="n">path_ids_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">path_dict</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">path_ids_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="c1"># Flattening path_ids_list.</span>
+    <span class="n">path_ids_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">path_ids_list</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span>
+
+    <span class="c1"># Calculating counts of paths (c) that go through each unique node (u).</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">path_ids_list</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Masking nodes with log(c) larger than treshold.</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">frequency_threshold</span>
+    <span class="c1"># Filtering isolated nodes.</span>
+    <span class="n">mask_radius</span> <span class="o">=</span> <span class="n">radius_filter</span><span class="p">(</span><span class="n">nodes</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="c1"># Selecting neighboring nodes.</span>
+    <span class="n">nbrs_idx</span> <span class="o">=</span> <span class="n">set_nbrs_rad</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">nodes</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="n">mask_radius</span><span class="p">],</span>
+                            <span class="n">downsample_size</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Flattening list of neighboring nodes and upscaling results to</span>
+    <span class="c1"># original point cloud.</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nbrs_idx</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+    <span class="n">ups_ids</span> <span class="o">=</span> <span class="n">upsample_cloud</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">up_ids</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">point_cloud</span><span class="p">[</span><span class="n">ups_ids</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="voxel_path_detection"><a class="viewcode-back" href="../../../tlseparation.classification.html#tlseparation.classification.path_detection.voxel_path_detection">[docs]</a><span class="k">def</span> <span class="nf">voxel_path_detection</span><span class="p">(</span><span class="n">point_cloud</span><span class="p">,</span> <span class="n">voxel_size</span><span class="p">,</span> <span class="n">k_retrace</span><span class="p">,</span> <span class="n">knn</span><span class="p">,</span>
@@ -520,9 +590,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -535,7 +603,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -553,7 +621,8 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'rc1',
+            VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -571,14 +640,11 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

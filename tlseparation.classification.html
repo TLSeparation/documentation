@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>tlseparation.classification package &mdash; TLSeparation rc1 documentation</title>
+  <title>tlseparation.classification package &mdash; TLSeparation  documentation</title>
   
 
   
@@ -25,27 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="TLSeparation rc1 documentation" href="index.html"/>
-        <link rel="up" title="tlseparation package" href="tlseparation.html"/>
-        <link rel="next" title="tlseparation.scripts package" href="tlseparation.scripts.html"/>
-        <link rel="prev" title="tlseparation package" href="tlseparation.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tlseparation.scripts package" href="tlseparation.scripts.html" />
+    <link rel="prev" title="tlseparation package" href="tlseparation.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -67,7 +59,7 @@
             
             
               <div class="version">
-                1.2.2.3
+                1.2.2.6
               </div>
             
           
@@ -98,6 +90,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">tlseparation.classification package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification.classes_reference">tlseparation.classification.classes_reference module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification.classify_wood">tlseparation.classification.classify_wood module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification.gmm">tlseparation.classification.gmm module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification.path_detection">tlseparation.classification.path_detection module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.classification.point_features">tlseparation.classification.point_features module</a></li>
@@ -124,7 +117,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">TLSeparation</a>
@@ -132,9 +125,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -190,6 +184,92 @@
 <em class="property">class </em><code class="descclassname">tlseparation.classification.classes_reference.</code><code class="descname">DefaultClass</code><a class="reference internal" href="_modules/tlseparation/classification/classes_reference.html#DefaultClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.classes_reference.DefaultClass" title="Permalink to this definition">¶</a></dt>
 <dd><p>Defines a default reference class to be used in classification of
 tree point clouds.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.classification.classify_wood">
+<span id="tlseparation-classification-classify-wood-module"></span><h2>tlseparation.classification.classify_wood module<a class="headerlink" href="#module-tlseparation.classification.classify_wood" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.classification.classify_wood.reference_classification">
+<code class="descclassname">tlseparation.classification.classify_wood.</code><code class="descname">reference_classification</code><span class="sig-paren">(</span><em>point_cloud</em>, <em>knn_list</em>, <em>n_classes=4</em>, <em>prob_threshold=0.95</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/classify_wood.html#reference_classification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.classify_wood.reference_classification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifies wood material points from a point cloud. This function
+uses <em>wlseparate_ref_voting</em> to perform the basic classification and then
+apply <em>class_filter</em> to filter out potentially misclassified wood points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud: numpy.ndarray</strong></p>
+<blockquote>
+<div><p>2D (n x 3) array containing n points in 3D space (x, y, z).</p>
+</div></blockquote>
+<p><strong>knn_list: list</strong></p>
+<blockquote>
+<div><p>List of knn values to be used iteratively in the voting separation.</p>
+</div></blockquote>
+<p><strong>n_classes: int</strong></p>
+<blockquote>
+<div><p>Number of intermediate classes. Minimum classes should be 3, but
+default value is set to 4 in order to accommodate for noise/outliers
+classes.</p>
+</div></blockquote>
+<p><strong>prob_threshold: float</strong></p>
+<blockquote>
+<div><p>Classification probability threshold to filter classes. This aims to
+avoid selecting points that are not confidently enough assigned to
+any given class. Default is 0.95.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">wood_points: numpy.ndarray</p>
+<blockquote class="last">
+<div><p>2D (nw x 3) array containing n wood points in 3D space (x, y, z).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.classify_wood.threshold_classification">
+<code class="descclassname">tlseparation.classification.classify_wood.</code><code class="descname">threshold_classification</code><span class="sig-paren">(</span><em>point_cloud</em>, <em>knn</em>, <em>n_classes=3</em>, <em>prob_threshold=0.95</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/classify_wood.html#threshold_classification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.classify_wood.threshold_classification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifies wood material points from a point cloud. This function
+uses <em>wlseparate_abs</em> to perform the basic classification and then
+apply <em>class_filter</em> to filter out potentially misclassified wood points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : numpy.ndarray</p>
+<blockquote>
+<div><p>2D (n x 3) array containing n points in 3D space (x, y, z).</p>
+</div></blockquote>
+<p><strong>knn</strong> : int</p>
+<blockquote>
+<div><p>Number of neighbors to select around each point. Used to describe
+local point arrangement.</p>
+</div></blockquote>
+<p><strong>n_classes: int</strong></p>
+<blockquote>
+<div><p>Number of intermediate classes. Default is 3.</p>
+</div></blockquote>
+<p><strong>prob_threshold: float</strong></p>
+<blockquote>
+<div><p>Classification probability threshold to filter classes. This aims to
+avoid selecting points that are not confidently enough assigned to
+any given class. Default is 0.95.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">wood_points: numpy.ndarray</p>
+<blockquote class="last">
+<div><p>2D (nw x 3) array containing n wood points in 3D space (x, y, z).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -406,6 +486,47 @@ containing a set of coordinates (n) over a set of points (m).</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="tlseparation.classification.path_detection.path_detect_frequency">
+<code class="descclassname">tlseparation.classification.path_detection.</code><code class="descname">path_detect_frequency</code><span class="sig-paren">(</span><em>point_cloud</em>, <em>downsample_size</em>, <em>frequency_threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/path_detection.html#path_detect_frequency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.path_detection.path_detect_frequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detects points from major paths in a graph generated from a point cloud.
+The detection is performed by comparing the frequency of all paths that
+each node is present. Nodes with frequency larger than threshold are
+selected as detected. In order to fill pathways regions with low nodes
+density, neighboring points within downsampling_size * 1.5 distance are
+also set as detected.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : numpy.ndarray</p>
+<blockquote>
+<div><p>2D (n x 3) array containing n points in 3D space (x, y, z).</p>
+</div></blockquote>
+<p><strong>downsample_size</strong> : float</p>
+<blockquote>
+<div><p>Distance threshold used to group (downsample) the input point cloud.
+Simplificaton of the cloud by downsampling, improves the results and
+processing times.</p>
+</div></blockquote>
+<p><strong>frequency_threshold</strong> : float</p>
+<blockquote>
+<div><p>Minimum path frequency for a node to be selected as part of major
+pathways.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">path_points: numpy.ndarray</p>
+<blockquote class="last">
+<div><p>2D (np x 3) array containing n points in 3D space (x, y, z) that
+belongs to major pathways in the point cloud.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="tlseparation.classification.path_detection.voxel_path_detection">
 <code class="descclassname">tlseparation.classification.path_detection.</code><code class="descname">voxel_path_detection</code><span class="sig-paren">(</span><em>point_cloud</em>, <em>voxel_size</em>, <em>k_retrace</em>, <em>knn</em>, <em>nbrs_threshold</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/path_detection.html#voxel_path_detection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.path_detection.voxel_path_detection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies detect_main_pathways but with a voxelization option to speed up
@@ -507,6 +628,39 @@ Canopies.</td></tr>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Wang et al., 2015. A Multiscale and Hierarchical Feature Extraction
 Method for Terrestrial Laser Scanning Point Cloud Classification.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.classification.point_features.curvature">
+<code class="descclassname">tlseparation.classification.point_features.</code><code class="descname">curvature</code><span class="sig-paren">(</span><em>arr</em>, <em>nbrs_idx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/classification/point_features.html#curvature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.classification.point_features.curvature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates pointwise curvature of a point cloud.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional (m x n) array of a point cloud, where the
+coordinates are represented in the columns (n) and the points are
+represented in the rows (m).</p>
+</div></blockquote>
+<p><strong>nbr_idx</strong> : array</p>
+<blockquote>
+<div><p>N-dimensional array of indices from a nearest neighbors search of the
+point cloud in ‘arr’, where the rows (m) represents the points in
+‘arr’ and the columns represents the indices of the nearest neighbors
+from ‘arr’.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c</strong> : numpy.ndarray</p>
+<blockquote class="last">
+<div><p>1D (m x 1) array containing the curvature of each point in ‘arr’.</p>
+</div></blockquote>
+</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -813,9 +967,7 @@ Classes are labeled according to classes names in class_file.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -837,7 +989,7 @@ Classes are labeled according to classes names in class_file.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -855,7 +1007,8 @@ Classes are labeled according to classes names in class_file.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'rc1',
+            VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -873,14 +1026,11 @@ Classes are labeled according to classes names in class_file.</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

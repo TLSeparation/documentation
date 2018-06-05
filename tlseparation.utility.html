@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>tlseparation.utility package &mdash; TLSeparation rc1 documentation</title>
+  <title>tlseparation.utility package &mdash; TLSeparation  documentation</title>
   
 
   
@@ -25,27 +25,19 @@
   
 
   
-  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="TLSeparation rc1 documentation" href="index.html"/>
-        <link rel="up" title="tlseparation package" href="tlseparation.html"/>
-        <link rel="next" title="CHANGELOG" href="changelog.html"/>
-        <link rel="prev" title="tlseparation.scripts package" href="tlseparation.scripts.html"/> 
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CHANGELOG" href="changelog.html" />
+    <link rel="prev" title="tlseparation.scripts package" href="tlseparation.scripts.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -67,7 +59,7 @@
             
             
               <div class="version">
-                1.2.2.3
+                1.2.2.6
               </div>
             
           
@@ -100,8 +92,8 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">tlseparation.utility package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.cloud_analysis">tlseparation.utility.cloud_analysis module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.continuous_clustering">tlseparation.utility.continuous_clustering module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.data_utils">tlseparation.utility.data_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.downsampling">tlseparation.utility.downsampling module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.filtering">tlseparation.utility.filtering module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.knnsearch">tlseparation.utility.knnsearch module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.peakdetect">tlseparation.utility.peakdetect module</a></li>
@@ -127,7 +119,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">TLSeparation</a>
@@ -135,9 +127,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -285,166 +278,6 @@ represented in the rows (m).</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-tlseparation.utility.continuous_clustering">
-<span id="tlseparation-utility-continuous-clustering-module"></span><h2>tlseparation.utility.continuous_clustering module<a class="headerlink" href="#module-tlseparation.utility.continuous_clustering" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="tlseparation.utility.continuous_clustering.central_coord">
-<code class="descclassname">tlseparation.utility.continuous_clustering.</code><code class="descname">central_coord</code><span class="sig-paren">(</span><em>arr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/continuous_clustering.html#central_coord"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.continuous_clustering.central_coord" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the central coordinates and mean diameter of an array of
-points in 3D space.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (m x n) containing a set of parameters (n) over a
-set of observations (m). In this case, the set of parameters are the
-point cloud coordinates, where each row represents a point.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>coord</strong> : array</p>
-<blockquote>
-<div><p>Central coordinates of the points in the input array.</p>
-</div></blockquote>
-<p><strong>diameter</strong> : float</p>
-<blockquote class="last">
-<div><p>Mean diameter of the points in the input array.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="tlseparation.utility.continuous_clustering.data_clustering">
-<code class="descclassname">tlseparation.utility.continuous_clustering.</code><code class="descname">data_clustering</code><span class="sig-paren">(</span><em>point_arr</em>, <em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/continuous_clustering.html#data_clustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.continuous_clustering.data_clustering" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clusters point_arr using hierarchical clustering.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_arr</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (m x n) containing a set of parameters (n) over
-a set of observations (m). In this case, the set of parameters are
-the point cloud coordinates, where each row represents a point.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float</p>
-<blockquote>
-<div><p>Distance threshold to be used as constraint in the slice clustering
-step.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>clusters.labels_</strong> : array</p>
-<blockquote class="last">
-<div><p>Set of cluster labels for the classified array.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="tlseparation.utility.continuous_clustering.path_clustering">
-<code class="descclassname">tlseparation.utility.continuous_clustering.</code><code class="descname">path_clustering</code><span class="sig-paren">(</span><em>arr</em>, <em>knn</em>, <em>slice_length</em>, <em>cluster_threshold</em>, <em>growth_radius</em>, <em>freq_threshold=0.6</em>, <em>max_diam=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/continuous_clustering.html#path_clustering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.continuous_clustering.path_clustering" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generates the path clustering of a point cloud with a defined
-root point.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (m x n) containing a set of parameters (n) over
-a set of observations (m). In this case, the set of parameters are
-the point cloud coordinates, where each row represents a point.</p>
-</div></blockquote>
-<p><strong>knn</strong> : int</p>
-<blockquote>
-<div><p>Number of nearest neighbors to use in the reconstruction of point
-cloud around the generated path nodes. A high value may lead to
-unnecessary duplication of steps. A low value may lead to gaps
-in the reconstructed point cloud.</p>
-</div></blockquote>
-<p><strong>slice_length</strong> : float</p>
-<blockquote>
-<div><p>Length of the slices of the data in ‘arr’.</p>
-</div></blockquote>
-<p><strong>cluster_threshold</strong> : float</p>
-<blockquote>
-<div><p>Distance threshold to be used as constraint in the slice clustering
-step.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wood</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (w x n) containing the (w) points classified as
-wood from the path reconstruction. The columns (n) represents the 3D
-coordinates of each point.</p>
-</div></blockquote>
-<p><strong>leaf</strong> : array</p>
-<blockquote class="last">
-<div><p>N-dimensional array (l x n) containing the (l) points not classified
-as wood and, therefore, classified as leaf. The columns (n) represents
-the 3D coordinates of each point.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="tlseparation.utility.continuous_clustering.slice_nodes">
-<code class="descclassname">tlseparation.utility.continuous_clustering.</code><code class="descname">slice_nodes</code><span class="sig-paren">(</span><em>arr</em>, <em>slice_length</em>, <em>cluster_threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/continuous_clustering.html#slice_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.continuous_clustering.slice_nodes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generates the skeleton points of a 3D point cloud by slicing it
-based on the shortest path distance of every point from the base.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (m x n) containing a set of parameters (n) over a
-set of observations (m). In this case, the set of parameters are the
-point cloud coordinates, where each row represents a point.</p>
-</div></blockquote>
-<p><strong>slice_length</strong> : float</p>
-<blockquote>
-<div><p>Length for the slices of data in ‘arr’.</p>
-</div></blockquote>
-<p><strong>cluster_threshold</strong> : float</p>
-<blockquote>
-<div><p>Distance threshold to be used as constraint in the slice clustering
-step.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cluster_data</strong> : dict</p>
-<blockquote>
-<div><p>Dictionary containing the skeleton nodes coordinates (keys) and the
-substet of points from ‘arr’ that generated the respective skeleton
-nodes.</p>
-</div></blockquote>
-<p><strong>cluster_diameter</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dictionary containing the skeleton nodes coordinates (keys) and the
-mean diameter of the cluster that generated the respective skeleton
-nodes.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
 <div class="section" id="module-tlseparation.utility.data_utils">
 <span id="tlseparation-utility-data-utils-module"></span><h2>tlseparation.utility.data_utils module<a class="headerlink" href="#module-tlseparation.utility.data_utils" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -558,12 +391,92 @@ intersected between arr1 and arr2.</p>
 <div><p>N-dimensional array (m x n) containing a set of parameters (n) over
 a set of observations (m).</p>
 </div></blockquote>
+<p><strong>return_ids: bool</strong></p>
+<blockquote>
+<div><p>Option to return indices of duplicated entries instead of new array
+with unique entries.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>unique</strong> : array</p>
 <blockquote class="last">
 <div><p>N-dimensional array (m* x n) containing a set of unique parameters (n)
 over a set of unique observations (m*).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.utility.downsampling">
+<span id="tlseparation-utility-downsampling-module"></span><h2>tlseparation.utility.downsampling module<a class="headerlink" href="#module-tlseparation.utility.downsampling" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.utility.downsampling.downsample_cloud">
+<code class="descclassname">tlseparation.utility.downsampling.</code><code class="descname">downsample_cloud</code><span class="sig-paren">(</span><em>point_cloud</em>, <em>downsample_size</em>, <em>return_indices=False</em>, <em>return_neighbors=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/downsampling.html#downsample_cloud"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.downsampling.downsample_cloud" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downsamples a point cloud by voxelizing it and selecting points closest
+to the median coordinate of all points inside each voxel. The remaining
+points can be stored and returned as a dictrionary for later
+use in upsampling back to original input data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : numpy.ndarray</p>
+<blockquote>
+<div><p>Three-dimensional (m x n) array of a point cloud, where the
+coordinates are represented in the columns (n) and the points are
+represented in the rows (m).</p>
+</div></blockquote>
+<p><strong>downsample_size</strong> : float</p>
+<blockquote>
+<div><p>Size of the voxels used to sample points into groups and select the
+most central point from. Note that this will not be the final points
+distance from each other, but an approximation.</p>
+</div></blockquote>
+<p><strong>return_indices</strong> : bool</p>
+<blockquote>
+<div><p>Option to return results as downsampled array (False) or the
+indices of downsampled points from original point cloud (True).</p>
+</div></blockquote>
+<p><strong>return_neighbors</strong> : bool</p>
+<blockquote class="last">
+<div><p>Option to return original neighbors of downsampled points (True) or
+not (False). This information can be used to upsample back the
+downsampled indices.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.downsampling.upsample_cloud">
+<code class="descclassname">tlseparation.utility.downsampling.</code><code class="descname">upsample_cloud</code><span class="sig-paren">(</span><em>upsample_ids</em>, <em>neighbors_dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/downsampling.html#upsample_cloud"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.downsampling.upsample_cloud" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upsample cloud based on downsampling information from ‘downsample_cloud’.
+This function will loop over each ‘upsample_ids’ and retrieve its
+original neighboring points stored in ‘neighbors_dict’.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>upsample_ids</strong> : list</p>
+<blockquote>
+<div><p>List of indices in ‘neighbors_dict’ to upsample.</p>
+</div></blockquote>
+<p><strong>neighbors_dict</strong> : dict</p>
+<blockquote>
+<div><p>Neighbors information provided by ‘downsample_cloud’ containing
+all the original neighboring points to each point in the downsampled
+cloud.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>upsampled_indices</strong> : numpy.ndarray</p>
+<blockquote class="last">
+<div><p>Upsampled points from original point cloud.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -684,7 +597,7 @@ values (int or float).</p>
 
 <dl class="function">
 <dt id="tlseparation.utility.filtering.cluster_filter">
-<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">cluster_filter</code><span class="sig-paren">(</span><em>arr</em>, <em>min_points</em>, <em>eval_threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#cluster_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.cluster_filter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">cluster_filter</code><span class="sig-paren">(</span><em>arr</em>, <em>max_dist</em>, <em>eval_threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#cluster_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.cluster_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies a cluster filter to a point cloud ‘arr’. This filter aims to
 remove small, isolated, clusters of points.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -695,10 +608,10 @@ remove small, isolated, clusters of points.</p>
 <blockquote>
 <div><p>Point cloud of shape n points x m dimensions to be filtered.</p>
 </div></blockquote>
-<p><strong>min_points</strong> : int</p>
+<p><strong>max_dist</strong> : float</p>
 <blockquote>
-<div><p>Minimum number of points in a cluster. Points that are part of
-clusters with less than min_points are filtered out.</p>
+<div><p>Maximum distance between points to considered part of the same
+cluster.</p>
 </div></blockquote>
 <p><strong>eval_threshold</strong> : float</p>
 <blockquote>
@@ -803,6 +716,83 @@ apply the majority criteria.</p>
 <blockquote class="last">
 <div><p>Raised if neither ‘knn’ or ‘rad’ arguments are passed with valid
 values (int or float).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.filtering.feature_filter">
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">feature_filter</code><span class="sig-paren">(</span><em>arr</em>, <em>feature_id</em>, <em>threshold</em>, <em>knn</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#feature_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.feature_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters a point cloud based on a given feature threshold. Only points
+with selected feature values higher than threshold are kept as valid.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional (m x n) array of a point cloud, where the
+coordinates are represented in the columns (n) and the points are
+represented in the rows (m).</p>
+</div></blockquote>
+<p><strong>feature_id</strong> : int</p>
+<blockquote>
+<div><p>Column index of feature selected as criteria to filter. Column
+indices follow Python notation [0 - (n_columns - 1)].</p>
+</div></blockquote>
+<p><strong>threshold</strong> : float</p>
+<blockquote>
+<div><p>Minimum feature value for valid points.</p>
+</div></blockquote>
+<p><strong>knn</strong> : int</p>
+<blockquote>
+<div><p>Number of neighbors to select around each point. Used to describe
+local point arrangement.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask_feature</strong> : numpy.ndarray</p>
+<blockquote class="last">
+<div><p>Boolean mask with valid points entries set as True.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.filtering.plane_filter">
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">plane_filter</code><span class="sig-paren">(</span><em>arr</em>, <em>rad</em>, <em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#plane_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.plane_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters a point cloud based on its points planicity. Removes points that
+are part of a neighbohood with planar spatial arrangement (low curvature).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>Three-dimensional (m x n) array of a point cloud, where the
+coordinates are represented in the columns (n) and the points are
+represented in the rows (m).</p>
+</div></blockquote>
+<p><strong>rad</strong> : float</p>
+<blockquote>
+<div><p>Search radius distance around each point. Used to describe
+local point arrangement.</p>
+</div></blockquote>
+<p><strong>threshold</strong> : float</p>
+<blockquote>
+<div><p>Minimum curvature value for valid points.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask_plane</strong> : numpy.ndarray</p>
+<blockquote class="last">
+<div><p>Boolean mask with valid points entries set as True.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1222,9 +1212,7 @@ values are indices of points in arr inside each voxel.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1246,7 +1234,7 @@ values are indices of points in arr inside each voxel.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1264,7 +1252,8 @@ values are indices of points in arr inside each voxel.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'rc1',
+            VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -1282,14 +1271,11 @@ values are indices of points in arr inside each voxel.</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

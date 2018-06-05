@@ -12,18 +12,18 @@ tlseparation\.utility\.cloud\_analysis module
     :undoc-members:
     :show-inheritance:
 
-tlseparation\.utility\.continuous\_clustering module
-----------------------------------------------------
-
-.. automodule:: tlseparation.utility.continuous_clustering
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 tlseparation\.utility\.data\_utils module
 -----------------------------------------
 
 .. automodule:: tlseparation.utility.data_utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+tlseparation\.utility\.downsampling module
+------------------------------------------
+
+.. automodule:: tlseparation.utility.downsampling
     :members:
     :undoc-members:
     :show-inheritance:
