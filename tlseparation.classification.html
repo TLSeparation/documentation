@@ -17,35 +17,35 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="tlseparation.scripts package" href="tlseparation.scripts.html" />
     <link rel="prev" title="tlseparation package" href="tlseparation.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.2.2.7
+                1.3.2
               </div>
             
           
@@ -199,32 +199,31 @@ apply <em>class_filter</em> to filter out potentially misclassified wood points.
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud: numpy.ndarray</strong></p>
-<blockquote>
-<div><p>2D (n x 3) array containing n points in 3D space (x, y, z).</p>
-</div></blockquote>
-<p><strong>knn_list: list</strong></p>
-<blockquote>
-<div><p>List of knn values to be used iteratively in the voting separation.</p>
-</div></blockquote>
-<p><strong>n_classes: int</strong></p>
-<blockquote>
-<div><p>Number of intermediate classes. Minimum classes should be 3, but
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>point_cloud: numpy.ndarray</strong></dt>
+<dd><p class="first last">2D (n x 3) array containing n points in 3D space (x, y, z).</p>
+</dd>
+<dt><strong>knn_list: list</strong></dt>
+<dd><p class="first last">List of knn values to be used iteratively in the voting separation.</p>
+</dd>
+<dt><strong>n_classes: int</strong></dt>
+<dd><p class="first last">Number of intermediate classes. Minimum classes should be 3, but
 default value is set to 4 in order to accommodate for noise/outliers
 classes.</p>
-</div></blockquote>
-<p><strong>prob_threshold: float</strong></p>
-<blockquote>
-<div><p>Classification probability threshold to filter classes. This aims to
+</dd>
+<dt><strong>prob_threshold: float</strong></dt>
+<dd><p class="first last">Classification probability threshold to filter classes. This aims to
 avoid selecting points that are not confidently enough assigned to
 any given class. Default is 0.95.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">wood_points: numpy.ndarray</p>
-<blockquote class="last">
-<div><p>2D (nw x 3) array containing n wood points in 3D space (x, y, z).</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>wood_points: numpy.ndarray</strong></dt>
+<dd><p class="first last">2D (nw x 3) array containing n wood points in 3D space (x, y, z).</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -241,31 +240,30 @@ apply <em>class_filter</em> to filter out potentially misclassified wood points.
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : numpy.ndarray</p>
-<blockquote>
-<div><p>2D (n x 3) array containing n points in 3D space (x, y, z).</p>
-</div></blockquote>
-<p><strong>knn</strong> : int</p>
-<blockquote>
-<div><p>Number of neighbors to select around each point. Used to describe
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>point_cloud</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
+<dd><p class="first last">2D (n x 3) array containing n points in 3D space (x, y, z).</p>
+</dd>
+<dt><strong>knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of neighbors to select around each point. Used to describe
 local point arrangement.</p>
-</div></blockquote>
-<p><strong>n_classes: int</strong></p>
-<blockquote>
-<div><p>Number of intermediate classes. Default is 3.</p>
-</div></blockquote>
-<p><strong>prob_threshold: float</strong></p>
-<blockquote>
-<div><p>Classification probability threshold to filter classes. This aims to
+</dd>
+<dt><strong>n_classes: int</strong></dt>
+<dd><p class="first last">Number of intermediate classes. Default is 3.</p>
+</dd>
+<dt><strong>prob_threshold: float</strong></dt>
+<dd><p class="first last">Classification probability threshold to filter classes. This aims to
 avoid selecting points that are not confidently enough assigned to
 any given class. Default is 0.95.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">wood_points: numpy.ndarray</p>
-<blockquote class="last">
-<div><p>2D (nw x 3) array containing n wood points in 3D space (x, y, z).</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>wood_points: numpy.ndarray</strong></dt>
+<dd><p class="first last">2D (nw x 3) array containing n wood points in 3D space (x, y, z).</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -285,36 +283,34 @@ the parameter space.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>classes</strong> : list or array</p>
-<blockquote>
-<div><p>Classes labels for each observation from the input variables.</p>
-</div></blockquote>
-<p><strong>cm</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (c x n) of each class (c) parameter space mean
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>classes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list or array</span></dt>
+<dd><p class="first last">Classes labels for each observation from the input variables.</p>
+</dd>
+<dt><strong>cm</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (c x n) of each class (c) parameter space mean
 valuess (n).</p>
-</div></blockquote>
-<p><strong>nbrs_idx</strong> : array</p>
-<blockquote>
-<div><p>Nearest Neighbors indices relative to every point of the array that
+</dd>
+<dt><strong>nbrs_idx</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Nearest Neighbors indices relative to every point of the array that
 originated the classes labels.</p>
-</div></blockquote>
-<p><strong>feature</strong> : int</p>
-<blockquote>
-<div><p>Column index of the feature to use as constraint.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float</p>
-<blockquote>
-<div><p>Threshold value to mask classes. All classes with means &gt;= threshold
+</dd>
+<dt><strong>feature</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Column index of the feature to use as constraint.</p>
+</dd>
+<dt><strong>threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Threshold value to mask classes. All classes with means &gt;= threshold
 are masked as true.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : list</p>
-<blockquote class="last">
-<div><p>List of booleans where True represents wood points and False
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">List of booleans where True represents wood points and False
 represents leaf points.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -330,26 +326,26 @@ are leaf.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>classes</strong> : list</p>
-<blockquote>
-<div><p>List of classes labels for each observation from the input variables.</p>
-</div></blockquote>
-<p><strong>cm</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (c x n) of each class (c) parameter space mean
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>classes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">List of classes labels for each observation from the input variables.</p>
+</dd>
+<dt><strong>cm</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (c x n) of each class (c) parameter space mean
 valuess (n).</p>
-</div></blockquote>
-<p><strong>classes_ref</strong> : array</p>
-<blockquote>
-<div><p>Reference classes values.</p>
-</div></blockquote>
+</dd>
+<dt><strong>classes_ref</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Reference classes values.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : array</p>
-<blockquote class="last">
-<div><p>List of booleans where True represents wood points and False
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">List of booleans where True represents wood points and False
 represents leaf points.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -365,31 +361,30 @@ Gaussian Mixture Models with Expectation Maximization.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>variables</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (m x n) containing a set of parameters (n)
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>variables</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (m x n) containing a set of parameters (n)
 over a set of observations (m).</p>
-</div></blockquote>
-<p><strong>n_classes</strong> : int</p>
-<blockquote>
-<div><p>Number of classes to assign the input variables.</p>
-</div></blockquote>
+</dd>
+<dt><strong>n_classes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of classes to assign the input variables.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>classes</strong> : list</p>
-<blockquote>
-<div><p>List of classes labels for each observation from the input variables.</p>
-</div></blockquote>
-<p><strong>means</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (c x n) of each class (c) parameter space means
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>classes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">List of classes labels for each observation from the input variables.</p>
+</dd>
+<dt><strong>means</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (c x n) of each class (c) parameter space means
 (n).</p>
-</div></blockquote>
-<p><strong>probability</strong> : array</p>
-<blockquote class="last">
-<div><p>Probability of samples belonging to every class in the classification.
+</dd>
+<dt><strong>probability</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Probability of samples belonging to every class in the classification.
 Sum of sample-wise probability should be 1.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -409,46 +404,45 @@ base of the graph.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional point cloud of a single tree to perform the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>point_cloud</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional point cloud of a single tree to perform the
 wood-leaf separation. This should be a n-dimensional array (m x n)
 containing a set of coordinates (n) over a set of points (m).</p>
-</div></blockquote>
-<p><strong>k_retrace</strong> : int</p>
-<blockquote>
-<div><p>Number of steps in the graph to retrace back to graph’s base. Every
+</dd>
+<dt><strong>k_retrace</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of steps in the graph to retrace back to graph’s base. Every
 node in graph will be moved  k_retrace steps from the extremities
 towards to base.</p>
-</div></blockquote>
-<p><strong>knn</strong> : int</p>
-<blockquote>
-<div><p>Number of neighbors to fill gaps in detected paths. The larger the
+</dd>
+<dt><strong>knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of neighbors to fill gaps in detected paths. The larger the
 better. A large knn will increase memory usage. Recommended value
 between 50 and 150.</p>
-</div></blockquote>
-<p><strong>nbrs_threshold</strong> : float</p>
-<blockquote>
-<div><p>Maximum distance to valid neighboring points used to fill gaps in
+</dd>
+<dt><strong>nbrs_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Maximum distance to valid neighboring points used to fill gaps in
 detected paths.</p>
-</div></blockquote>
-<p><strong>verbose: bool</strong></p>
-<blockquote>
-<div><p>Option to set verbose on/off.</p>
-</div></blockquote>
+</dd>
+<dt><strong>verbose: bool</strong></dt>
+<dd><p class="first last">Option to set verbose on/off.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>path_mask</strong> : array</p>
-<blockquote>
-<div><p>Boolean mask where ‘True’ represents points detected as part of the
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>path_mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Boolean mask where ‘True’ represents points detected as part of the
 main pathways and ‘False’ represents points not part of the pathways.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AssertionError:</strong></p>
-<blockquote class="last">
-<div><p>point_cloud has the wrong shape or number of dimensions.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>AssertionError:</strong></dt>
+<dd><p class="first last">point_cloud has the wrong shape or number of dimensions.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -463,22 +457,23 @@ main pathways and ‘False’ represents points not part of the pathways.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional point cloud of a single tree to perform the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>point_cloud</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional point cloud of a single tree to perform the
 wood-leaf separation. This should be a n-dimensional array (m x n)
 containing a set of coordinates (n) over a set of points (m).</p>
-</div></blockquote>
-<p><strong>base_height</strong> : float</p>
-<blockquote>
-<div><p>Height of the base slice to mask.</p>
-</div></blockquote>
+</dd>
+<dt><strong>base_height</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Height of the base slice to mask.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : array</p>
-<blockquote class="last">
-<div><p>Base slice masked as True.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Base slice masked as True.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -498,28 +493,28 @@ also set as detected.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : numpy.ndarray</p>
-<blockquote>
-<div><p>2D (n x 3) array containing n points in 3D space (x, y, z).</p>
-</div></blockquote>
-<p><strong>downsample_size</strong> : float</p>
-<blockquote>
-<div><p>Distance threshold used to group (downsample) the input point cloud.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>point_cloud</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
+<dd><p class="first last">2D (n x 3) array containing n points in 3D space (x, y, z).</p>
+</dd>
+<dt><strong>downsample_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Distance threshold used to group (downsample) the input point cloud.
 Simplificaton of the cloud by downsampling, improves the results and
 processing times.</p>
-</div></blockquote>
-<p><strong>frequency_threshold</strong> : float</p>
-<blockquote>
-<div><p>Minimum path frequency for a node to be selected as part of major
+</dd>
+<dt><strong>frequency_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum path frequency for a node to be selected as part of major
 pathways.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">path_points: numpy.ndarray</p>
-<blockquote class="last">
-<div><p>2D (np x 3) array containing n points in 3D space (x, y, z) that
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>path_points: numpy.ndarray</strong></dt>
+<dd><p class="first last">2D (np x 3) array containing n points in 3D space (x, y, z) that
 belongs to major pathways in the point cloud.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -535,50 +530,48 @@ processing.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional point cloud of a single tree to perform the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>point_cloud</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional point cloud of a single tree to perform the
 wood-leaf separation. This should be a n-dimensional array (m x n)
 containing a set of coordinates (n) over a set of points (m).</p>
-</div></blockquote>
-<p><strong>voxel_size: float</strong></p>
-<blockquote>
-<div><p>Voxel dimensions’ size.</p>
-</div></blockquote>
-<p><strong>k_retrace</strong> : int</p>
-<blockquote>
-<div><p>Number of steps in the graph to retrace back to graph’s base. Every
+</dd>
+<dt><strong>voxel_size: float</strong></dt>
+<dd><p class="first last">Voxel dimensions’ size.</p>
+</dd>
+<dt><strong>k_retrace</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of steps in the graph to retrace back to graph’s base. Every
 node in graph will be moved  k_retrace steps from the extremities
 towards to base.</p>
-</div></blockquote>
-<p><strong>knn</strong> : int</p>
-<blockquote>
-<div><p>Number of neighbors to fill gaps in detected paths. The larger the
+</dd>
+<dt><strong>knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of neighbors to fill gaps in detected paths. The larger the
 better. A large knn will increase memory usage. Recommended value
 between 50 and 150.</p>
-</div></blockquote>
-<p><strong>nbrs_threshold</strong> : float</p>
-<blockquote>
-<div><p>Maximum distance to valid neighboring points used to fill gaps in
+</dd>
+<dt><strong>nbrs_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Maximum distance to valid neighboring points used to fill gaps in
 detected paths.</p>
-</div></blockquote>
-<p><strong>verbose: bool</strong></p>
-<blockquote>
-<div><p>Option to set verbose on/off.</p>
-</div></blockquote>
+</dd>
+<dt><strong>verbose: bool</strong></dt>
+<dd><p class="first last">Option to set verbose on/off.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>path_mask</strong> : array</p>
-<blockquote>
-<div><p>Boolean mask where ‘True’ represents points detected as part of the
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>path_mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Boolean mask where ‘True’ represents points detected as part of the
 main pathways and ‘False’ represents points not part of the pathways.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AssertionError:</strong></p>
-<blockquote class="last">
-<div><p>point_cloud has the wrong shape or number of dimensions.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>AssertionError:</strong></dt>
+<dd><p class="first last">point_cloud has the wrong shape or number of dimensions.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -597,18 +590,20 @@ et al. <a class="footnote-reference" href="#id3" id="id1">[1]</a> and Wang et al
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>e</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (m x 3) containing sets of 3 eigenvalues per
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>e</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (m x 3) containing sets of 3 eigenvalues per
 row (m).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>features</strong> : array</p>
-<blockquote class="last">
-<div><p>N-dimensional array (m x 6) containing the calculated geometric
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>features</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (m x 6) containing the calculated geometric
 features from ‘e’.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -640,25 +635,26 @@ Method for Terrestrial Laser Scanning Point Cloud Classification.</td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional (m x n) array of a point cloud, where the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional (m x n) array of a point cloud, where the
 coordinates are represented in the columns (n) and the points are
 represented in the rows (m).</p>
-</div></blockquote>
-<p><strong>nbr_idx</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array of indices from a nearest neighbors search of the
+</dd>
+<dt><strong>nbr_idx</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array of indices from a nearest neighbors search of the
 point cloud in ‘arr’, where the rows (m) represents the points in
 ‘arr’ and the columns represents the indices of the nearest neighbors
 from ‘arr’.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c</strong> : numpy.ndarray</p>
-<blockquote class="last">
-<div><p>1D (m x 1) array containing the curvature of each point in ‘arr’.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>c</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
+<dd><p class="first last">1D (m x 1) array containing the curvature of each point in ‘arr’.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -673,21 +669,23 @@ from ‘arr’.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr_stack</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (l x m x n) containing a stack of data, where the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr_stack</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (l x m x n) containing a stack of data, where the
 rows (m) represents the points coordinates, the columns (n) represents
 the axis coordinates and the layer (l) represents the stacks of points.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>evals</strong> : array</p>
-<blockquote class="last">
-<div><p>N-dimensional array (l x n) of eigenvalues calculated from
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>evals</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (l x n) of eigenvalues calculated from
 ‘arr_stack’. The rows (l) represents the stack layers of points in
 ‘arr_stack’ and the columns (n) represent the parameters in
 ‘arr_stack’.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -703,27 +701,28 @@ from an array and an indexing with fixed numbers of neighbors.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional (m x n) array of a point cloud, where the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional (m x n) array of a point cloud, where the
 coordinates are represented in the columns (n) and the points are
 represented in the rows (m).</p>
-</div></blockquote>
-<p><strong>nbr_idx</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array of indices from a nearest neighbors search of the
+</dd>
+<dt><strong>nbr_idx</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array of indices from a nearest neighbors search of the
 point cloud in ‘arr’, where the rows (m) represents the points in
 ‘arr’ and the columns represents the indices of the nearest neighbors
 from ‘arr’.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>features</strong> : array</p>
-<blockquote class="last">
-<div><p>N-dimensional array (m x 6) of the calculated geometric descriptors.
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>features</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (m x 6) of the calculated geometric descriptors.
 Where the rows (m) represent the points from ‘arr’ and the columns
 represents the features.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -738,18 +737,20 @@ represents the features.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>nxm numpy.ndarray where n is the number of samples and m is the number
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">nxm numpy.ndarray where n is the number of samples and m is the number
 of dimensions.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>evals</strong> : array</p>
-<blockquote class="last">
-<div><p>1xm numpy.ndarray containing the calculated eigenvalues in decrescent
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>evals</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">1xm numpy.ndarray containing the calculated eigenvalues in decrescent
 order.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -766,21 +767,23 @@ Based on a reply from the user Divakar <a class="footnote-reference" href="#id6"
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr_stack</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (l x m x n) containing a stack of data, where the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr_stack</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (l x m x n) containing a stack of data, where the
 rows (m) represents the points coordinates, the columns (n) represents
 the axis coordinates and the layer (l) represents the stacks of
 points.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cov</strong> : array</p>
-<blockquote class="last">
-<div><p>N-dimensional array (l x n x n) of covariance values calculated from
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>cov</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (l x n x n) of covariance values calculated from
 ‘arr_stack’. Each layer (l) contains a (n x n) covariance matrix
 calculated from the layers (l) in ‘arr_stack’.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -806,32 +809,30 @@ neighborhood majority analisys.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr1</strong> : array</p>
-<blockquote>
-<div><p>Point coordinates for entries of the first class.</p>
-</div></blockquote>
-<p><strong>arr2</strong> : array</p>
-<blockquote>
-<div><p>Point coordinates for entries of the second class.</p>
-</div></blockquote>
-<p><strong>noclass</strong> : array</p>
-<blockquote>
-<div><p>Point coordinates for noclass entries.</p>
-</div></blockquote>
-<p><strong>k</strong> : int</p>
-<blockquote>
-<div><p>Number of neighbors to use in the neighborhood majority analysis.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Point coordinates for entries of the first class.</p>
+</dd>
+<dt><strong>arr2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Point coordinates for entries of the second class.</p>
+</dd>
+<dt><strong>noclass</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Point coordinates for noclass entries.</p>
+</dd>
+<dt><strong>k</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of neighbors to use in the neighborhood majority analysis.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>arr1</strong> : array</p>
-<blockquote>
-<div><p>Point coordinates for entries of the first class.</p>
-</div></blockquote>
-<p><strong>arr2</strong> : array</p>
-<blockquote class="last">
-<div><p>Point coordinates for entries of the second class.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>arr1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Point coordinates for entries of the first class.</p>
+</dd>
+<dt><strong>arr2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Point coordinates for entries of the second class.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -854,39 +855,37 @@ threshold as wood and the remaining points as leaf.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional point cloud of a single tree to perform the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional point cloud of a single tree to perform the
 wood-leaf separation. This should be a n-dimensional array (m x n)
 containing a set of coordinates (n) over a set of points (m).</p>
-</div></blockquote>
-<p><strong>knn</strong> : int</p>
-<blockquote>
-<div><p>Number of nearest neighbors to search to constitue the local subset of
+</dd>
+<dt><strong>knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of nearest neighbors to search to constitue the local subset of
 points around each point in ‘arr’.</p>
-</div></blockquote>
-<p><strong>knn_downsample</strong> : float</p>
-<blockquote>
-<div><p>Downsample factor (0, 1) for the knn parameter. If less than 1, a
+</dd>
+<dt><strong>knn_downsample</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Downsample factor (0, 1) for the knn parameter. If less than 1, a
 sample of size (knn * knn_downsample) will be selected from the
 nearest neighbors indices. This option aims to maintain the spatial
 representation of the local subsets of points, but reducing overhead
 in memory and processing time.</p>
-</div></blockquote>
-<p><strong>n_classes</strong> : int</p>
-<blockquote>
-<div><p>Number of classes to use in the Gaussian Mixture Classification.</p>
-</div></blockquote>
+</dd>
+<dt><strong>n_classes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of classes to use in the Gaussian Mixture Classification.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>class_indices</strong> : dict</p>
-<blockquote>
-<div><p>Dictionary containing indices for wood and leaf classes.</p>
-</div></blockquote>
-<p><strong>class_probability</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dictionary containing probabilities for wood and leaf classes.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>class_indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionary containing indices for wood and leaf classes.</p>
+</dd>
+<dt><strong>class_probability</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionary containing probabilities for wood and leaf classes.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -916,43 +915,40 @@ intermediate class.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional point cloud of a single tree to perform the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional point cloud of a single tree to perform the
 wood-leaf separation. This should be a n-dimensional array (m x n)
 containing a set of coordinates (n) over a set of points (m).</p>
-</div></blockquote>
-<p><strong>knn_lst</strong> : list</p>
-<blockquote>
-<div><p>List of knn values to use in the search to constitue local subsets of
+</dd>
+<dt><strong>knn_lst</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">List of knn values to use in the search to constitue local subsets of
 points around each point in ‘arr’. It can be a single knn value, as
 long as it has list data type.</p>
-</div></blockquote>
-<p><strong>class_file</strong> : pandas dataframe or str</p>
-<blockquote>
-<div><p>Dataframe or path to reference classes file.</p>
-</div></blockquote>
-<p><strong>n_classes</strong> : int</p>
-<blockquote>
-<div><p>Number of classes to use in the Gaussian Mixture Classification.</p>
-</div></blockquote>
+</dd>
+<dt><strong>class_file</strong> <span class="classifier-delimiter">:</span> <span class="classifier">pandas dataframe or str</span></dt>
+<dd><p class="first last">Dataframe or path to reference classes file.</p>
+</dd>
+<dt><strong>n_classes</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of classes to use in the Gaussian Mixture Classification.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>class_dict</strong> : dict</p>
-<blockquote>
-<div><p>Dictionary containing indices for all classes in class_ref. Classes
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>class_dict</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionary containing indices for all classes in class_ref. Classes
 are labeled according to classes names in class_file.</p>
-</div></blockquote>
-<p><strong>count_dict</strong> : dict</p>
-<blockquote>
-<div><p>Dictionary containin votes count for all classes in class_ref. Classes
+</dd>
+<dt><strong>count_dict</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionary containin votes count for all classes in class_ref. Classes
 are labeled according to classes names in class_file.</p>
-</div></blockquote>
-<p><strong>prob_dict</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dictionary containing probabilities for all classes in class_ref.
+</dd>
+<dt><strong>prob_dict</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionary containing probabilities for all classes in class_ref.
 Classes are labeled according to classes names in class_file.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -976,7 +972,7 @@ Classes are labeled according to classes names in class_file.</p>
         <a href="tlseparation.scripts.html" class="btn btn-neutral float-right" title="tlseparation.scripts package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tlseparation.html" class="btn btn-neutral" title="tlseparation package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tlseparation.html" class="btn btn-neutral float-left" title="tlseparation package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -985,7 +981,7 @@ Classes are labeled according to classes names in class_file.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Matheus Boni Vicari.
+        &copy; Copyright 2017-2019, Matheus Boni Vicari
 
     </p>
   </div>
@@ -1002,35 +998,16 @@ Classes are labeled according to classes names in class_file.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

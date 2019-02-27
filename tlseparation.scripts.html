@@ -17,35 +17,35 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="tlseparation.utility package" href="tlseparation.utility.html" />
     <link rel="prev" title="tlseparation.classification package" href="tlseparation.classification.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.2.2.7
+                1.3.2
               </div>
             
           
@@ -91,6 +91,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">tlseparation.scripts package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.scripts.automated_separation">tlseparation.scripts.automated_separation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.scripts.post_processing">tlseparation.scripts.post_processing module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.scripts">Module contents</a></li>
 </ul>
 </li>
@@ -176,21 +177,20 @@
 <span id="tlseparation-scripts-automated-separation-module"></span><h2>tlseparation.scripts.automated_separation module<a class="headerlink" href="#module-tlseparation.scripts.automated_separation" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="tlseparation.scripts.automated_separation.generic_tree">
-<code class="descclassname">tlseparation.scripts.automated_separation.</code><code class="descname">generic_tree</code><span class="sig-paren">(</span><em>arr, knn_list=[40, 50, 80, 120, 100], voxel_size=0.05, retrace_steps=40</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/scripts/automated_separation.html#generic_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.scripts.automated_separation.generic_tree" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">tlseparation.scripts.automated_separation.</code><code class="descname">generic_tree</code><span class="sig-paren">(</span><em>arr, knn_list=[40, 50, 80, 100, 120], voxel_size=0.05, retrace_steps=40</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/scripts/automated_separation.html#generic_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.scripts.automated_separation.generic_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run an automated separation of a single tree point cloud.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional point cloud of a single tree to perform the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional point cloud of a single tree to perform the
 wood-leaf separation. This should be a n-dimensional array (m x n)
 containing a set of coordinates (n) over a set of points (m).</p>
-</div></blockquote>
-<p><strong>knn_lst: list</strong></p>
-<blockquote>
-<div><p>Set of knn values to use in the neighborhood search in classification
+</dd>
+<dt><strong>knn_lst: list</strong></dt>
+<dd><p class="first last">Set of knn values to use in the neighborhood search in classification
 steps. This variable will be directly used in a step containing
 the function reference_classification  and its minimum and maximum
 values will be used in a different step with threshold_classification
@@ -199,21 +199,21 @@ dependent of point density and were defined based on a medium point
 density scenario (mean distance between points aroun 0.05m).
 Therefore, for higher density point clouds it’s recommended the use of
 larger knn values for optimal results.</p>
-</div></blockquote>
-<p><strong>verbose</strong> : bool</p>
-<blockquote>
-<div><p>Option to set (or not) verbose output.</p>
-</div></blockquote>
+</dd>
+<dt><strong>verbose</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Option to set (or not) verbose output.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wood_final</strong> : array</p>
-<blockquote>
-<div><p>Wood point cloud.</p>
-</div></blockquote>
-<p><strong>leaf_final</strong> : array</p>
-<blockquote class="last">
-<div><p>Leaf point cloud.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>wood_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Wood point cloud.</p>
+</dd>
+<dt><strong>leaf_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Leaf point cloud.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -228,20 +228,18 @@ larger knn values for optimal results.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional point cloud of a single tree to perform the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional point cloud of a single tree to perform the
 wood-leaf separation. This should be a n-dimensional array (m x n)
 containing a set of coordinates (n) over a set of points (m).</p>
-</div></blockquote>
-<p><strong>class_file</strong> : str</p>
-<blockquote>
-<div><p>Path to classes reference values file. This file will be loaded and
+</dd>
+<dt><strong>class_file</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Path to classes reference values file. This file will be loaded and
 its reference values are used to select wood and leaf classes.</p>
-</div></blockquote>
-<p><strong>knn_lst: list</strong></p>
-<blockquote>
-<div><p>Set of knn values to use in the neighborhood search in classification
+</dd>
+<dt><strong>knn_lst: list</strong></dt>
+<dd><p class="first last">Set of knn values to use in the neighborhood search in classification
 steps. This variable will be directly used in a step containing
 the function wlseparate_ref_voting  and its minimum value will be used
 in another step containing wlseparate_abs (both from
@@ -250,41 +248,37 @@ point density and were defined based on a medium point density
 scenario (mean distance between points aroun 0.05m). Therefore, for
 higher density point clouds it’s recommended the use of larger knn
 values for optimal results.</p>
-</div></blockquote>
-<p><strong>gmm_nclasses: int</strong></p>
-<blockquote>
-<div><p>Number of classes to use in Gaussian Mixture Classification. Default
+</dd>
+<dt><strong>gmm_nclasses: int</strong></dt>
+<dd><p class="first last">Number of classes to use in Gaussian Mixture Classification. Default
 is 4.</p>
-</div></blockquote>
-<p><strong>cont_filt</strong> : boolean</p>
-<blockquote>
-<div><p>Option to select if continuity_filter should be applied to wood and
+</dd>
+<dt><strong>cont_filt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd><p class="first last">Option to select if continuity_filter should be applied to wood and
 leaf point clouds. Default is True.</p>
-</div></blockquote>
-<p><strong>class_prob_threshold</strong> : float</p>
-<blockquote>
-<div><p>Classification probability threshold to filter classes. This aims to
+</dd>
+<dt><strong>class_prob_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Classification probability threshold to filter classes. This aims to
 avoid selecting points that are not confidently enough assigned to
 any given class. Default is 0.95.</p>
-</div></blockquote>
-<p><strong>cf_rad</strong> : float</p>
-<blockquote>
-<div><p>Continuity filter search radius.</p>
-</div></blockquote>
-<p><strong>verbose</strong> : bool</p>
-<blockquote>
-<div><p>Option to set (or not) verbose output.</p>
-</div></blockquote>
+</dd>
+<dt><strong>cf_rad</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Continuity filter search radius.</p>
+</dd>
+<dt><strong>verbose</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Option to set (or not) verbose output.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wood_final</strong> : array</p>
-<blockquote>
-<div><p>Wood point cloud.</p>
-</div></blockquote>
-<p><strong>leaf_final</strong> : array</p>
-<blockquote class="last">
-<div><p>Leaf point cloud.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>wood_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Wood point cloud.</p>
+</dd>
+<dt><strong>leaf_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Leaf point cloud.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -299,20 +293,18 @@ any given class. Default is 0.95.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional point cloud of a single tree to perform the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional point cloud of a single tree to perform the
 wood-leaf separation. This should be a n-dimensional array (m x n)
 containing a set of coordinates (n) over a set of points (m).</p>
-</div></blockquote>
-<p><strong>class_file</strong> : str</p>
-<blockquote>
-<div><p>Path to classes reference values file. This file will be loaded and
+</dd>
+<dt><strong>class_file</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Path to classes reference values file. This file will be loaded and
 its reference values are used to select wood and leaf classes.</p>
-</div></blockquote>
-<p><strong>knn_lst: list</strong></p>
-<blockquote>
-<div><p>Set of knn values to use in the neighborhood search in classification
+</dd>
+<dt><strong>knn_lst: list</strong></dt>
+<dd><p class="first last">Set of knn values to use in the neighborhood search in classification
 steps. This variable will be directly used in a step containing
 the function wlseparate_ref_voting  and its minimum value will be used
 in another step containing wlseparate_abs (both from
@@ -321,41 +313,127 @@ point density and were defined based on a medium point density
 scenario (mean distance between points aroun 0.05m). Therefore, for
 higher density point clouds it’s recommended the use of larger knn
 values for optimal results.</p>
-</div></blockquote>
-<p><strong>gmm_nclasses: int</strong></p>
-<blockquote>
-<div><p>Number of classes to use in Gaussian Mixture Classification. Default
+</dd>
+<dt><strong>gmm_nclasses: int</strong></dt>
+<dd><p class="first last">Number of classes to use in Gaussian Mixture Classification. Default
 is 4.</p>
-</div></blockquote>
-<p><strong>cont_filt</strong> : boolean</p>
-<blockquote>
-<div><p>Option to select if continuity_filter should be applied to wood and
+</dd>
+<dt><strong>cont_filt</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd><p class="first last">Option to select if continuity_filter should be applied to wood and
 leaf point clouds. Default is True.</p>
-</div></blockquote>
-<p><strong>class_prob_threshold</strong> : float</p>
-<blockquote>
-<div><p>Classification probability threshold to filter classes. This aims to
+</dd>
+<dt><strong>class_prob_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Classification probability threshold to filter classes. This aims to
 avoid selecting points that are not confidently enough assigned to
 any given class. Default is 0.95.</p>
-</div></blockquote>
-<p><strong>cf_rad</strong> : float</p>
-<blockquote>
-<div><p>Continuity filter search radius.</p>
-</div></blockquote>
-<p><strong>verbose</strong> : bool</p>
-<blockquote>
-<div><p>Option to set (or not) verbose output.</p>
-</div></blockquote>
+</dd>
+<dt><strong>cf_rad</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Continuity filter search radius.</p>
+</dd>
+<dt><strong>verbose</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Option to set (or not) verbose output.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wood_final</strong> : array</p>
-<blockquote>
-<div><p>Wood point cloud.</p>
-</div></blockquote>
-<p><strong>leaf_final</strong> : array</p>
-<blockquote class="last">
-<div><p>Leaf point cloud.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>wood_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Wood point cloud.</p>
+</dd>
+<dt><strong>leaf_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Leaf point cloud.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.scripts.automated_separation.nopath_generic_tree">
+<code class="descclassname">tlseparation.scripts.automated_separation.</code><code class="descname">nopath_generic_tree</code><span class="sig-paren">(</span><em>arr, knn_list=[40, 50, 80, 100, 120]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/scripts/automated_separation.html#nopath_generic_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.scripts.automated_separation.nopath_generic_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run an automated separation of a single tree point cloud.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional point cloud of a single tree to perform the
+wood-leaf separation. This should be a n-dimensional array (m x n)
+containing a set of coordinates (n) over a set of points (m).</p>
+</dd>
+<dt><strong>knn_lst: list</strong></dt>
+<dd><p class="first last">Set of knn values to use in the neighborhood search in classification
+steps. This variable will be directly used in a step containing
+the function reference_classification  and its minimum and maximum
+values will be used in a different step with threshold_classification
+(both from classification.classify_wood). These values are directl
+dependent of point density and were defined based on a medium point
+density scenario (mean distance between points aroun 0.05m).
+Therefore, for higher density point clouds it’s recommended the use of
+larger knn values for optimal results.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>wood_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Wood point cloud.</p>
+</dd>
+<dt><strong>leaf_final</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Leaf point cloud.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.scripts.post_processing">
+<span id="tlseparation-scripts-post-processing-module"></span><h2>tlseparation.scripts.post_processing module<a class="headerlink" href="#module-tlseparation.scripts.post_processing" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.scripts.post_processing.isolated_clusters">
+<code class="descclassname">tlseparation.scripts.post_processing.</code><code class="descname">isolated_clusters</code><span class="sig-paren">(</span><em>arr</em>, <em>voxel_size=0.05</em>, <em>size_threshold=0.3</em>, <em>feature_threshold=0.6</em>, <em>min_pts=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/scripts/post_processing.html#isolated_clusters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.scripts.post_processing.isolated_clusters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a connected component analysis to cluster points from a point
+cloud and filters them these clusters based on size and shape (geometric
+feature).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional (m x n) array of a point cloud, where the
+coordinates are represented in the columns (n) and the points are
+represented in the rows (m).</p>
+</dd>
+<dt><strong>voxel_size: float</strong></dt>
+<dd><p class="first last">Distance used to generate voxels from point cloud in order to 
+perform the connected component analysis in 3D space.</p>
+</dd>
+<dt><strong>size_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int/float</span></dt>
+<dd><p class="first last">Minimum size, on any dimension, for a cluster to be set as
+valid (True)</p>
+</dd>
+<dt><strong>feature_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum feature value for the cluster to be set as elongated (True).</p>
+</dd>
+<dt><strong>min_pts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Minimum number of points for the cluster to be set as valid (True).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>filter_mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">1D mask array setting True for valid poins in ‘arr’ and False
+otherwise.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -379,7 +457,7 @@ any given class. Default is 0.95.</p>
         <a href="tlseparation.utility.html" class="btn btn-neutral float-right" title="tlseparation.utility package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tlseparation.classification.html" class="btn btn-neutral" title="tlseparation.classification package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tlseparation.classification.html" class="btn btn-neutral float-left" title="tlseparation.classification package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -388,7 +466,7 @@ any given class. Default is 0.95.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Matheus Boni Vicari.
+        &copy; Copyright 2017-2019, Matheus Boni Vicari
 
     </p>
   </div>
@@ -405,35 +483,16 @@ any given class. Default is 0.95.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

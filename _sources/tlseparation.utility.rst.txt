@@ -1,67 +1,75 @@
-tlseparation\.utility package
-=============================
+tlseparation.utility package
+============================
 
 Submodules
 ----------
 
-tlseparation\.utility\.cloud\_analysis module
----------------------------------------------
+tlseparation.utility.cloud\_analysis module
+-------------------------------------------
 
 .. automodule:: tlseparation.utility.cloud_analysis
     :members:
     :undoc-members:
     :show-inheritance:
 
-tlseparation\.utility\.data\_utils module
------------------------------------------
+tlseparation.utility.clustering module
+--------------------------------------
+
+.. automodule:: tlseparation.utility.clustering
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+tlseparation.utility.data\_utils module
+---------------------------------------
 
 .. automodule:: tlseparation.utility.data_utils
     :members:
     :undoc-members:
     :show-inheritance:
 
-tlseparation\.utility\.downsampling module
-------------------------------------------
+tlseparation.utility.downsampling module
+----------------------------------------
 
 .. automodule:: tlseparation.utility.downsampling
     :members:
     :undoc-members:
     :show-inheritance:
 
-tlseparation\.utility\.filtering module
----------------------------------------
+tlseparation.utility.filtering module
+-------------------------------------
 
 .. automodule:: tlseparation.utility.filtering
     :members:
     :undoc-members:
     :show-inheritance:
 
-tlseparation\.utility\.knnsearch module
----------------------------------------
+tlseparation.utility.knnsearch module
+-------------------------------------
 
 .. automodule:: tlseparation.utility.knnsearch
     :members:
     :undoc-members:
     :show-inheritance:
 
-tlseparation\.utility\.peakdetect module
-----------------------------------------
+tlseparation.utility.peakdetect module
+--------------------------------------
 
 .. automodule:: tlseparation.utility.peakdetect
     :members:
     :undoc-members:
     :show-inheritance:
 
-tlseparation\.utility\.shortpath module
----------------------------------------
+tlseparation.utility.shortpath module
+-------------------------------------
 
 .. automodule:: tlseparation.utility.shortpath
     :members:
     :undoc-members:
     :show-inheritance:
 
-tlseparation\.utility\.voxels module
-------------------------------------
+tlseparation.utility.voxels module
+----------------------------------
 
 .. automodule:: tlseparation.utility.voxels
     :members:

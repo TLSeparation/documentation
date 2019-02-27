@@ -17,34 +17,34 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="tlseparation.utility package" href="tlseparation.utility.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -58,7 +58,7 @@
             
             
               <div class="version">
-                1.2.2.7
+                1.3.2
               </div>
             
           
@@ -86,6 +86,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tlseparation.html">tlseparation package</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">CHANGELOG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3-2">v1.3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3-1">v1.3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v1-3">v1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-2-2-7">v1.2.2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-2-2-6">v1.2.2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-2-2-5">v1.2.2.5</a></li>
@@ -170,6 +173,26 @@
             
   <div class="section" id="changelog">
 <h1>CHANGELOG<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v1-3-2">
+<h2>v1.3.2<a class="headerlink" href="#v1-3-2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added a new clustering module containing a ‘connected_component’ approach.</li>
+<li>Added two cluster based filtering to be used along ‘clustering.connected_component’.</li>
+<li>Added new script module for automated post-processing.</li>
+</ul>
+</div>
+<div class="section" id="v1-3-1">
+<h2>v1.3.1<a class="headerlink" href="#v1-3-1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Bug fix in ‘generic_tree’ script. Now ‘path_detect_frequency’ also uses the voxel size defined in the main script.</li>
+</ul>
+</div>
+<div class="section" id="v1-3">
+<h2>v1.3<a class="headerlink" href="#v1-3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Major bump in version to point out operational status after series of minor improvements.</li>
+</ul>
+</div>
 <div class="section" id="v1-2-2-7">
 <h2>v1.2.2.7<a class="headerlink" href="#v1-2-2-7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -315,7 +338,7 @@ Added new wlseparate method to auto_separation_2, based on a voting scheme.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="tlseparation.utility.html" class="btn btn-neutral" title="tlseparation.utility package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tlseparation.utility.html" class="btn btn-neutral float-left" title="tlseparation.utility package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -324,7 +347,7 @@ Added new wlseparate method to auto_separation_2, based on a voting scheme.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Matheus Boni Vicari.
+        &copy; Copyright 2017-2019, Matheus Boni Vicari
 
     </p>
   </div>
@@ -341,35 +364,16 @@ Added new wlseparate method to auto_separation_2, based on a voting scheme.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

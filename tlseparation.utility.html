@@ -17,35 +17,35 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CHANGELOG" href="changelog.html" />
     <link rel="prev" title="tlseparation.scripts package" href="tlseparation.scripts.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.2.2.7
+                1.3.2
               </div>
             
           
@@ -92,6 +92,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">tlseparation.utility package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.cloud_analysis">tlseparation.utility.cloud_analysis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.clustering">tlseparation.utility.clustering module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.data_utils">tlseparation.utility.data_utils module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.downsampling">tlseparation.utility.downsampling module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-tlseparation.utility.filtering">tlseparation.utility.filtering module</a></li>
@@ -189,22 +190,23 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (m x n) containing a set of parameters (n) over
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (m x n) containing a set of parameters (n) over
 a set of observations (m).</p>
-</div></blockquote>
-<p><strong>knn</strong> : int</p>
-<blockquote>
-<div><p>Number of nearest neighbors to search to constitue the local subset
+</dd>
+<dt><strong>knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of nearest neighbors to search to constitue the local subset
 of points around each point in ‘arr’.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dist</strong> : float</p>
-<blockquote class="last">
-<div><p>Optimal distance among neighboring points.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>dist</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Optimal distance among neighboring points.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -219,26 +221,26 @@ of points around each point in ‘arr’.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr: array</strong></p>
-<blockquote>
-<div><p>Set of 3D points.</p>
-</div></blockquote>
-<p><strong>rad_lst: list</strong></p>
-<blockquote>
-<div><p>Set of radius values to generate samples of neighborhoods. This is
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr: array</strong></dt>
+<dd><p class="first last">Set of 3D points.</p>
+</dd>
+<dt><strong>rad_lst: list</strong></dt>
+<dd><p class="first last">Set of radius values to generate samples of neighborhoods. This is
 used to select points to calculate a number of neighboring points
 distribution from the point cloud.</p>
-</div></blockquote>
-<p><strong>sample_size: int</strong></p>
-<blockquote>
-<div><p>Number of points in arr to process in order to genrate a distribution.</p>
-</div></blockquote>
+</dd>
+<dt><strong>sample_size: int</strong></dt>
+<dd><p class="first last">Number of points in arr to process in order to genrate a distribution.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">knn_lst: list</p>
-<blockquote class="last">
-<div><p>Set of k-nearest neighbors values.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>knn_lst: list</strong></dt>
+<dd><p class="first last">Set of k-nearest neighbors values.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -254,23 +256,61 @@ around each point in a point cloud.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional (m x n) array of a point cloud, where the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional (m x n) array of a point cloud, where the
 coordinates are represented in the columns (n) and the points are
 represented in the rows (m).</p>
-</div></blockquote>
-<p><strong>rad</strong> : float</p>
-<blockquote>
-<div><p>Radius distance to select neighboring points.</p>
-</div></blockquote>
+</dd>
+<dt><strong>rad</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Radius distance to select neighboring points.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mean_knn</strong> : int</p>
-<blockquote class="last">
-<div><p>Average number of points inside a radius ‘rad’ around each point in
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mean_knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Average number of points inside a radius ‘rad’ around each point in
 ‘arr’.</p>
-</div></blockquote>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tlseparation.utility.clustering">
+<span id="tlseparation-utility-clustering-module"></span><h2>tlseparation.utility.clustering module<a class="headerlink" href="#module-tlseparation.utility.clustering" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tlseparation.utility.clustering.connected_component">
+<code class="descclassname">tlseparation.utility.clustering.</code><code class="descname">connected_component</code><span class="sig-paren">(</span><em>arr</em>, <em>voxel_size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/clustering.html#connected_component"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.clustering.connected_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a connected component analysis to cluster points from a point
+cloud.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional (m x n) array of a point cloud, where the
+coordinates are represented in the columns (n) and the points are
+represented in the rows (m).</p>
+</dd>
+<dt><strong>voxel_size: float</strong></dt>
+<dd><p class="first last">Distance used to generate voxels from point cloud in order to 
+perform the connected component analysis in 3D space.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>point_labels</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">1D array with cluster labels assigned to each point from the input
+point cloud.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -288,30 +328,31 @@ represented in the rows (m).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>base</strong> : array</p>
-<blockquote>
-<div><p>Base array to which the attributes to upscale were originaly matched.</p>
-</div></blockquote>
-<p><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Target array to which the attributes will be upscaled.</p>
-</div></blockquote>
-<p><strong>attr</strong> : array</p>
-<blockquote>
-<div><p>Attributes to upscale.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>base</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Base array to which the attributes to upscale were originaly matched.</p>
+</dd>
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Target array to which the attributes will be upscaled.</p>
+</dd>
+<dt><strong>attr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Attributes to upscale.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>new_attr</strong> : array</p>
-<blockquote>
-<div><p>Upscales attributes.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>new_attr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Upscales attributes.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AssertionError:</strong></p>
-<blockquote class="last">
-<div><p>length (number of samples) of “base” and “attr” must be equal.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>AssertionError:</strong></dt>
+<dd><p class="first last">length (number of samples) of “base” and “attr” must be equal.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -328,14 +369,14 @@ Based on a reply from the user mattbornski <a class="footnote-reference" href="#
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>entries</strong> : array</p>
-<blockquote>
-<div><p>Set of entried to be removed.</p>
-</div></blockquote>
-<p><strong>d</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dictionary to apply the entried removal.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>entries</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Set of entried to be removed.</p>
+</dd>
+<dt><strong>d</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionary to apply the entried removal.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -358,20 +399,21 @@ intersected between arr1 and arr2.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr1</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array of points to intersect.</p>
-</div></blockquote>
-<p><strong>arr2</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array of points to intersect.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array of points to intersect.</p>
+</dd>
+<dt><strong>arr2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array of points to intersect.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote class="last">
-<div><p>Difference array between ‘arr1’ and ‘arr2’.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Difference array between ‘arr1’ and ‘arr2’.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -386,23 +428,24 @@ intersected between arr1 and arr2.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array (m x n) containing a set of parameters (n) over
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (m x n) containing a set of parameters (n) over
 a set of observations (m).</p>
-</div></blockquote>
-<p><strong>return_ids: bool</strong></p>
-<blockquote>
-<div><p>Option to return indices of duplicated entries instead of new array
+</dd>
+<dt><strong>return_ids: bool</strong></dt>
+<dd><p class="first last">Option to return indices of duplicated entries instead of new array
 with unique entries.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>unique</strong> : array</p>
-<blockquote class="last">
-<div><p>N-dimensional array (m* x n) containing a set of unique parameters (n)
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>unique</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array (m* x n) containing a set of unique parameters (n)
 over a set of unique observations (m*).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -423,29 +466,27 @@ use in upsampling back to original input data.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>point_cloud</strong> : numpy.ndarray</p>
-<blockquote>
-<div><p>Three-dimensional (m x n) array of a point cloud, where the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>point_cloud</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
+<dd><p class="first last">Three-dimensional (m x n) array of a point cloud, where the
 coordinates are represented in the columns (n) and the points are
 represented in the rows (m).</p>
-</div></blockquote>
-<p><strong>downsample_size</strong> : float</p>
-<blockquote>
-<div><p>Size of the voxels used to sample points into groups and select the
+</dd>
+<dt><strong>downsample_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Size of the voxels used to sample points into groups and select the
 most central point from. Note that this will not be the final points
 distance from each other, but an approximation.</p>
-</div></blockquote>
-<p><strong>return_indices</strong> : bool</p>
-<blockquote>
-<div><p>Option to return results as downsampled array (False) or the
+</dd>
+<dt><strong>return_indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Option to return results as downsampled array (False) or the
 indices of downsampled points from original point cloud (True).</p>
-</div></blockquote>
-<p><strong>return_neighbors</strong> : bool</p>
-<blockquote class="last">
-<div><p>Option to return original neighbors of downsampled points (True) or
+</dd>
+<dt><strong>return_neighbors</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Option to return original neighbors of downsampled points (True) or
 not (False). This information can be used to upsample back the
 downsampled indices.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -462,22 +503,23 @@ original neighboring points stored in ‘neighbors_dict’.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>upsample_ids</strong> : list</p>
-<blockquote>
-<div><p>List of indices in ‘neighbors_dict’ to upsample.</p>
-</div></blockquote>
-<p><strong>neighbors_dict</strong> : dict</p>
-<blockquote>
-<div><p>Neighbors information provided by ‘downsample_cloud’ containing
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>upsample_ids</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">List of indices in ‘neighbors_dict’ to upsample.</p>
+</dd>
+<dt><strong>neighbors_dict</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Neighbors information provided by ‘downsample_cloud’ containing
 all the original neighboring points to each point in the downsampled
 cloud.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>upsampled_indices</strong> : numpy.ndarray</p>
-<blockquote class="last">
-<div><p>Upsampled points from original point cloud.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>upsampled_indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
+<dd><p class="first last">Upsampled points from original point cloud.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -495,41 +537,40 @@ cloud.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr_1</strong> : array</p>
-<blockquote>
-<div><p>n-dimensional array of points to filter.</p>
-</div></blockquote>
-<p><strong>arr_2</strong> : array</p>
-<blockquote>
-<div><p>n-dimensional array of points to filter.</p>
-</div></blockquote>
-<p><strong>**knn</strong> : int or float</p>
-<blockquote>
-<div><p>Number neighbors to select around each point in arr in order to apply
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr_1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">n-dimensional array of points to filter.</p>
+</dd>
+<dt><strong>arr_2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">n-dimensional array of points to filter.</p>
+</dd>
+<dt><strong>**knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or float</span></dt>
+<dd><p class="first last">Number neighbors to select around each point in arr in order to apply
 the majority criteria.</p>
-</div></blockquote>
-<p><strong>**rad</strong> : int or float</p>
-<blockquote>
-<div><p>Search radius arount each point in arr to select neighbors in order
+</dd>
+<dt><strong>**rad</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or float</span></dt>
+<dd><p class="first last">Search radius arount each point in arr to select neighbors in order
 to apply the majority criteria.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c_maj_1</strong> : array</p>
-<blockquote>
-<div><p>Boolean mask of filtered entries of same class as input ‘arr_1’.</p>
-</div></blockquote>
-<p><strong>c_maj_2</strong> : array</p>
-<blockquote>
-<div><p>Boolean mask of filtered entries of same class as input ‘arr_2’.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>c_maj_1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Boolean mask of filtered entries of same class as input ‘arr_1’.</p>
+</dd>
+<dt><strong>c_maj_2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Boolean mask of filtered entries of same class as input ‘arr_2’.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AssertionError:</strong></p>
-<blockquote class="last">
-<div><p>Raised if neither ‘knn’ or ‘rad’ arguments are passed with valid
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>AssertionError:</strong></dt>
+<dd><p class="first last">Raised if neither ‘knn’ or ‘rad’ arguments are passed with valid
 values (int or float).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -546,49 +587,89 @@ is defined by ‘’target’‘.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr_1</strong> : array</p>
-<blockquote>
-<div><p>n-dimensional array of points to filter.</p>
-</div></blockquote>
-<p><strong>arr_2</strong> : array</p>
-<blockquote>
-<div><p>n-dimensional array of points to filter.</p>
-</div></blockquote>
-<p><strong>target</strong> : int or float</p>
-<blockquote>
-<div><p>Number of the input array to filter. Valid values are 0 or 1.</p>
-</div></blockquote>
-<p><strong>**knn</strong> : int or float</p>
-<blockquote>
-<div><p>Number neighbors to select around each point in arr in order to apply
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr_1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">n-dimensional array of points to filter.</p>
+</dd>
+<dt><strong>arr_2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">n-dimensional array of points to filter.</p>
+</dd>
+<dt><strong>target</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or float</span></dt>
+<dd><p class="first last">Number of the input array to filter. Valid values are 0 or 1.</p>
+</dd>
+<dt><strong>**knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or float</span></dt>
+<dd><p class="first last">Number neighbors to select around each point in arr in order to apply
 the majority criteria.</p>
-</div></blockquote>
-<p><strong>**rad</strong> : int or float</p>
-<blockquote>
-<div><p>Search radius arount each point in arr to select neighbors in order
+</dd>
+<dt><strong>**rad</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or float</span></dt>
+<dd><p class="first last">Search radius arount each point in arr to select neighbors in order
 to apply the majority criteria.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c_maj_1</strong> : array</p>
-<blockquote>
-<div><p>Boolean mask of filtered entries of same class as input ‘arr_1’.</p>
-</div></blockquote>
-<p><strong>c_maj_2</strong> : array</p>
-<blockquote>
-<div><p>Boolean mask of filtered entries of same class as input ‘arr_2’.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>c_maj_1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Boolean mask of filtered entries of same class as input ‘arr_1’.</p>
+</dd>
+<dt><strong>c_maj_2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Boolean mask of filtered entries of same class as input ‘arr_2’.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AssertionError:</strong></p>
-<blockquote>
-<div><p>Raised if neither ‘knn’ or ‘rad’ arguments are passed with valid
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>AssertionError:</strong></dt>
+<dd><p class="first last">Raised if neither ‘knn’ or ‘rad’ arguments are passed with valid
 values (int or float).</p>
-</div></blockquote>
-<p><strong>AssertionError:</strong></p>
-<blockquote class="last">
-<div><p>Raised if ‘target’ variable is not an int or float with value 0 or 1.</p>
-</div></blockquote>
+</dd>
+<dt><strong>AssertionError:</strong></dt>
+<dd><p class="first last">Raised if ‘target’ variable is not an int or float with value 0 or 1.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.filtering.cluster_features">
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">cluster_features</code><span class="sig-paren">(</span><em>arr</em>, <em>labels</em>, <em>feature_threshold</em>, <em>min_pts=10</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#cluster_features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.cluster_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters a set of connected components by a geometric feature threshold.
+This feature (n 2 in the separation methodology) is used to describe
+elongated shapes. If the shape of the cluster is elongated enough
+(i.e. feature value larger than threshold) the points belonging to this
+cluster are masked as True.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional (m x n) array of a point cloud, where the
+coordinates are represented in the columns (n) and the points are
+represented in the rows (m).</p>
+</dd>
+<dt><strong>labels</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">1D array with cluster labels assigned to each point from the input
+point cloud.</p>
+</dd>
+<dt><strong>feature_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum feature value for the cluster to be set as elongated (True).</p>
+</dd>
+<dt><strong>min_pts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Minimum number of points for the cluster to be set as valid (True).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>filter_mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">1D mask array setting True for valid poins in ‘arr’ and False
+otherwise.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -604,29 +685,66 @@ remove small, isolated, clusters of points.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Point cloud of shape n points x m dimensions to be filtered.</p>
-</div></blockquote>
-<p><strong>max_dist</strong> : float</p>
-<blockquote>
-<div><p>Maximum distance between points to considered part of the same
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Point cloud of shape n points x m dimensions to be filtered.</p>
+</dd>
+<dt><strong>max_dist</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Maximum distance between points to considered part of the same
 cluster.</p>
-</div></blockquote>
-<p><strong>eval_threshold</strong> : float</p>
-<blockquote>
-<div><p>Minimum value for largest eigenvalue for a valid cluster. This value
+</dd>
+<dt><strong>eval_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum value for largest eigenvalue for a valid cluster. This value
 is an indication of cluster shape, in which the higher the eigenvalue,
 more elongated is the cluster. Points from clusters that have
 eigenvalue smaller then eval_threshold are filtered out.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : array</p>
-<blockquote class="last">
-<div><p>Boolean mask of filtered points. Entries are set as True if belonging
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Boolean mask of filtered points. Entries are set as True if belonging
 to a valid cluster and False otherwise.</p>
-</div></blockquote>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="tlseparation.utility.filtering.cluster_size">
+<code class="descclassname">tlseparation.utility.filtering.</code><code class="descname">cluster_size</code><span class="sig-paren">(</span><em>arr</em>, <em>labels</em>, <em>min_size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tlseparation/utility/filtering.html#cluster_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tlseparation.utility.filtering.cluster_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters a set of connected components by maximum size on any dimension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional (m x n) array of a point cloud, where the
+coordinates are represented in the columns (n) and the points are
+represented in the rows (m).</p>
+</dd>
+<dt><strong>labels</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">1D array with cluster labels assigned to each point from the input
+point cloud.</p>
+</dd>
+<dt><strong>min_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int/float</span></dt>
+<dd><p class="first last">Minimum size, on any dimension, for a cluster to be set as
+valid (True)</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>filter_mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">1D mask array setting True for valid poins in ‘arr’ and False
+otherwise.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -646,29 +764,28 @@ gaps where leaf points are present.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>wood</strong> : array</p>
-<blockquote>
-<div><p>Wood point cloud to be filtered.</p>
-</div></blockquote>
-<p><strong>leaf</strong> : array</p>
-<blockquote>
-<div><p>Leaf point cloud, with points that may be causing discontinuities in
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>wood</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Wood point cloud to be filtered.</p>
+</dd>
+<dt><strong>leaf</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Leaf point cloud, with points that may be causing discontinuities in
 the wood point cloud.</p>
-</div></blockquote>
-<p><strong>rad</strong> : float</p>
-<blockquote>
-<div><p>Radius to search for neighboring points in the iterative process.</p>
-</div></blockquote>
+</dd>
+<dt><strong>rad</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Radius to search for neighboring points in the iterative process.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>wood</strong> : array</p>
-<blockquote>
-<div><p>Filtered wood point cloud.</p>
-</div></blockquote>
-<p><strong>not_wood</strong> : array</p>
-<blockquote class="last">
-<div><p>Remaining point clouds after the filtering.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>wood</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Filtered wood point cloud.</p>
+</dd>
+<dt><strong>not_wood</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Remaining point clouds after the filtering.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -683,40 +800,38 @@ the wood point cloud.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr_1</strong> : array</p>
-<blockquote>
-<div><p>n-dimensional array of points to filter.</p>
-</div></blockquote>
-<p><strong>arr_2</strong> : array</p>
-<blockquote>
-<div><p>n-dimensional array of points to filter.</p>
-</div></blockquote>
-<p><strong>**knn</strong> : int or float</p>
-<blockquote>
-<div><p>Number neighbors to select around each point in arr in order to apply
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr_1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">n-dimensional array of points to filter.</p>
+</dd>
+<dt><strong>arr_2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">n-dimensional array of points to filter.</p>
+</dd>
+<dt><strong>**knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or float</span></dt>
+<dd><p class="first last">Number neighbors to select around each point in arr in order to apply
 the majority criteria.</p>
-</div></blockquote>
-<p><strong>**rad</strong> : int or float</p>
-<blockquote>
-<div><p>Search radius arount each point in arr to select neighbors in order to
+</dd>
+<dt><strong>**rad</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or float</span></dt>
+<dd><p class="first last">Search radius arount each point in arr to select neighbors in order to
 apply the majority criteria.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c_maj_1</strong> : array</p>
-<blockquote>
-<div><p>Boolean mask of filtered entries of same class as input ‘arr_1’.</p>
-</div></blockquote>
-<p><strong>c_maj_2</strong> : array</p>
-<blockquote>
-<div><p>Boolean mask of filtered entries of same class as input ‘arr_2’.</p>
-</div></blockquote>
-<p>Raises:</p>
-<p>AssertionError:</p>
-<blockquote class="last">
-<div><p>Raised if neither ‘knn’ or ‘rad’ arguments are passed with valid
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>c_maj_1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Boolean mask of filtered entries of same class as input ‘arr_1’.</p>
+</dd>
+<dt><strong>c_maj_2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Boolean mask of filtered entries of same class as input ‘arr_2’.</p>
+</dd>
+<dt><strong>Raises:</strong></dt>
+<dd></dd>
+<dt><strong>AssertionError:</strong></dt>
+<dd><p class="first last">Raised if neither ‘knn’ or ‘rad’ arguments are passed with valid
 values (int or float).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -732,32 +847,31 @@ with selected feature values higher than threshold are kept as valid.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional (m x n) array of a point cloud, where the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional (m x n) array of a point cloud, where the
 coordinates are represented in the columns (n) and the points are
 represented in the rows (m).</p>
-</div></blockquote>
-<p><strong>feature_id</strong> : int</p>
-<blockquote>
-<div><p>Column index of feature selected as criteria to filter. Column
+</dd>
+<dt><strong>feature_id</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Column index of feature selected as criteria to filter. Column
 indices follow Python notation [0 - (n_columns - 1)].</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float</p>
-<blockquote>
-<div><p>Minimum feature value for valid points.</p>
-</div></blockquote>
-<p><strong>knn</strong> : int</p>
-<blockquote>
-<div><p>Number of neighbors to select around each point. Used to describe
+</dd>
+<dt><strong>threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum feature value for valid points.</p>
+</dd>
+<dt><strong>knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of neighbors to select around each point. Used to describe
 local point arrangement.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask_feature</strong> : numpy.ndarray</p>
-<blockquote class="last">
-<div><p>Boolean mask with valid points entries set as True.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mask_feature</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
+<dd><p class="first last">Boolean mask with valid points entries set as True.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -773,27 +887,27 @@ are part of a neighbohood with planar spatial arrangement (low curvature).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Three-dimensional (m x n) array of a point cloud, where the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Three-dimensional (m x n) array of a point cloud, where the
 coordinates are represented in the columns (n) and the points are
 represented in the rows (m).</p>
-</div></blockquote>
-<p><strong>rad</strong> : float</p>
-<blockquote>
-<div><p>Search radius distance around each point. Used to describe
+</dd>
+<dt><strong>rad</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Search radius distance around each point. Used to describe
 local point arrangement.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float</p>
-<blockquote>
-<div><p>Minimum curvature value for valid points.</p>
-</div></blockquote>
+</dd>
+<dt><strong>threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Minimum curvature value for valid points.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask_plane</strong> : numpy.ndarray</p>
-<blockquote class="last">
-<div><p>Boolean mask with valid points entries set as True.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mask_plane</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy.ndarray</span></dt>
+<dd><p class="first last">Boolean mask with valid points entries set as True.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -809,26 +923,26 @@ points.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>Point cloud of shape n points x m dimensions to be filtered.</p>
-</div></blockquote>
-<p><strong>radius</strong> : float</p>
-<blockquote>
-<div><p>Search radius around each point to form a neighborhood.</p>
-</div></blockquote>
-<p><strong>min_point</strong> : int</p>
-<blockquote>
-<div><p>Minimum number of points in a neighborhood for it to be considered
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Point cloud of shape n points x m dimensions to be filtered.</p>
+</dd>
+<dt><strong>radius</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Search radius around each point to form a neighborhood.</p>
+</dd>
+<dt><strong>min_point</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Minimum number of points in a neighborhood for it to be considered
 valid, i.e not filtered out.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : array</p>
-<blockquote class="last">
-<div><p>Array of bools masking valid points as True and “noise” points as
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Array of bools masking valid points as True and “noise” points as
 False.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -850,37 +964,34 @@ very dense/large arrays/queries.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array to perform the knn search on.</p>
-</div></blockquote>
-<p><strong>pts</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array to search for on the knn search.</p>
-</div></blockquote>
-<p><strong>knn</strong> : int</p>
-<blockquote>
-<div><p>Number of nearest neighbors to search for.</p>
-</div></blockquote>
-<p><strong>return_dist</strong> : boolean</p>
-<blockquote>
-<div><p>Option to return or not the distances of each neighbor.</p>
-</div></blockquote>
-<p><strong>block_size</strong> : int</p>
-<blockquote>
-<div><p>Limit of points to query. The variable ‘pts’ will be subdivided in n
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array to perform the knn search on.</p>
+</dd>
+<dt><strong>pts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array to search for on the knn search.</p>
+</dd>
+<dt><strong>knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of nearest neighbors to search for.</p>
+</dd>
+<dt><strong>return_dist</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd><p class="first last">Option to return or not the distances of each neighbor.</p>
+</dd>
+<dt><strong>block_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Limit of points to query. The variable ‘pts’ will be subdivided in n
 blocks of size block_size to perform query.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>indices</strong> : array</p>
-<blockquote>
-<div><p>Set of neighbors indices from ‘arr’ for each entry in ‘pts’.</p>
-</div></blockquote>
-<p><strong>distance</strong> : array</p>
-<blockquote class="last">
-<div><p>Distances from each neighbor to each central point in ‘pts’.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Set of neighbors indices from ‘arr’ for each entry in ‘pts’.</p>
+</dd>
+<dt><strong>distance</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Distances from each neighbor to each central point in ‘pts’.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -899,37 +1010,34 @@ very dense/large arrays/queries.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array to perform the radius search on.</p>
-</div></blockquote>
-<p><strong>pts</strong> : array</p>
-<blockquote>
-<div><p>N-dimensional array to search for on the knn search.</p>
-</div></blockquote>
-<p><strong>rad</strong> : float</p>
-<blockquote>
-<div><p>Radius of the NearestNeighbors search.</p>
-</div></blockquote>
-<p><strong>return_dist</strong> : boolean</p>
-<blockquote>
-<div><p>Option to return or not the distances of each neighbor.</p>
-</div></blockquote>
-<p><strong>block_size</strong> : int</p>
-<blockquote>
-<div><p>Limit of points to query. The variable ‘pts’ will be subdivided in n
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array to perform the radius search on.</p>
+</dd>
+<dt><strong>pts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">N-dimensional array to search for on the knn search.</p>
+</dd>
+<dt><strong>rad</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Radius of the NearestNeighbors search.</p>
+</dd>
+<dt><strong>return_dist</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd><p class="first last">Option to return or not the distances of each neighbor.</p>
+</dd>
+<dt><strong>block_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Limit of points to query. The variable ‘pts’ will be subdivided in n
 blocks of size block_size to perform query.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>indices</strong> : array</p>
-<blockquote>
-<div><p>Set of neighbors indices from ‘arr’ for each entry in ‘pts’.</p>
-</div></blockquote>
-<p><strong>distance</strong> : array</p>
-<blockquote class="last">
-<div><p>Distances from each neighbor to each central point in ‘pts’.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Set of neighbors indices from ‘arr’ for each entry in ‘pts’.</p>
+</dd>
+<dt><strong>distance</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Distances from each neighbor to each central point in ‘pts’.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -947,33 +1055,31 @@ the center point of the neighborhood represented by said rows.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>distance</strong> : array</p>
-<blockquote>
-<div><p>Distances from each neighbor to each central point in ‘pts’.</p>
-</div></blockquote>
-<p><strong>indices</strong> : array</p>
-<blockquote>
-<div><p>Set of neighbors indices from ‘arr’ for each entry in ‘pts’.</p>
-</div></blockquote>
-<p><strong>new_knn</strong> : array</p>
-<blockquote>
-<div><p>Number of neighbors to select from the initial number of neighbors.</p>
-</div></blockquote>
-<p><strong>block_size</strong> : int</p>
-<blockquote>
-<div><p>Limit of points to query. The variables ‘distance’ and ‘indices’ will
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>distance</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Distances from each neighbor to each central point in ‘pts’.</p>
+</dd>
+<dt><strong>indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Set of neighbors indices from ‘arr’ for each entry in ‘pts’.</p>
+</dd>
+<dt><strong>new_knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Number of neighbors to select from the initial number of neighbors.</p>
+</dd>
+<dt><strong>block_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Limit of points to query. The variables ‘distance’ and ‘indices’ will
 be subdivided in n blocks of size block_size to perform query.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : array</p>
-<blockquote>
-<div><p>Subset of distances from each neighbor ‘indices’.</p>
-</div></blockquote>
-<p><strong>indices</strong> : array</p>
-<blockquote class="last">
-<div><p>Subset of neighbors indices from ‘indices’.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>distance</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Subset of distances from each neighbor ‘indices’.</p>
+</dd>
+<dt><strong>indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">Subset of neighbors indices from ‘indices’.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -996,30 +1102,29 @@ Eli Billauer.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>v: array</strong></p>
-<blockquote>
-<div><p>Input vector (1D array) of values.</p>
-</div></blockquote>
-<p><strong>delta: float</strong></p>
-<blockquote>
-<div><p>Value change that characterizes a peak. A point is considered a
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>v: array</strong></dt>
+<dd><p class="first last">Input vector (1D array) of values.</p>
+</dd>
+<dt><strong>delta: float</strong></dt>
+<dd><p class="first last">Value change that characterizes a peak. A point is considered a
 maximum peak if it has the maximal value, and was preceded
 (to the left) by a value lower by delta.</p>
-</div></blockquote>
-<p><strong>x: array</strong></p>
-<blockquote>
-<div><p>Set of x values to replace indices in maxtab/mintab.</p>
-</div></blockquote>
+</dd>
+<dt><strong>x: array</strong></dt>
+<dd><p class="first last">Set of x values to replace indices in maxtab/mintab.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">maxtab: array</p>
-<blockquote>
-<div><p>2D array containing maxima peaks indices and values.</p>
-</div></blockquote>
-<p>mintab: array</p>
-<blockquote class="last">
-<div><p>2D array containing minima peaks indices and values.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>maxtab: array</strong></dt>
+<dd><p class="first last">2D array containing maxima peaks indices and values.</p>
+</dd>
+<dt><strong>mintab: array</strong></dt>
+<dd><p class="first last">2D array containing minima peaks indices and values.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1042,28 +1147,25 @@ edge with weight equal to the distance between both nodes.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : networkx graph</p>
-<blockquote>
-<div><p>NetworkX graph object to which all nodes/edges will be added.</p>
-</div></blockquote>
-<p><strong>base_node</strong> : int</p>
-<blockquote>
-<div><p>Base node’s id to be added. All other nodes will be paired with
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>G</strong> <span class="classifier-delimiter">:</span> <span class="classifier">networkx graph</span></dt>
+<dd><p class="first last">NetworkX graph object to which all nodes/edges will be added.</p>
+</dd>
+<dt><strong>base_node</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Base node’s id to be added. All other nodes will be paired with
 base_node to form different edges.</p>
-</div></blockquote>
-<p><strong>indices</strong> : list or array</p>
-<blockquote>
-<div><p>Set of nodes indices to be paired with base_node.</p>
-</div></blockquote>
-<p><strong>distance</strong> : list or array</p>
-<blockquote>
-<div><p>Set of distances between all nodes in ‘indices’ and base_node.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float</p>
-<blockquote class="last">
-<div><p>Edge distance threshold. All edges with distance larger than
+</dd>
+<dt><strong>indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list or array</span></dt>
+<dd><p class="first last">Set of nodes indices to be paired with base_node.</p>
+</dd>
+<dt><strong>distance</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list or array</span></dt>
+<dd><p class="first last">Set of distances between all nodes in ‘indices’ and base_node.</p>
+</dd>
+<dt><strong>threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Edge distance threshold. All edges with distance larger than
 ‘threshold’ will not be added to G.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1082,45 +1184,41 @@ have a common edge.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
-<blockquote>
-<div><p>n-dimensional array of points.</p>
-</div></blockquote>
-<p><strong>base_id</strong> : int</p>
-<blockquote>
-<div><p>Index of base id (root) in the graph.</p>
-</div></blockquote>
-<p><strong>kpairs</strong> : int</p>
-<blockquote>
-<div><p>Number of points around each point in arr to select in order to
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd><p class="first last">n-dimensional array of points.</p>
+</dd>
+<dt><strong>base_id</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Index of base id (root) in the graph.</p>
+</dd>
+<dt><strong>kpairs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of points around each point in arr to select in order to
 build edges.</p>
-</div></blockquote>
-<p><strong>knn</strong> : int</p>
-<blockquote>
-<div><p>Number of neighbors to search around each point in the neighborhood
+</dd>
+<dt><strong>knn</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of neighbors to search around each point in the neighborhood
 phase. The higher the better (careful, it’s  memory intensive).</p>
-</div></blockquote>
-<p><strong>nbrs_threshold</strong> : float</p>
-<blockquote>
-<div><p>Maximum valid distance between neighbors points.</p>
-</div></blockquote>
-<p><strong>nbrs_threshold_step</strong> : float</p>
-<blockquote>
-<div><p>Distance increment used in the final phase of edges generation. It’s
+</dd>
+<dt><strong>nbrs_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Maximum valid distance between neighbors points.</p>
+</dd>
+<dt><strong>nbrs_threshold_step</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Distance increment used in the final phase of edges generation. It’s
 used to make sure that in the end, every point in arr will be
 translated to nodes in the graph.</p>
-</div></blockquote>
-<p><strong>graph_threshold</strong> : float</p>
-<blockquote>
-<div><p>Maximum distance between pairs of nodes (edge distance) accepted in
+</dd>
+<dt><strong>graph_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Maximum distance between pairs of nodes (edge distance) accepted in
 the graph generation.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> : networkx graph</p>
-<blockquote class="last">
-<div><p>Graph containing all points in ‘arr’ as nodes.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>G</strong> <span class="classifier-delimiter">:</span> <span class="classifier">networkx graph</span></dt>
+<dd><p class="first last">Graph containing all points in ‘arr’ as nodes.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1135,36 +1233,34 @@ the graph generation.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>G</strong> : networkx graph</p>
-<blockquote>
-<div><p>NetworkX graph object from which to extract the information.</p>
-</div></blockquote>
-<p><strong>base_id</strong> : int</p>
-<blockquote>
-<div><p>Base (root) node id to calculate the shortest path for all other
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>G</strong> <span class="classifier-delimiter">:</span> <span class="classifier">networkx graph</span></dt>
+<dd><p class="first last">NetworkX graph object from which to extract the information.</p>
+</dd>
+<dt><strong>base_id</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Base (root) node id to calculate the shortest path for all other
 nodes.</p>
-</div></blockquote>
-<p><strong>return_path</strong> : boolean</p>
-<blockquote>
-<div><p>Option to select if function should output path list for every node
+</dd>
+<dt><strong>return_path</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd><p class="first last">Option to select if function should output path list for every node
 in G to base_id.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodes_ids</strong> : list</p>
-<blockquote>
-<div><p>Indices of all nodes in graph G.</p>
-</div></blockquote>
-<p><strong>distance</strong> : list</p>
-<blockquote>
-<div><p>Shortest path distance (accumulated) from all nodes in G to base_id
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>nodes_ids</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">Indices of all nodes in graph G.</p>
+</dd>
+<dt><strong>distance</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">Shortest path distance (accumulated) from all nodes in G to base_id
 node.</p>
-</div></blockquote>
-<p><strong>path_list</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dictionary of nodes that comprises the path of every node in G to
+</dd>
+<dt><strong>path_list</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionary of nodes that comprises the path of every node in G to
 base_id node.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1183,21 +1279,22 @@ and indices of points belonging to each voxel.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr: array</strong></p>
-<blockquote>
-<div><p>Array of points/entries to voxelize.</p>
-</div></blockquote>
-<p><strong>voxel_size: float</strong></p>
-<blockquote>
-<div><p>Length of all voxels sides/edges.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr: array</strong></dt>
+<dd><p class="first last">Array of points/entries to voxelize.</p>
+</dd>
+<dt><strong>voxel_size: float</strong></dt>
+<dd><p class="first last">Length of all voxels sides/edges.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">vox: defaultdict</p>
-<blockquote class="last">
-<div><p>Dictionary containing voxels. Keys are voxels’ central coordinates and
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>vox: defaultdict</strong></dt>
+<dd><p class="first last">Dictionary containing voxels. Keys are voxels’ central coordinates and
 values are indices of points in arr inside each voxel.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1221,7 +1318,7 @@ values are indices of points in arr inside each voxel.</p>
         <a href="changelog.html" class="btn btn-neutral float-right" title="CHANGELOG" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tlseparation.scripts.html" class="btn btn-neutral" title="tlseparation.scripts package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tlseparation.scripts.html" class="btn btn-neutral float-left" title="tlseparation.scripts package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1230,7 +1327,7 @@ values are indices of points in arr inside each voxel.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Matheus Boni Vicari.
+        &copy; Copyright 2017-2019, Matheus Boni Vicari
 
     </p>
   </div>
@@ -1247,35 +1344,16 @@ values are indices of points in arr inside each voxel.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

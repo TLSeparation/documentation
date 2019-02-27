@@ -1,13 +1,21 @@
-tlseparation\.scripts package
-=============================
+tlseparation.scripts package
+============================
 
 Submodules
 ----------
 
-tlseparation\.scripts\.automated\_separation module
----------------------------------------------------
+tlseparation.scripts.automated\_separation module
+-------------------------------------------------
 
 .. automodule:: tlseparation.scripts.automated_separation
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+tlseparation.scripts.post\_processing module
+--------------------------------------------
+
+.. automodule:: tlseparation.scripts.post_processing
     :members:
     :undoc-members:
     :show-inheritance:
